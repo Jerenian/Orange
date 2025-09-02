@@ -1,10 +1,11 @@
 const Router = require('express')
 const router = new Router()
+const post = require('../controllers/typeController')
+const get = require('../controllers/typeController')
 
-router.get('/', (req, res) => {
-    res.json({message: 'all'})
-})
 
+router.get('/', get)
+router.post('/',post)
 
 
 module.exports = router

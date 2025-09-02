@@ -1,11 +1,11 @@
 const Router = require('express')
 const router = new Router()
-const itemRouter = require('./item')
+const productRouter = require('./product')
 const basketRouter = require('./basket')
 const typeRouter = require('./type')
 
 router.use('/type', typeRouter)
-router.use('/item', itemRouter)
+router.use('/product', productRouter)
 router.use('/basket', basketRouter)
 
 
