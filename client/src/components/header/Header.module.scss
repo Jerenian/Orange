@@ -1,0 +1,31 @@
+.wrapper{
+    .row{
+        padding:10px 45px;
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        color: #fff;
+        .left{
+            display: flex;
+            gap: 47px;
+            .logo{
+                width: 108px;
+                height: 48px;
+                text-decoration: none;
+                list-style: none;
+            }
+            .link{
+                padding: 20px 0;
+            }
+            a{
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+        .right{
+            display: flex;
+            padding: 20px 0;
+            gap: 16px;
+        }
+    }
+}
