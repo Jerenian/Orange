@@ -4,8 +4,8 @@ const productRouter = require('./product')
 const basketRouter = require('./basket')
 const typeRouter = require('./type')
 
-router.use('/type', typeRouter)
-router.use('/product', productRouter)
+router.use('/types', typeRouter)
+router.use('/products', productRouter)
 router.use('/basket', basketRouter)
 
 

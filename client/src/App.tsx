@@ -17,7 +17,7 @@ import Composition from "./pages/main/catalog/composition/Composition"
 import Wedding from "./pages/main/category/wedding/Wedding"
 import Spring from "./pages/main/category/spring/Spring"
 import Romantic from "./pages/main/category/romantic/Romantic"
-import Catalog from "./pages/catalog/Catalog"
+import Catalog from "./pages/main/catalog/catalog"
 
 function App() {
 
@@ -37,6 +37,7 @@ function App() {
                 <Route path="/catalog/flowers" element={<Flowers></Flowers>}></Route>
                 <Route path="/catalog/boquets" element={<Boquets></Boquets>}></Route>
                 <Route path="/catalog/toys" element={<Toys></Toys>}></Route>
+                <Route path="/catalog" element={<Catalog></Catalog>}></Route>
           <Route path="about" element={<About />} />
           <Route path="basket" element ={<Basket/>} />
           <Route path="contact" element ={<Contacts/>} />

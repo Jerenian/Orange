@@ -1,0 +1,152 @@
+.wrapper{
+    a{
+        text-decoration: none;
+    }
+    button{
+        background: transparent;
+        border: none;
+    }
+    .cover{
+        padding: 126px 0 ;
+        background: linear-gradient(90deg, #E5FA39 0%, #FC8B48 100%);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 11px;
+        .title{
+            color: #000;
+            text-align: center;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 60px; /* 100% */
+        }
+        .subTitle{
+            color: #000;
+            text-align: center;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; /* 133.333% */
+        }
+    }
+    .history{
+        padding: 80px;
+        .container{
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            .img{
+                max-width: 600px;
+                width: 50%;
+                order: 1;
+                img{
+                    display: block;
+                    border-radius: 10px;
+                    max-height: 384px;
+                    width: 100%;
+                }
+            }
+            .text{
+                flex-shrink: 1;
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                max-width: 600px;
+                .title{
+                    color: #000;
+                    font-size: 36px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 40px; /* 111.111% */
+                }
+                .subTitleFirst{
+                    color: #374151;
+                    font-family: Montserrat;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 28px;
+                }
+                .subTitleSecond{
+                    color: #374151;
+                    font-family: Montserrat;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 28px;
+                }
+                .info{
+                    display: flex;
+                    gap: 24px;
+                    .experience{
+                        padding: 14px 24px;
+                        border-radius: 30px;
+                        border: 0 solid #E5E7EB;
+                        background: #E5FA39;
+                    }
+                    .clients{
+                        padding: 14px 24px;
+                        border-radius: 30px;
+                        border: 0 solid #E5E7EB;
+                        background: #FB6D41;
+                        color: #ffff;
+                    }
+                }
+            }
+        }
+    }
+    .values{
+        padding: 80px;
+        background: #F9FAFB;
+        .title{
+            text-align: center;
+            color: #000;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px; /* 111.111% */
+        }
+        .cards{
+            padding-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            .cardFirst, .cardSecond, .cardThird{
+                padding: 32px;
+                width: 30%;
+                border-radius: 8px;
+                border: 0 solid #E5E7EB;
+                background: #FFF;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 4px 6px 0 rgba(0, 0, 0, 0.10);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                gap: 17px;
+                .subTitle{
+                    color: #4B5563;
+                    text-align: center;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+            }
+            .yellow, .black, .orange{
+                padding: 16px;
+                border-radius: 50%;
+            }
+            .yellow{
+                background-color:#E5FA39;
+            }
+            .black{
+                background-color: #000;
+            }
+            .orange{
+                background-color: #FB6D41;
+            }
+        }
+    }
+}

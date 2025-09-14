@@ -2,6 +2,9 @@ import React from 'react'
 import classes from './sytle.module.scss'
 import { NavLink } from 'react-router'
 import cover from '../../assets/images/mainCover.png'
+import flowers from '../../assets/images/pages/main/flowers.png'
+import Romantic from '../../assets/images/pages/main/romantic.png'
+import classicLove from '../../assets/images/pages/main/classicLove.png'
 const Main = () => {
   return (
         <div className={classes.wrapper}>
@@ -24,91 +27,129 @@ const Main = () => {
             </div>
                 <section className={classes.catalog}>
                     <div className={classes.text}>
+                        <div ></div>
                         <h2 className={classes.title}></h2>
                         <p className={classes.subTitle}></p>
                     </div>
                     <nav className={classes.container}>
                         <div className={classes.boquets}>
                             <NavLink to="/catalog/boquets" >
+                             <div className={classes.shadow} ></div>
+                            <img src={flowers} alt="" />
                                 <h4>Букеты</h4>
-                                <p></p>
+                                <p>От 100 рублей</p>
                             </NavLink>
                         </div>
                         <div className={classes.flowers}>
-                            <NavLink to="/catalog/flowrs" >
+                            <NavLink to="/catalog/flowers" >
+                            <div className={classes.shadow} ></div>
+                            <img src={flowers} alt="" />
                                 <h4>Цветы</h4>
-                                <p></p>
+                                <p>От 100 рублей</p>
                             </NavLink>
                         </div>
                         <div className={classes.composition}>
                             <NavLink to="/catalog/composition" >
+                            <div className={classes.shadow} ></div>
+                            <img src={flowers} alt="" />
                                 <h4>Композиции</h4>
-                                <p></p>
+                                <p>От 100 рублей</p>
                             </NavLink>
                         </div>
                         <div className={classes.toys}>
                             <NavLink to="/catalog/toys" >
+                             <div className={classes.shadow} ></div>
+                            <img src={flowers} alt="" />
                                 <h4>Игрушки</h4>
-                                <p></p>
+                                <p>От 100 рублей</p>
                             </NavLink>
                         </div>
                         <div className={classes.balloons}>
                             <NavLink to="/catalog/balloons">
+                            <div className={classes.shadow} ></div>
+                            <img src={flowers} alt="" />
                                 <h4>Шары</h4>
-                                <p></p>
+                                <p>От 100 рублей</p>
                             </NavLink>
                         </div>
                     </nav>
                 </section>
                 <section className={classes.category}>
-                    <div className={classes.text}>
-                        <h2 className={classes.title}></h2>
-                        <p className={classes.subTitle}></p>
+                    <div className={classes.header}>
+                        <h2 className={classes.title}>Наши категории</h2>
+                        <p className={classes.subTitle}>Выберите идеальный букет для любого случая</p>
                     </div>
                     <nav className={classes.container}>
-                        <NavLink to="/category/romantic" className={classes.romantic}>
-                            <div className={classes.categoryFirst}></div>
-                            <h4></h4>
-                            <p></p>
-                        </NavLink>
-                        <NavLink to="/category/spring" className={classes.spring}>
-                            <div className={classes.categorySecond}></div>
-                            <h4></h4>
-                            <p></p>
-                        </NavLink>
-                        <NavLink to="/category/wedding" className={classes.wedding}>
-                            <div className={classes.categoryThird}></div>
-                            <h4></h4>
-                            <p></p>
-                        </NavLink>
-                        <NavLink to="/category/gift" className={classes.gift}>
-                            <div className={classes.categoryFourth}></div>
-                            <h4></h4>
-                            <p></p>
-                        </NavLink>
+                        <div className={classes.categoryFirst}>
+                            <NavLink to="/category/romantic" className={classes.romantic}>
+                                <img src={Romantic} alt="" />
+                                <div className={classes.text}>
+                                    <h4>Романтические</h4>
+                                    <p>Букеты для особых моментов</p>
+                                    <span>от 2 500 ₽</span>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div className={classes.categorySecond}>
+                            <NavLink to="/category/spring" className={classes.spring}>
+                                <img src={Romantic} alt="" />
+                                <div className={classes.text}>
+                                    <h4>Весенние</h4>
+                                    <p>Букеты для особых моментов</p>
+                                    <span>от 2 500 ₽</span>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div className={classes.categoryThird}>
+                            <NavLink to="/category/wedding" className={classes.wedding}>
+                            <img src={Romantic} alt="" />
+                            <div className={classes.text}>
+                                    <h4>Свадебные</h4>
+                                    <p>Букеты для особых моментов</p>
+                                    <span>от 2 500 ₽</span>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div className={classes.categoryFourth}>
+                            <NavLink to="/category/gift" className={classes.gift}>
+                                <img src={Romantic} alt="" />
+                                <div className={classes.text}>
+                                    <h4>Подарочные</h4>
+                                    <p>Букеты для особых моментов</p>
+                                    <span>от 2 500 ₽</span>
+                                </div>
+                            </NavLink>
+                        </div>
                     </nav>
                 </section>
                 <section className={classes.popular}>
-                    <div className={classes.text}>
-                        <h2 className={classes.title}></h2>
+                    <div className={classes.header}>
+                        <h2 className={classes.title}>Популярные букеты</h2>
+                        <p className={classes.subTitle}>Самые любимые композиции наших клиентов</p>
+                    </div>
                         <div className={classes.container}>
-                            <div className={classes.delivery} >
-                                <img src="" alt="" />
-                                <h4 className={classes.title}></h4>
-                                <p className={classes.subTitle}></p>
+                            <div className={classes.popularFirst} >
+                                    <img src={classicLove} alt="" />
+                                <div className={classes.text}>
+                                    <h4 className={classes.title}>Классика любви</h4>
+                                    <p className={classes.subTitle}>25 красных роз премиум класса</p>
+                                </div>
                             </div>
-                            <div className={classes.fresh} >
-                                <img src="" alt="" />
-                                <h4 className={classes.title}></h4>
-                                <p className={classes.subTitle}></p>
+                            <div className={classes.popularSecond} >
+                                    <img src={classicLove} alt="" />
+                                <div className={classes.text}>
+                                    <h4 className={classes.title}>Весенний микс</h4>
+                                    <p className={classes.subTitle}>Тюльпаны, фрезии и зелень</p>
+                                </div>
                             </div>
-                            <div className={classes.love} >
-                                <img src="" alt="" />
-                                <h4 className={classes.title}></h4>
-                                <p className={classes.subTitle}></p>
+                            <div className={classes.popularThird} >
+                                    <img src={classicLove} alt="" />
+                                <div className={classes.text}>
+                                    <h4 className={classes.title}>Нежность</h4>
+                                    <p className={classes.subTitle}>Белые и розовые пионы</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </section>
         </div>
     )

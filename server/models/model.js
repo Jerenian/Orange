@@ -25,17 +25,57 @@ const Category = sequelize.define('category', {
     description: {type: DataTypes.STRING,},
     img: {type:DataTypes.STRING }, 
 })
+const Popular = sequelize.define('popular', {
+    id: {type: DataTypes.STRING, primaryKey: true,}, 
+})
 
 Type.hasMany(Product)
 Product.belongsTo(Type)
 Product.hasMany(Basket)
+Product.hasMany(Popular)
 Category.hasMany(Product)
 Product.hasMany(Category)
 
-
+const Main = sequelize.define('main', {
+        id: {type: DataTypes.STRING, primaryKey: true},
+        name: {type: DataTypes.STRING, unique: true},
+        img: {type:DataTypes.STRING }, 
+        text: {type:DataTypes.STRING}
+})
+const About = sequelize.define('about', {
+        id: {type: DataTypes.STRING, primaryKey: true},
+        name: {type: DataTypes.STRING, unique: true},
+        img: {type:DataTypes.STRING }, 
+        text: {type:DataTypes.STRING}
+})
+const Payment = sequelize.define('payment', {
+        id: {type: DataTypes.STRING, primaryKey: true},
+        name: {type: DataTypes.STRING, unique: true},
+        img: {type:DataTypes.STRING }, 
+        text: {type:DataTypes.STRING}
+})
+const Delivery = sequelize.define('delivery', {
+        id: {type: DataTypes.STRING, primaryKey: true},
+        name: {type: DataTypes.STRING, unique: true},
+        img: {type:DataTypes.STRING }, 
+        text: {type:DataTypes.STRING}
+})
+const Contacts = sequelize.define('contact', {
+        id: {type: DataTypes.STRING, primaryKey: true},
+        name: {type: DataTypes.STRING, unique: true},
+        img: {type:DataTypes.STRING }, 
+        text: {type:DataTypes.STRING}
+})
 module.exports = {
     Basket,
     Product,
     Type,
-    Category
+    Category,
+    Main,
+    About,
+    Payment,
+    Delivery,
+    Contacts, 
+    Popular
 }
+
