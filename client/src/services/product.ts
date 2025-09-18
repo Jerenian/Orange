@@ -12,7 +12,7 @@ export const ProductApi = createApi({
             query:(id) => `products/${id}/`
         }),
         getByTypeProduct: builder.query<IProduct[], string>({
-            query:(typeId) =>  `products/type/type?typeId=${typeId}`,            
+            query:(typeId) =>  `products?typeId=${typeId}`,            
         })
     }),
 })
