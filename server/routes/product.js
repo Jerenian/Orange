@@ -6,7 +6,7 @@ const productController = require('../controllers/productController')
 
 const router = new Router()
 
-router.get('/', productController.getAll)
+router.get('/type/:typeId', productController.getAll)
 router.post('/', productController.create)
 router.get('/:id', productController.getOne)
 router.delete('/', productController.remove)

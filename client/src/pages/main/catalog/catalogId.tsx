@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import classes from './style.module.scss'
-import { useGetAllProductsQuery } from '../../../services/product'
 import { useGetByTypeProductQuery } from '../../../services/product'
 import Product from '../../../components/product/product'
 import type { IProduct } from '../../../types'
 import { useParams } from 'react-router'
-const Catalog = () => {
-    const { data, error, isLoading } = useGetAllProductsQuery(null)
+const CatalogId = () => {
+    let param = useParams()
+    const { data, error, isLoading } = useGetByTypeProductQuery(param.id as string)
     return (
         <div className={classes.wrapper}>
         {error ? (
@@ -24,4 +24,4 @@ const Catalog = () => {
     )
 }
 
-export default Catalog
+export default CatalogId

@@ -5,8 +5,13 @@ import cover from '../../assets/images/mainCover.png'
 import flowers from '../../assets/images/pages/main/flowers.png'
 import Romantic from '../../assets/images/pages/main/romantic.png'
 import classicLove from '../../assets/images/pages/main/classicLove.png'
+import { useGetAllTypesQuery } from '../../services/type'
+import MainCatalog from '../../components/main-catalog/main-catalog'
+
 const Main = () => {
-  return (
+    const {data, isLoading, error} = useGetAllTypesQuery(null)
+    console.log(data)
+    return (
         <div className={classes.wrapper}>
             <div className={classes.cover}>
                 <div className={classes.text}>
@@ -32,7 +37,10 @@ const Main = () => {
                         <p className={classes.subTitle}></p>
                     </div>
                     <nav className={classes.container}>
-                        <div className={classes.boquets}>
+                        {data?.map((item) => (
+                            <MainCatalog data={item}></MainCatalog>
+                        ))}
+                        {/* <div className={classes.boquets}>
                             <NavLink to="/catalog/boquets" >
                              <div className={classes.shadow} ></div>
                             <img src={flowers} alt="" />
@@ -71,7 +79,7 @@ const Main = () => {
                                 <h4>Шары</h4>
                                 <p>От 100 рублей</p>
                             </NavLink>
-                        </div>
+                        </div> */}
                     </nav>
                 </section>
                 <section className={classes.category}>

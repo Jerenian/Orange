@@ -6,14 +6,10 @@ import Contacts from "./pages/contacts/contacts"
 import Delivery from "./pages/delivery/delivery"
 import Favorite from "./pages/favorite/favorite"
 import Main from "./pages/main/main"
-import Layout from "./components/Layout/Layout"
+import Layout from "./components/layout/Layout"
 import Payment from "./components/payment/payment"
-import Balloons from "./pages/main/catalog/balloons/Balloons"
-import Flowers from "./pages/main/catalog/flowers/Flowers"
-import Boquets from "./pages/main/catalog/boquets/Boquets"
+import CatalogId from "./pages/main/catalog/CatalogId"
 import Gift from "./pages/main/category/gift/Gift"
-import Toys from "./pages/main/catalog/toys/Toys"
-import Composition from "./pages/main/catalog/composition/Composition"
 import Wedding from "./pages/main/category/wedding/Wedding"
 import Spring from "./pages/main/category/spring/Spring"
 import Romantic from "./pages/main/category/romantic/Romantic"
@@ -32,11 +28,7 @@ function App() {
                 <Route path="/category/spring" element={<Spring></Spring>}></Route>
                 <Route path="/category/wedding" element={<Wedding></Wedding>}></Route>
                 <Route path="/category" element={<Catalog></Catalog>}></Route>
-                <Route path="/catalog/balloons" element={<Balloons></Balloons>}></Route>
-                <Route path="/catalog/composition" element={<Composition></Composition>}></Route>
-                <Route path="/catalog/flowers" element={<Flowers></Flowers>}></Route>
-                <Route path="/catalog/boquets" element={<Boquets></Boquets>}></Route>
-                <Route path="/catalog/toys" element={<Toys></Toys>}></Route>
+                <Route path="/catalog/:id" element={<CatalogId></CatalogId>}></Route>
                 <Route path="/catalog" element={<Catalog></Catalog>}></Route>
           <Route path="about" element={<About />} />
           <Route path="basket" element ={<Basket/>} />

@@ -17,7 +17,8 @@ const Product = sequelize.define('product', {
 })
 const Type = sequelize.define('type', {
     id: {type: DataTypes.STRING, primaryKey: true},
-    name: {type: DataTypes.STRING, unique: true, allowNull: false}
+    name: {type: DataTypes.STRING, unique: true, allowNull: false},
+    img: {type:DataTypes.STRING },
 })
 const Category = sequelize.define('category', {
     id: {type: DataTypes.STRING, primaryKey: true},
@@ -66,6 +67,7 @@ const Contacts = sequelize.define('contact', {
         img: {type:DataTypes.STRING }, 
         text: {type:DataTypes.STRING}
 })
+
 module.exports = {
     Basket,
     Product,
@@ -79,3 +81,4 @@ module.exports = {
     Popular
 }
 
+//sequelize.sync()

@@ -1,14 +1,18 @@
 const {Type} = require('../models/model')
 const uuid = require('uuid')
-
+const path = require('path')
 const create = async (req, res) => {
     try {
+        console.log(req.files);
         let id = uuid.v4()
         const {name} = req.body
+        const {img} = req.files
+        let fileName = uuid.v4() + ".jpg"
+        img.mv(path.resolve(__dirname, '..', 'static', fileName))
         const type = await Type.create({id, name})
         return res.json(type)
     } catch (error) {
-        
+        console.log(error.message)
     }
 }
 
@@ -29,4 +33,4 @@ const getAll = async (req, res) => {
         
     }
 }
-module.exports = create, remove, getAll
+module.exports = {create, remove, getAll}
