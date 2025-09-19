@@ -3,5 +3,6 @@ html, body{
     height: 100%;
     box-sizing: border-box;
     background: #F9FAFB ; 
+    font-family: "Montserrat", sans-serif !important;
 }
 

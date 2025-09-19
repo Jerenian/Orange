@@ -34,6 +34,7 @@ Type.hasMany(Product)
 Product.belongsTo(Type)
 Product.hasMany(Basket)
 Product.hasMany(Popular)
+
 Category.hasMany(Product)
 Product.hasMany(Category)
 

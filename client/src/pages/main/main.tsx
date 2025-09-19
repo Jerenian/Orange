@@ -82,7 +82,7 @@ const Main = () => {
                         </div> */}
                     </nav>
                 </section>
-                <section className={classes.category}>
+                {/* <section className={classes.category}>
                     <div className={classes.header}>
                         <h2 className={classes.title}>Наши категории</h2>
                         <p className={classes.subTitle}>Выберите идеальный букет для любого случая</p>
@@ -129,7 +129,7 @@ const Main = () => {
                             </NavLink>
                         </div>
                     </nav>
-                </section>
+                </section> */}
                 <section className={classes.popular}>
                     <div className={classes.header}>
                         <h2 className={classes.title}>Популярные букеты</h2>

@@ -1,0 +1,148 @@
+.wrapper{
+    .cover{
+        padding: 126px 0 ;
+        background: linear-gradient(90deg, #E5FA39 0%, #FC8B48 100%);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 11px;
+        .title{
+            color: #000;
+            text-align: center;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 60px; /* 100% */
+        }
+        .subTitle{
+            color: #000;
+            text-align: center;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; 
+        }
+    }
+    .container{
+        padding: 0 5%;
+        .main{
+            border-radius: 0 0 30px 30px;
+            background-color:rgba(197, 197, 197, 0.495);
+            padding: 5% 0 1%;
+            .imageContainer{
+                border-radius: 20px;
+                margin: 0 auto;
+                width: 70%;
+                overflow: hidden;
+                max-height: 450px;
+                img{
+                    width: 100%;
+                }
+            }
+            .description{
+                margin-top: 20px;
+                border-radius: 20px;
+                padding: 2% 4% ;
+                display: flex;
+                justify-content: space-between;
+                gap: 5px;
+                div{
+                    display: flex;
+                    gap: 6px;
+                    align-items: center;
+                    background-color: #fff;
+                    padding: 8px;
+                    border-radius: 10px;
+                    p{
+                        margin-top: 2px;
+                        color: #000000b0;
+                        font-size: 30px;
+                        font-style: normal;
+                        font-weight: 700;
+                    }
+                }
+
+            }
+        }
+        .right{
+            margin-top: 30px;
+            border-radius: 25px;
+            background-color:rgba(197, 197, 197, 0.495);
+            display: flex;
+            gap: 20px;
+            .imageContainer{
+                border-radius: 25px;
+                width: 40%;
+                overflow: hidden;
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .description{
+                margin-top: 20px;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                div{
+                    display: flex;
+                    gap: 6px;
+                    align-items: center;
+                    padding: 8px;
+
+                    p{
+                        margin-top: 2px;
+                        color: #000000b0;
+                        font-size: 30px;
+                        font-style: normal;
+                        font-weight: 700;
+                    }
+                }
+
+            }
+        }
+        .left{
+            margin-top: 30px;
+            border-radius: 25px;
+            background-color:rgba(197, 197, 197, 0.495);
+            display: flex;
+            gap: 20px;
+            justify-content: end;
+            .imageContainer{
+                order: 1;
+                border-radius: 25px;
+                width: 40%;
+                overflow: hidden;
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .description{
+                order: 0;
+                margin-top: 20px;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                div{
+                    display: flex;
+                    gap: 6px;
+                    align-items: center;
+                    padding: 8px;
+
+                    p{
+                        margin-top: 2px;
+                        color: #000000b0;
+                        font-size: 30px;
+                        font-style: normal;
+                        font-weight: 700;
+                    }
+                }
+
+            }
+        }
+    }
+
+}

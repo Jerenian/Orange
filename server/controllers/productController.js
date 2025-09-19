@@ -3,12 +3,12 @@ const uuid = require('uuid')
 const path = require('path')
 const {Product} = require('../models/model')
 const { where } = require('sequelize')
-
+const {Popular} = require('../models/model')
 
 
 
     const remove = async  (req, res) =>{
-        console.log('aaa')
+
         try {
             
         } catch (error) {
@@ -16,7 +16,7 @@ const { where } = require('sequelize')
         }
     }
     const create = async (req, res)  =>{
-        console.log('create')
+
         try {
             const {name, price, typeId, description, isPopular, country, length} = req.body
             const {img} = req.files
@@ -70,5 +70,31 @@ const { where } = require('sequelize')
             
         }
     }
+    const addPopular = async (req, res) => {
+        console.log('add Popular')
+        console.log(req.body)
+        try{
+            let id = uuid.v4()
+            const {productId} = req.body
+            const product = await Product.findOne({where: {id: productId}})
+            console.log(product)
+            console.log(productId)
+            const item = await Popular.create({id, productId})
+            console.log(item)
+            res.json(item)
+        } catch (error) {
+            console.log(error.message)
+        }
 
-module.exports = {getAll, getOne, create, remove}
+    }
+    const getPopular = async (req, res) => {
+        console.log('get POP')
+        try {
+            const popular = await Popular.findAll()
+            res.json(popular)
+            
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+module.exports = {getAll, getOne, create, remove, getPopular, addPopular}
