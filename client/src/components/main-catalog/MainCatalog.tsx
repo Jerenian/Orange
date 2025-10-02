@@ -3,6 +3,7 @@ import type { ITypesProps } from '../../types'
 import classes from './style.module.scss'
 import { NavLink } from 'react-router'
 import img from '../../assets/images/pages/main/flowers.png'
+import { useSelector } from 'react-redux'
 const MainCatalog = ({data} : ITypesProps) => {
     console.log(data)
     return (
@@ -13,7 +14,7 @@ const MainCatalog = ({data} : ITypesProps) => {
                     <img src={img} alt="" />
                 )}
                 <h4>{data.name}</h4>
-                <p>От 100 рублей</p>
+                <p>От {data.price} рублей</p>
             </NavLink>
         </div>
     )

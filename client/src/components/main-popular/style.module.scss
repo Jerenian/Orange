@@ -1,0 +1,51 @@
+
+.wrapper{
+    position: relative;
+    min-width: 20%;
+    overflow: hidden;
+    border-radius: 5% ;
+    box-shadow: -1px 0px 8px 7px rgba(34, 60, 80, 0.2);
+    img{
+        max-width: 100%;
+    }
+    .text{
+        padding: 2% 4%;
+        width: 100%;
+        h4{
+            color: #000;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 28px;
+        }
+        p{
+            color: #4B5563;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+        }
+        span{
+            color: #F94F39;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    
+        .priceContainer{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 5px;
+                span{
+                color: #FB6D41;
+                font-weight: bold;
+                font-size: 18px;
+                }
+                button{
+                    margin-right: 8%;
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    background-color: #E5FA3C;
+                }
+           }
+    }
+}
+

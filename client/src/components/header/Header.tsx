@@ -10,7 +10,7 @@ const Header = () => {
                 <NavLink to="/"><img className={classes.logo} src={logo} alt="logo" /></NavLink>
                 <NavLink className={classes.link} to="about">О нас</NavLink>
                 <NavLink className={classes.link} to="/contact">Контакты</NavLink>
-                <NavLink className={classes.link} to="/payment">Оплата</NavLink>
+                {/* <NavLink className={classes.link} to="/payment">Оплата</NavLink> */}
                 <NavLink className={classes.link} to="/delivery">Доставка</NavLink>
             </nav>
             <nav className={classes.right}>
@@ -31,6 +31,11 @@ const Header = () => {
                         </clipPath>
                         </defs>
                     </svg>
+                </NavLink>
+                <NavLink to='/login'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 9C11.4752 9 13.5 6.97495 13.5 4.5C13.5 2.02505 11.4752 0 9 0C6.52477 0 4.5 2.02505 4.5 4.5C4.5 6.97495 6.52477 9 9 9ZM9 11.25C6.01884 11.25 0 12.7688 0 15.75V18H18V15.75C18 12.7688 11.9812 11.25 9 11.25Z" fill="white"/>
+                </svg>
                 </NavLink>
             </nav>
         </div>

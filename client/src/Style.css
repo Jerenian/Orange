@@ -4,5 +4,6 @@ html, body{
     box-sizing: border-box;
     background: #F9FAFB ; 
     font-family: "Montserrat", sans-serif !important;
+    position: relative;
 }
 

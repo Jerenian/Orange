@@ -97,4 +97,5 @@ const {Popular} = require('../models/model')
             console.log(error.message)
         }
     }
+    
 module.exports = {getAll, getOne, create, remove, getPopular, addPopular}

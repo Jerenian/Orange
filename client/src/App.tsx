@@ -14,12 +14,13 @@ import Wedding from "./pages/main/category/wedding/Wedding"
 import Spring from "./pages/main/category/spring/Spring"
 import Romantic from "./pages/main/category/romantic/Romantic"
 import Catalog from "./pages/main/catalog/catalog"
-
+import Modal from "./components/modal/Modal"
+import Login from "./pages/login/login"
+import SignUp from "./pages/login/SignUp"
 function App() {
-
-
   return (
     <div>
+      <Modal></Modal>
       <Routes>
         <Route element={<Layout/>}>
           <Route index element={<Main />} ></Route>
@@ -36,6 +37,8 @@ function App() {
           <Route path="delivery" element ={<Delivery/>} />
           <Route path="favorite" element ={<Favorite/>} />
           <Route path="payment" element ={<Payment/>} />
+          <Route path="login" element={<Login/>}></Route>
+          <Route path="signUp" element={<SignUp/>}></Route>
         </Route>
       </Routes>
     </div>

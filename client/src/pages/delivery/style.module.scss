@@ -1,0 +1,580 @@
+.wrapper{
+    .cover{
+        padding: 126px 80px ;
+        background: linear-gradient(90deg, #E5FA39 0%, #FC8B48 100%);
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        gap: 21px;
+        .title{
+            color: #000;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 60px; /* 100% */
+        }
+        .subTitle{
+            color: #000;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; 
+        }
+    }
+    .info{
+        display: flex;  
+        gap: 30px;
+        font-size: 18px;
+        .container{
+            display: flex;  
+            gap: 7px;
+            p{
+                margin-top: 3px;
+            }
+        }
+    }
+    .area{
+        padding: 64px 0;
+        display: flex;
+        justify-content: center;
+        .container{
+            width: 60%;
+            .titleContainer{
+                text-align: center;
+                .title{
+                    color: #1F2937;
+                    font-size: 30px;
+                    font-weight: 700;
+                    line-height: 36px;
+                }
+                .subTitle{
+                    padding-top: 16px;
+                    color: #4B5563;
+                    text-align: center;
+                    font-size: 16px;
+                    line-height: 24px; 
+                }
+            }
+            .cardContainer{
+                padding-top: 20px;
+                display: flex;
+                gap: 10%;
+                .card1{
+                    width: 100%;
+                    border-radius: 12px;
+                    border: 2px solid #E5FA3C;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background-color: #E5FA39;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                text-align: center;
+                                color: #FC8B48;
+                                font-size: 18px;
+                                font-weight: 700;
+
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+                .card2{
+                    width: 100%;
+                    border-radius: 12px;
+                    border: 2px solid #E5E7EB;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background: #E5E7EB;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                text-align: center;
+                                color: #1F2937;
+                                font-size: 18px;
+                                font-weight: 700;
+
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .options{
+        padding: 64px 0;
+        display: flex;
+        justify-content: center;
+        .container{
+            width: 60%;
+            .titleContainer{
+                text-align: center;
+                .title{
+                    color: #1F2937;
+                    font-size: 30px;
+                    font-weight: 700;
+                    line-height: 36px;
+                }
+                .subTitle{
+                    padding-top: 16px;
+                    color: #4B5563;
+                    text-align: center;
+                    font-size: 16px;
+                    line-height: 24px; 
+                }
+            }
+            .cardContainer{
+                padding-top: 20px;
+                display: flex;
+                gap: 10%;
+                .card1{
+                    width: 100%;
+                    border-radius: 12px;
+                    border: 2px solid #E5FA3C;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background-color: #E5FA39;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                text-align: center;
+                                color: #FC8B48;
+                                font-size: 18px;
+                                font-weight: 700;
+
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+                .card2{
+                    width: 100%;
+                    border-radius: 12px;
+                    border: 2px solid #E5E7EB;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background: #E5E7EB;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                text-align: center;
+                                color: #1F2937;
+                                font-size: 18px;
+                                font-weight: 700;
+
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .conditons{
+        padding: 64px 0;
+        display: flex;
+        justify-content: center;
+        .container{
+            width: 90%;
+            .titleContainer{
+                text-align: center;
+                .title{
+                    color: #1F2937;
+                    font-size: 30px;
+                    font-weight: 700;
+                    line-height: 36px;
+                }
+                .subTitle{
+                    padding-top: 16px;
+                    color: #4B5563;
+                    text-align: center;
+                    font-size: 16px;
+                    line-height: 24px; 
+                }
+            }
+            .cardContainer{
+                padding-top: 20px;
+                display: flex;
+                gap: 2%;
+                .card1{
+                    width: 100%;
+                    border-radius: 12px;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background-color: #E5FA3C33;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                color: #4B5563;
+                                text-align: center;
+                                font-weight: 400;
+
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+                .card2{
+                    width: 100%;
+                    border-radius: 12px;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background: #FB6D4133;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                color: #4B5563;
+                                text-align: center;
+                                font-weight: 400;
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+                .card3{
+                    width: 100%;
+                    border-radius: 12px;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background-color: #E5FA3C33;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                color: #4B5563;
+                                text-align: center;
+                                font-weight: 400;
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+                .card4{
+                    width: 100%;
+                    border-radius: 12px;
+                    background: #FFF;
+                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+                    .continer{
+                        padding: 26px;
+                        .iconContiner{
+                            display: flex;
+                            justify-content: center;
+                            .icon{
+                                border-radius: 9999px;
+                                background: #FB6D4133;
+                                padding: 16px 20px;
+                            }
+                        }
+                        .titleContiner{
+                            padding: 16px 0;
+                            .title{
+                                color: #1F2937;
+                                text-align: center;
+                                font-size: 20px;
+                                font-weight: 700;
+                                line-height: 28px;
+                            }
+                            .subTitle{
+                                padding-top: 4px;
+                                color: #4B5563;
+                                text-align: center;
+                                font-weight: 400;
+                            }
+                        }
+                        .textContiner{
+                            .text{
+                                padding: 5px;
+                                display: flex;
+                                gap: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .questions{
+        padding: 64px 0;
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(90deg, #E5FA3C 0%, #FB6D41 100%);
+            .container{
+            width: 40%;
+                .titleContainer{
+                    text-align: center;
+                    .title{
+                        color: #1F2937;
+                        font-size: 30px;
+                        font-weight: 700;
+                        line-height: 36px;
+                    }
+                    .subTitle{
+                        padding-top: 16px;
+                        color: #4B5563;
+                        text-align: center;
+                        font-size: 16px;
+                        line-height: 24px; 
+                    }
+                }
+                .cardContainer{
+                    padding-top: 20px;
+                    display: flex;
+                    gap: 10%;
+                    .card1{
+                        width: 100%;
+                        border-radius: 12px;
+                        .continer{
+                            display: flex;
+                            padding: 26px;
+                            gap: 15px;
+                            align-items: center;
+                            .iconContiner{
+                                .icon{
+                                    border-radius: 9999px;
+                                    background-color: #FB6D41;
+                                    padding: 14px 15px;
+                                }
+                            }
+                            .titleContiner{
+                                padding: 16px 0;
+                                .title{
+                                    color: #fff;
+                                    font-size: 20px;
+                                    line-height: 28px;
+                                }
+                                .subTitle{
+                                    padding-top: 4px;
+                                    color: #FB6D41;
+                                    font-size: 18px;
+                                }
+                            }
+                            .textContiner{
+                                .text{
+                                    padding: 5px;
+                                    display: flex;
+                                    gap: 4px;
+                                }
+                            }
+                        }
+                    }
+                    .card2{
+                        width: 100%;
+                        .continer{
+                            display: flex;
+                            padding: 26px;
+                            gap: 15px;
+                            align-items: center;
+                            .iconContiner{
+                                .icon{
+                                    border-radius: 9999px;
+                                    background: #E5FA39;
+                                    padding: 14px;
+                                }
+                            }
+                            .titleContiner{
+                                padding: 16px 0;
+                                .title{
+                                    color: #fff;
+                                    font-size: 20px;
+                                    line-height: 28px;
+                                }
+                                .subTitle{
+                                    padding-top: 4px;
+                                    color: #E5FA3C;
+                                    font-size: 18px;
+                                }
+                            }
+                            .textContiner{
+                                .text{
+                                    padding: 5px;
+                                    display: flex;
+                                    gap: 4px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .buttonContiner{
+                    padding: 12px 0 0;
+                    text-align: center;
+                    .item{
+                        border-radius: 8px;
+                        font-size: 18px;
+                        border: 0;
+                        background: #E5FA39;
+                        color: #000;
+                        padding: 14px 28px;
+                    }
+                }
+
+        }
+    }
+}

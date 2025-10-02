@@ -26,7 +26,7 @@ const {Popular} = require('../models/model')
         try {
 
             const popular = await Popular.findAll()
-            
+
             res.json(popular)
             
         } catch (error) {
@@ -34,3 +34,7 @@ const {Popular} = require('../models/model')
         }
     }
 module.exports = {addPopular, getPopular}
+// Удалить этот контроллер и роут
+// создам новую функцию c с методом PUT в контроллере, которая будет получать id и выставлять в isPopular значение true
+// будет выводить все продукты где isPopular будет true
+// В таком случае при рендеринге главной страницы я смогу еще и подцепить данные для минимальной и максимвльной цены

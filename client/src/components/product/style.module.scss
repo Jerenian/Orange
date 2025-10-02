@@ -1,11 +1,17 @@
 .wrapper {
-    width: 25%;
+    width: 20%;
     position: relative;
     background-color: #fff;
     border-radius: 10%;
+    
     .container{
+        padding: 10px auto;
         .image{
-
+            max-width: 100%;
+            img{
+                display: block;
+                width: 100%;
+            }
         }
         .info{
             padding: 18px 16px;
