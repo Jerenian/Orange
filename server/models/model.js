@@ -3,11 +3,10 @@ const {DataTypes} = require('sequelize')
 
 const User = sequelize.define('user', {
     id: {type: DataTypes.STRING, primaryKey: true},
-    login: {type: DataTypes.STRING, unique: true, allowNull: false},
+    login: {type: DataTypes.TEXT, unique: true, allowNull: false},
     name: {type: DataTypes.STRING, allowNull: false},
     role: {type: DataTypes.STRING, defaultValue: 'user' },
-    hashedpassword: {type: DataTypes.STRING, allowNull: false},
-    salt: {type: DataTypes.STRING},
+    password: {type: DataTypes.STRING, allowNull: false},
     isActivated: {type: DataTypes.BOOLEAN, defaultValue: false},
     activationLink: {type: DataTypes.STRING}
 })
@@ -42,7 +41,7 @@ const Popular = sequelize.define('popular', {
     id: {type: DataTypes.STRING, primaryKey: true,}, 
 })
 const Token = sequelize.define('token',{
-    refreshToken: {type: DataTypes.STRING}
+    refreshToken: {type: DataTypes.TEXT}
 })
 
 Type.hasMany(Product)
@@ -96,7 +95,8 @@ module.exports = {
     Delivery,
     Contacts, 
     Popular,
-    User
+    User,
+    Token
 }
 
 //sequelize.sync()

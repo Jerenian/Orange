@@ -43,7 +43,7 @@ const SignUp = () => {
                     onChange={(e) => setUser({...user, name: e.target.value})} placeholder="Имя" type="text" />
                     <input 
                     value={user.login}
-                    onChange={(e) => setUser({...user, login : e.target.value})} placeholder='Логин' type="text" className={classes.login} />
+                    onChange={(e) => setUser({...user, login : e.target.value})} placeholder='Email' type="text" className={classes.login} />
                     <input 
                     value={user.password}
                     onChange={(e) => setUser({...user, password : e.target.value})} placeholder='Пароль' type="password" className={classes.password} />
@@ -51,8 +51,8 @@ const SignUp = () => {
                     onChange={(e) => setUser({...user, checkPassword : e.target.value})} placeholder='Повторите пароль' type="password" className={classes.login} />
                     </div>
                 <div className={classes.buttons}>
-                    <NavLink to='/login'><button className={classes.signUp}>Есть аккаунт</button></NavLink>
-                    <button onClick={() => handleClick()} className={classes.signUp}>Зарегестрироваться</button>
+                    <button onClick={() => handleClick()} className={classes.main}>Зарегестрироваться</button>
+                    <NavLink to='/login'><button className={classes.alter}>Есть аккаунт</button></NavLink>
                 </div>
                 <div className={classes.messages}>
                     <span>{errors}</span>

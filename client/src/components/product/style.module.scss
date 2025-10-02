@@ -1,11 +1,24 @@
 .wrapper {
-    width: 20%;
+    max-width: 20%;
+    min-width: 20%;
     position: relative;
     background-color: #fff;
-    border-radius: 10%;
-    
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: -1px 0px 8px 7px rgba(34, 60, 80, 0.2);
+    background-color: #0000009c;
     .container{
+        position: relative;
         padding: 10px auto;
+        .favorite{
+            position: absolute;
+            background: #fff;
+            border-radius: 50px;
+            padding: 7px 7px 5px;
+            box-shadow: 0 0 5px 1px #000;
+            right: 0;
+            margin: 15px 15px 0 ;
+        }
         .image{
             max-width: 100%;
             img{
@@ -15,9 +28,12 @@
         }
         .info{
             padding: 18px 16px;
+            
+            color: #fff;
            .priceContainer{
             display: flex;
             justify-content: space-between;
+            align-items: center;
                 span{
                    color: #FB6D41;
                    font-weight: bold;

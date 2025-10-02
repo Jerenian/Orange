@@ -39,7 +39,8 @@ const Contacts = () => {
                     </div>
                 </div>
             </section>
-            <section className={classes.right}>
+            
+            <section className={classes.main}>
                 <div className={classes.imageContainer}>
                     <img src={cover} alt="" />
                 </div>
@@ -65,7 +66,7 @@ const Contacts = () => {
                     </div>
                 </div>
             </section>
-            <section className={classes.left}>
+            <section className={classes.main}>
                                 <div className={classes.imageContainer}>
                     <img src={cover} alt="" />
                 </div>

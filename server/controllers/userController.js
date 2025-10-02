@@ -5,26 +5,18 @@ const { where } = require('sequelize')
 const {Token} = require('../models/model')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
-const MailService = require('../services/mailService')
-const tokenService = require('../services/tokenService')
+const userService = require('../services/userService')
+
 const create = async (req, res)  =>{
 
     try {
-            const {login, password, name, role} = req.body
-            let salt = crypto.randomBytes(16).toString(`hex`);
-            let hash = crypto.createHmac('sha512', salt);
-            hash.update(password);
-            let value = hash.digest('hex');
-            const hashedpassword = value
-            let id = uuid.v4()
-            const activationLink = uuid.v4()
-            await MailService.sendActivationMail(ElementInternals, activationLink)
-            const tokens = tokenService.generatonTokens()
-            const item = await User.create({id, name, login, salt, hashedpassword, role, activationLink})
-            return res.json(item)
+        const {login, password, name, role} = req.body
         
+        const userData = await userService.register(login, password, name, role)
+        res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 1000, httpOnly: true})
+        return res.json(userData)
     } catch (error) {
-        res.json({error})  
+        console.log(error)  
     }
 }
 const login = async (req, res) => {
@@ -70,9 +62,12 @@ const logOut = async () => {
         
     }
 }
-const activate = async () =>{
+const activate = async (res, req) =>{
     try {
-        
+        console.log('a')
+        const activationLink = req.params.link
+        await userService.activate(activationLink)
+        return res.redirect(process.env.CLIENT_URL)
     } catch (error) {
         
     }

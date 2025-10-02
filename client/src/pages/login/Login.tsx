@@ -26,7 +26,7 @@ const Login = () => {
                     <input 
                     value={user.login}
                     onChange={(e) => setUser({...user, login: e.target.value})}
-                    placeholder='Логин' 
+                    placeholder='Email' 
                     type="text" 
                     className={classes.login} />
                     <input 
@@ -37,8 +37,9 @@ const Login = () => {
                     className={classes.password} />
                 </div>
                 <div className={classes.buttons}>
-                    <button onClick={() => handleClick()} className={classes.logIn}>Войти</button>
-                    <NavLink to='/signUp'><button className={classes.signUp}>Зарегестрироваться</button></NavLink>
+                    <button onClick={() => handleClick()} className={classes.main}>Войти</button>
+                    <p>Нет аккаунта?</p>
+                    <NavLink to='/signUp'><button className={classes.alter}>Зарегестрироваться</button></NavLink>
                 </div>
             </div>
         </div>
