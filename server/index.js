@@ -9,14 +9,14 @@ const router = require('./routes/routes')
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const cookieParser = require('cookie-parser')
-
+const errorMiddleware = require('./middleware/errorMiddleware')
 app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}))
-app.use('/api', router)
 app.use(cookieParser())
-
+app.use('/api', router)
+app.use(errorMiddleware);
 const start = async () => {
     try {
         await sequelize.authenticate()
