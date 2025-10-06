@@ -12,7 +12,10 @@ const User = sequelize.define('user', {
 })
 
 
-const Basket = sequelize.define('basket', {
+const Favorite = sequelize.define('favorite', {
+    id: {type: DataTypes.STRING, primaryKey: true,}, 
+})
+const FavoriteProduct = sequelize.define('favorite_product', {
     id: {type: DataTypes.STRING, primaryKey: true,}, 
 })
 const Product = sequelize.define('product', {
@@ -44,59 +47,37 @@ const Token = sequelize.define('token',{
     refreshToken: {type: DataTypes.TEXT}
 })
 
+User.hasOne(Favorite)
+Favorite.belongsTo(User)
+
+Favorite.hasMany(FavoriteProduct)
+FavoriteProduct.belongsTo(Favorite)
+
+
+
+Product.hasMany(FavoriteProduct)
+FavoriteProduct.belongsTo(Product)
+
+
+
 Type.hasMany(Product)
 Product.belongsTo(Type)
-Product.hasMany(Basket)
+
+
+
 Product.hasMany(Popular)
 Token.belongsTo(User)
-Category.hasMany(Product)
-Product.hasMany(Category)
 
 
-const Main = sequelize.define('main', {
-        id: {type: DataTypes.STRING, primaryKey: true},
-        name: {type: DataTypes.STRING, unique: true},
-        img: {type:DataTypes.STRING }, 
-        text: {type:DataTypes.STRING}
-})
-const About = sequelize.define('about', {
-        id: {type: DataTypes.STRING, primaryKey: true},
-        name: {type: DataTypes.STRING, unique: true},
-        img: {type:DataTypes.STRING }, 
-        text: {type:DataTypes.STRING}
-})
-const Payment = sequelize.define('payment', {
-        id: {type: DataTypes.STRING, primaryKey: true},
-        name: {type: DataTypes.STRING, unique: true},
-        img: {type:DataTypes.STRING }, 
-        text: {type:DataTypes.STRING}
-})
-const Delivery = sequelize.define('delivery', {
-        id: {type: DataTypes.STRING, primaryKey: true},
-        name: {type: DataTypes.STRING, unique: true},
-        img: {type:DataTypes.STRING }, 
-        text: {type:DataTypes.STRING}
-})
-const Contacts = sequelize.define('contact', {
-        id: {type: DataTypes.STRING, primaryKey: true},
-        name: {type: DataTypes.STRING, unique: true},
-        img: {type:DataTypes.STRING }, 
-        text: {type:DataTypes.STRING}
-})
+
 
 module.exports = {
-    Basket,
     Product,
+    Favorite,
+    FavoriteProduct,
     Type,
-    Category,
-    Main,
-    About,
-    Payment,
-    Delivery,
-    Contacts, 
-    Popular,
     User,
     Token
 }
 
-//sequelize.sync()
+sequelize.sync()

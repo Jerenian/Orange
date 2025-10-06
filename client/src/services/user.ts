@@ -1,7 +1,10 @@
 import type { RootState } from "@reduxjs/toolkit/query";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setCredentials, logOut } from "../features/userSlice/authSlice";
 import type { IUserResponse, ILoginRequest, IUser } from "../types";
 import { register } from "swiper/element";
+
+
 
 export const UserApi = createApi({
     reducerPath: 'userApi',
@@ -38,4 +41,3 @@ export const UserApi = createApi({
     })
 })
 export const { useRegisterMutation, useLoginMutation, useProtectedMutation } = UserApi
-// допилить по https://codesandbox.io/p/sandbox/github/reduxjs/redux-toolkit/tree/master/examples/query/react/authentication-with-extrareducers?file=%2Fsrc%2Fapp%2Fservices%2Fauth.ts%3A9%2C21&from-embed

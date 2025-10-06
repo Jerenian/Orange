@@ -23,8 +23,7 @@ const create = async (req, res, next)  =>{
         next(error)
     }
 }
-const login = async (req, res, next) => {
-
+const login = async (req, res, next) => {   
    try {
         const {login, password} = req.body
         const userData = await userService.login(login, password)

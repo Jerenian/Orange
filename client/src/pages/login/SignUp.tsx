@@ -16,19 +16,18 @@ const SignUp = () => {
             const res = await setLogin(payload)
             response(res.data)
         } else {
-            console.log(user.checkPassword)
-            console.log(user.password);
             setError("Пароли не совпадают!")
             
         }
     }
     const  response = (res: any) => {
-        if(res?.error){
-            setError('Пользователь с таким логином уже существует')
-        }
-        else{
-            navigate('/')
-        }
+        // if(res?.error){
+        //     setError('Пользователь с таким логином уже существует')
+        // }
+        // else{
+        //     //navigate('/')
+        // }
+        console.log(res)
     }
   return (
     <div className={classes.wrapper}>

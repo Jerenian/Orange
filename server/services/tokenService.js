@@ -13,6 +13,7 @@ const generationTokens = async (payload) => {
 }
 const validateAccessToken = async (token) => {
     try {
+        console.log(token)
         const userData = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
         console.log(userData)
         return userData

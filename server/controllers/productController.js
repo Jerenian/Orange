@@ -4,7 +4,7 @@ const path = require('path')
 const {Product} = require('../models/model')
 const { where } = require('sequelize')
 const {Popular} = require('../models/model')
-
+const jwt = require('jsonwebtoken')
 
 
     const remove = async  (req, res) =>{
@@ -18,6 +18,16 @@ const {Popular} = require('../models/model')
     const create = async (req, res)  =>{
 
         try {
+            const token = req.headers.authorization.split(' ')[1]
+            if (!token) {
+                return res.status(401).json({message: "Не авторизован"})
+            }
+            //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
+            console.log(process.env.JWT_SECRET_ACCESS_KEY)
+            const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
+            if (decoded.role !== 'admin') {
+                return res.status(403).json({message: "Нет доступа"})
+            }
             const {name, price, typeId, description, isPopular, country, length} = req.body
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
@@ -32,6 +42,17 @@ const {Popular} = require('../models/model')
     }
     const put = async (req)  =>{
         try {
+            const token = req.headers.authorization.split(' ')[1]
+            if (!token) {
+                return res.status(401).json({message: "Не авторизован"})
+            }
+            //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
+            console.log(process.env.JWT_SECRET_ACCESS_KEY)
+            const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
+            console.log(decoded)
+            if (decoded.role !== 'admin') {
+                return res.status(403).json({message: "Нет доступа"})
+            }
             
         } catch (error) {
             
@@ -71,6 +92,17 @@ const {Popular} = require('../models/model')
         }
     }
     const addPopular = async (req, res) => {
+        const token = req.headers.authorization.split(' ')[1]
+        if (!token) {
+            return res.status(401).json({message: "Не авторизован"})
+        }
+        //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
+        console.log(process.env.JWT_SECRET_ACCESS_KEY)
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
+        console.log(decoded)
+        if (decoded.role !== 'admin') {
+            return res.status(403).json({message: "Нет доступа"})
+        }
         console.log('add Popular')
         console.log(req.body)
         try{
@@ -87,15 +119,5 @@ const {Popular} = require('../models/model')
         }
 
     }
-    const getPopular = async (req, res) => {
-        console.log('get POP')
-        try {
-            const popular = await Popular.findAll()
-            res.json(popular)
-            
-        } catch (error) {
-            console.log(error.message)
-        }
-    }
     
-module.exports = {getAll, getOne, create, remove, getPopular, addPopular}
+module.exports = {getAll, getOne, create, remove, addPopular}

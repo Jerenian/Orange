@@ -1,9 +1,10 @@
-const {User} = require('../models/model')
+const {User, Favorite} = require('../models/model')
 const bcrypt = require('bcrypt')
 const MailService = require('../services/mailService')
 const tokenService = require('../services/tokenService')
 const UserDto = require('../dto/userDto')
 const uuid = require('uuid')
+const jwt  = require('jsonwebtoken')
 const ApiError = require('../exeptions/apiError')
 const register = async (login, password, name, role) => {
     const condidate = await User.findOne({where: {login}})
@@ -18,14 +19,17 @@ const register = async (login, password, name, role) => {
     const userDto = new UserDto(user)
     const tokens = await tokenService.generationTokens({...userDto})
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
+    console.log(user.id)
+    const favoriteID = uuid.v4()
+    const favorite = await Favorite.create({id: favoriteID, userId: user.id})
     return {
         ...tokens,
-        user: userDto
+        user: userDto,
+        favorite
     }    
 } 
 
 const activate = async (activationLink) => {
-    console.log('a')
     const user = await User.findOne({where: {activationLink}})
     if(!user) {
         throw ApiError.BadRequest('Некорректная ссылка активации')
@@ -62,9 +66,9 @@ const refresh = async(refreshToken) => {
     const userData = await tokenService.validateRefreshToken(refreshToken)
     const tokenFromDb = tokenService.findToken(refreshToken)
     console.log(userData)
-    // if(!userData || !tokenFromDb) {
-    //     throw ApiError.UnauthorizedError()
-    // }
+    if(!userData || !tokenFromDb) {
+        throw ApiError.UnauthorizedError()
+    }
 
         const user = await User.findOne({where: {id : userData.id}});
         const userDto = new UserDto(user);
