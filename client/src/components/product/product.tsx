@@ -14,7 +14,7 @@ const Product = ({data}: IProductProps) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const like = dataFavorites?.find(item => item.productId == data.id)
-    console.log(like)
+    //(like)
     const handleClick = () => {
         dispatch(changeModal())
     }
@@ -25,7 +25,7 @@ const Product = ({data}: IProductProps) => {
                 navigate('/login')
             }
             if(!data?.error) {
-                console.log(data)
+                //(data)
                 dispatch(getFavorite(data.data))
             }
     }

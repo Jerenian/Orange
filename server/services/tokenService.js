@@ -4,6 +4,7 @@ const {Token} = require('../models/model')
 const userController = require('../controllers/userController')
 const ApiError = require('../exeptions/apiError')
 const generationTokens = async (payload) => {
+    console.log(payload)
     const accessToken = jwt.sign(payload, process.env.JWT_SECRET_ACCESS_KEY, {expiresIn: '24h'})
     const refreshToken = jwt.sign(payload, process.env.JWT_SECRET_REFRESH_KEY, {expiresIn: '30d'})
     return {
@@ -13,9 +14,9 @@ const generationTokens = async (payload) => {
 }
 const validateAccessToken = async (token) => {
     try {
-        console.log(token)
+        //(token)
         const userData = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        console.log(userData)
+        //(userData)
         return userData
     } catch (error) {
         return null
@@ -39,7 +40,7 @@ const saveToken = async (id, refreshToken) => {
     return newToken
 }
 const removeToken = async(refreshToken) => {
-    console.log(refreshToken)
+    //(refreshToken)
     const token = await Token.findOne({where: {refreshToken: refreshToken}})
 
     return await token.destroy()

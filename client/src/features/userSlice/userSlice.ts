@@ -19,7 +19,7 @@ export const UserSlice = createSlice({
     reducers : {
         getUserInfo (state, action) {
             state = action.payload
-            console.log(action.payload)
+            //(action.payload)
         }
     }
 })

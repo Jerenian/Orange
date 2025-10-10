@@ -19,7 +19,7 @@ const register = async (login, password, name, role) => {
     const userDto = new UserDto(user)
     const tokens = await tokenService.generationTokens({...userDto})
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
-    console.log(user.id)
+    //(user.id)
     const favoriteID = uuid.v4()
     const favorite = await Favorite.create({id: favoriteID, userId: user.id})
     return {
@@ -49,13 +49,12 @@ const login = async(login, password) => {
         }
         const userDto = new UserDto(user);
         const tokens = await tokenService.generationTokens({...userDto});
-
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
         return {...tokens, user: userDto}
     
 }
 const logout = async (refreshToken) => {
-    console.log(refreshToken)
+    //(refreshToken)
     const token = await tokenService.removeToken(refreshToken);
     return token;
 }
@@ -65,7 +64,7 @@ const refresh = async(refreshToken) => {
     }
     const userData = await tokenService.validateRefreshToken(refreshToken)
     const tokenFromDb = tokenService.findToken(refreshToken)
-    console.log(userData)
+    //(userData)
     if(!userData || !tokenFromDb) {
         throw ApiError.UnauthorizedError()
     }

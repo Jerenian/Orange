@@ -30,6 +30,7 @@ function App() {
   const dispatch = useDispatch()
   dispatch(getFavorite(dataFavorite.data))
   dispatch(getUserInfo(user.data))
+  console.log(user.data)
       // if(user.error || dataFavorite.error){
       //     dispatch(getFavorite(dataFavorite.data))
       //       dispatch(getUserInfo(user.data))

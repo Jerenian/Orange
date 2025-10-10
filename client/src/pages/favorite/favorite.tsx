@@ -13,7 +13,7 @@ const Favorite = () => {
     useEffect(() => {
         const fn = async () =>  await product(favorite.idList)
         fn()
-        console.log(favorite.idList)
+        //(favorite.idList)
     }, [favorite])
     return (
         <div className={classes.wrapper}>

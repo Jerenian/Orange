@@ -37,7 +37,7 @@ export const TypeSlice = createSlice({
                 }, {})
                 ).map(([key, value]) => value);
 
-                console.log(state);
+                //(state);
             }
         )
     }

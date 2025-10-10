@@ -10,13 +10,13 @@ const create = async (req, res) => {
             return res.status(401).json({message: "Не авторизован"})
         }
         //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
-        console.log(process.env.JWT_SECRET_ACCESS_KEY)
+        //(process.env.JWT_SECRET_ACCESS_KEY)
         const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        console.log(decoded)
+        //(decoded)
         if (decoded.role !== 'admin') {
             return res.status(403).json({message: "Нет доступа"})
         }
-        console.log(req.files);
+        //(req.files);
         let id = uuid.v4()
         const {name} = req.body
         const {img} = req.files
@@ -25,7 +25,7 @@ const create = async (req, res) => {
         const type = await Type.create({id, name})
         return res.json(type)
     } catch (error) {
-        console.log(error.message)
+        //(error.message)
     }
 }
 
@@ -36,9 +36,9 @@ const remove = async (req, res) => {
             return res.status(401).json({message: "Не авторизован"})
         }
         //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
-        console.log(process.env.JWT_SECRET_ACCESS_KEY)
+        //(process.env.JWT_SECRET_ACCESS_KEY)
         const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        console.log(decoded)
+        //(decoded)
         if (decoded.role !== 'admin') {
             return res.status(403).json({message: "Нет доступа"})
         }

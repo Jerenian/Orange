@@ -11,6 +11,7 @@ export const UserApi = createApi({
         baseUrl: "http://localhost:5001/api/user",
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('accessToken')
+            console.log(token)
             if(token) {
                 headers.set('authorization', `Berear ${token}`)
             }

@@ -15,7 +15,7 @@ const create = async (req, res, next)  =>{
         // if(!errors.isEmpty()) {
         //     return next(ApiError.BadRequest('Ошибка валидации', errors.array()))
         // }
-        console.log(req.body)
+        //(req.body)
         const {login, password, name, role} = req.body
         const userData = await userService.register(login, password, name, role)
         res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 1000, httpOnly: true})
@@ -48,7 +48,7 @@ const logout = async (req, res, next) => {
 }
 const activate = async (req, res) =>{
     try {
-        console.log(req.params)
+        //(req.params)
         const activationLink = req.params.link
         await userService.activate(activationLink)
         return res.redirect(process.env.CLIENT_URL)
@@ -76,7 +76,6 @@ const getUsers = async (req, res) => {
 }
 const checkUser = async(req, res) => {
         const token = req.headers.authorization.split(' ')[1]
-        console.log(token)
         let decoded
         if(token){
             decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
@@ -84,9 +83,10 @@ const checkUser = async(req, res) => {
             res.status(401)
         }
         if(decoded) {
-            const user = await User.findOne({id: decoded.id})
-            res.json(user)
+            const user = await User.findOne({where :{id: decoded.id}})
+            return res.json(user)
         }
+
 }
     
 module.exports = {create, login, getUsers, refresh, activate, logout, getUsers, checkUser}

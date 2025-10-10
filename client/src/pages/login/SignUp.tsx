@@ -13,7 +13,7 @@ const SignUp = () => {
         if(user.checkPassword === user.password) {
             const payload = {name: user.name, login: user.login, password: user.password}
             const {data} = await setLogin(payload)
-            console.log(data.accessToken)
+            //(data.accessToken)
             localStorage.setItem('accessToken', data.accessToken)
         } else {
             setError("Пароли не совпадают!")
@@ -27,7 +27,7 @@ const SignUp = () => {
         // else{
         //     //navigate('/')
         // }
-        console.log()
+        //()
     }
   return (
     <div className={classes.wrapper}>

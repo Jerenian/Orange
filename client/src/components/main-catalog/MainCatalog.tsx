@@ -5,7 +5,7 @@ import { NavLink } from 'react-router'
 import img from '../../assets/images/pages/main/flowers.png'
 import { useSelector } from 'react-redux'
 const MainCatalog = ({data} : ITypesProps) => {
-    console.log(data)
+    //(data)
     return (
         <div className={classes.container}>
             <NavLink to={`/catalog/${data.id}`} >

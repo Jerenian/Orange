@@ -8,7 +8,7 @@ export const FavoriteApi = createApi({
         baseUrl: 'http://localhost:5001/api/favorite',
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('accessToken')
-            console.log(token)
+            //(token)
             if(token) {
                 headers.set('authorization', `Berear ${token}`)
             }

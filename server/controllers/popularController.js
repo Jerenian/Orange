@@ -5,24 +5,24 @@ const { where } = require('sequelize')
 const {Popular} = require('../models/model')
 
     const addPopular = async (req, res) => {
-        console.log('add Popular')
-        console.log(req.body)
+        //('add Popular')
+        //(req.body)
         try{
             let id = uuid.v4()
             const {productId} = req.body
             const product = await Product.findOne({where: {id: productId}})
-            console.log(product)
-            console.log(productId)
+            //(product)
+            //(productId)
             const item = await Popular.create({id, productId})
-            console.log(item)
+            //(item)
             res.json(item)
         } catch (error) {
-            console.log(error.message)
+            //(error.message)
         }
 
     }
     const getPopular = async (req, res) => {
-        console.log('get POP')
+        //('get POP')
         try {
 
             const popular = await Popular.findAll()
@@ -30,7 +30,7 @@ const {Popular} = require('../models/model')
             res.json(popular)
             
         } catch (error) {
-            console.log(error.message)
+            //(error.message)
         }
     }
 module.exports = {addPopular, getPopular}

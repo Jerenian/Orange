@@ -17,13 +17,13 @@ export const FavoriteSlice = createSlice({
             if(action?.payload){
                 state.data = action.payload
                 state.idList = state.data?.map(item => item.productId)
-                console.log(state.idList)
+                //(state.idList)
             }
             else{
                 state.data = []
                 state.idList = []
             }
-            console.log(state)
+            //(state)
         },
     }
 })

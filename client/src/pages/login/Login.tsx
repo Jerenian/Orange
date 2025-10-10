@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useLoginMutation } from '../../services/user'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
-
+import { getUserInfo } from '../../features/userSlice/userSlice'
 const Login = () => {
 
     const [user, setUser] = useState({login: '', password: ''})
@@ -16,15 +16,20 @@ const Login = () => {
     const handleClick = async () => {
         const userData = await setLogin({login: user.login, password: user.password})
         const body = userData
-        console.log(body.error)
+        //(body.error)
         if(body?.error?.status === 400){
-            console.log('a')
+            //('a')
             setError('Пользователь с таким email не найден')
         }
         else{
         console.log(body.data.accessToken)
+        localStorage.clear()
+        //(body.data.accessToken)
+        console.log()
         localStorage.setItem('accessToken', body.data.accessToken)
         setUser({...user, login: '', password: ''})
+        dispatch(getUserInfo(body.data))
+        //(body)
         navigate('/user') 
         }
 

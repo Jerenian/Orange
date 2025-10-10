@@ -35,7 +35,7 @@ const Main = (props) => {
         const prices = typePrice.find((item: any) => item.typeId === type.id)
         return {...type, price: prices?.items}
     })
-    console.log(dataFavorite)
+    //(dataFavorite)
     return  ( 
         <div className={classes.wrapper}>
             {user.isLoading || dataTypes.isLoading || dataProducts.isLoading ?  (   

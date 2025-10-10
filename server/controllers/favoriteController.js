@@ -48,9 +48,9 @@ const get = async (req, res, next) => {
         }
         let decoded 
         decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        console.log(decoded)
+        //(decoded)
         const favoriteId = await Favorite.findOne({userId: decoded.id})
-        console.log(favoriteId.id)
+        //(favoriteId.id)
         const productFavorite = await FavoriteProduct.findAll()
         res.json(productFavorite)
         
@@ -73,7 +73,7 @@ const get = async (req, res, next) => {
             }
         }})
         res.json(products)
-        console.log(products)
+        //(products)
         } catch (error) {
             
         }

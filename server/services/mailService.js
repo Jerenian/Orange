@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 })
 
 const sendActivationMail = async (to, link) => {
-        console.log(to)
+        //(to)
         await transporter.sendMail({
             from: 'aleksandorkaz@gmail.com',
             to,

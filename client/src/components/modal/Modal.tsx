@@ -13,7 +13,7 @@ const Modal = () => {
     const childClick = (e: React.MouseEvent) => {
       e.stopPropagation()
     }
-  console.log(modal)
+  //(modal)
   return (
     <div onClick={() => handleClick()} className={modal ? classes.wrapper : classes.unwrapper}>
       <div onClick={(e) => childClick(e)} className={classes.container}>

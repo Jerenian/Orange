@@ -5,10 +5,10 @@ import classes from './style.module.scss'
 const User = () => {
     const user = useCheckQuery(null)
     const navigate = useNavigate()
-    if(user.error){
+    if(user.error){ // настроить чтобы при переходе c login вызывалаьс функция useCheckQuery
 
         navigate('/login')
-        
+
     }
     if(user.data)
     {
