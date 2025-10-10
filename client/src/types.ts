@@ -48,4 +48,5 @@ export interface IFavorite {
 }
 export interface IFavoriteData {
     data: IFavorite[]
+    idList?: string[]
 }

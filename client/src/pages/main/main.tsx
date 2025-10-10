@@ -41,16 +41,16 @@ const Main = (props) => {
             {user.isLoading || dataTypes.isLoading || dataProducts.isLoading ?  (   
                 <div className={classes.loader}>
                     <div className={classes.loaderItem}>
-                <Oval
-                height="80"
-                width="80"
-                secondaryColor= '#FB6D41'
-                color="#E5FA39"
-                ariaLabel="three-dots-loading"
-                strokeWidth='3'
-                />
-                </div> 
-                    </div>
+                        <Oval
+                        height="80"
+                        width="80"
+                        secondaryColor= '#FB6D41'
+                        color="#E5FA39"
+                        ariaLabel="three-dots-loading"
+                        strokeWidth='3'
+                        />
+                    </div> 
+                </div>
               ) : ( 
             <div> 
             <div className={classes.cover}>

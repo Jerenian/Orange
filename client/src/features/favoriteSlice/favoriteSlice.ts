@@ -3,9 +3,10 @@ import type { IFavoriteData, IFavorite } from "../../types";
 import { data } from "react-router";
 
 
-let initialState: IFavoriteData = {
+let initialState: IFavoriteData  = {
     data:[
-    ]
+    ],
+    idList: []
 }
 
 export const FavoriteSlice = createSlice({
@@ -13,15 +14,17 @@ export const FavoriteSlice = createSlice({
     initialState: initialState,
     reducers : {
         getFavorite (state, action) {
-            console.log(action.payload)
             if(action?.payload){
                 state.data = action.payload
+                state.idList = state.data?.map(item => item.productId)
+                console.log(state.idList)
             }
             else{
                 state.data = []
+                state.idList = []
             }
-            console.log(state.data)
-        }
+            console.log(state)
+        },
     }
 })
 
