@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './sytle.module.scss'
 import { NavLink } from 'react-router'
 import cover from '../../assets/images/mainCover.png'
@@ -10,20 +10,49 @@ import MainCatalog from '../../components/main-catalog/MainCatalog'
 import { useGetAllProductsQuery } from '../../services/product'
 import MainPopular from '../../components/main-popular/MainPopular'
 import { changeModal } from '../../features/modalSlice/modalSlice'
-import { useSelector } from 'react-redux'
-const Main = () => {
+import { useDispatch, useSelector } from 'react-redux'
+import { useCheckQuery, useRefreshQuery } from '../../services/user'
+import { useGetFavoriteQuery } from '../../services/favorite'
+import { MoonLoader } from 'react-spinners'
+import Spinner from 'react-bootstrap/Spinner';
+
+import { Oval } from 'react-loader-spinner'
+
+
+
+
+const Main = (props) => {
+    const dataFavorite = useGetFavoriteQuery(null)
     const dataTypes = useGetAllTypesQuery(null)
     const dataProducts = useGetAllProductsQuery(null)
     const dataPopular = dataProducts.data?.filter((item) => item.isPopular)
     const typePrice = useSelector(state => state.type.product)
+    const dispatch = useDispatch()
+    
+    const user = useCheckQuery(null)
+
     const mergerDataTypes = dataTypes.data?.map((type:any) => {
         const prices = typePrice.find((item: any) => item.typeId === type.id)
-        return {...type, price: prices.items}
+        return {...type, price: prices?.items}
     })
-    console.log(dataTypes)
-    console.log(typePrice)
-    return (
+    console.log(dataFavorite)
+    return  ( 
         <div className={classes.wrapper}>
+            {user.isLoading || dataTypes.isLoading || dataProducts.isLoading ?  (   
+                <div className={classes.loader}>
+                    <div className={classes.loaderItem}>
+                <Oval
+                height="80"
+                width="80"
+                secondaryColor= '#FB6D41'
+                color="#E5FA39"
+                ariaLabel="three-dots-loading"
+                strokeWidth='3'
+                />
+                </div> 
+                    </div>
+              ) : ( 
+            <div> 
             <div className={classes.cover}>
                 <div className={classes.text}>
                     <h1 className={classes.title}>Свежие цветы <br /> каждый день</h1>
@@ -76,7 +105,7 @@ const Main = () => {
                     </section>
                     ): null
                 }
-
+            </div>)}
         </div>
         
     )

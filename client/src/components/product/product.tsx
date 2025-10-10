@@ -1,27 +1,57 @@
 import React from 'react'
 import classes from './style.module.scss'
 import type { IProductProps } from '../../types'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changeModal } from '../../features/modalSlice/modalSlice'
 import flower from '../../assets/images/pages/main/flowers.png'
+import { useAddFavoriteMutation } from '../../services/favorite'
 import Modal from '../modal/Modal'
+import { useNavigate } from 'react-router'
+import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
 const Product = ({data}: IProductProps) => {
- 
+    const [setFavorite ] = useAddFavoriteMutation()
+    const dataFavorites = useSelector(state => state.favorite.data)
     const dispatch = useDispatch()
-    
+    const navigate = useNavigate()
+    const like = dataFavorites?.find(item => item.productId == data.id)
+    console.log(like)
     const handleClick = () => {
         dispatch(changeModal())
-}
+    }
+    const addFavorite = async (id: string) => {
+            const favorite = await setFavorite(id)
+            const data = favorite
+            if(data?.error?.status){
+                navigate('/login')
+            }
+            if(!data?.error) {
+                console.log(data)
+                dispatch(getFavorite(data.data))
+            }
+    }
   return (
     <div className={classes.wrapper}>
         
 
         <div className={classes.container}>
-            <div className={classes.favorite}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
-                <path d="M7.05625 13.6313L6.97813 13.5594L1.50312 8.47502C0.54375 7.58439 0 6.33439 0 5.02502V4.92189C0 2.72189 1.5625 0.834394 3.725 0.421894C4.95625 0.184394 6.21562 0.468769 7.21875 1.17502C7.5 1.37502 7.7625 1.60627 8 1.87189C8.13125 1.72189 8.27188 1.58439 8.42188 1.45627C8.5375 1.35627 8.65625 1.26252 8.78125 1.17502C9.78438 0.468769 11.0437 0.184394 12.275 0.418769C14.4375 0.831269 16 2.72189 16 4.92189V5.02502C16 6.33439 15.4563 7.58439 14.4969 8.47502L9.02188 13.5594L8.94375 13.6313C8.6875 13.8688 8.35 14.0031 8 14.0031C7.65 14.0031 7.3125 13.8719 7.05625 13.6313ZM7.47188 3.53127C7.45938 3.52189 7.45 3.50939 7.44063 3.49689L6.88438 2.87189L6.88125 2.86877C6.15937 2.05939 5.06875 1.69064 4.00625 1.89377C2.55 2.17189 1.5 3.44064 1.5 4.92189V5.02502C1.5 5.91564 1.87188 6.76877 2.525 7.37502L8 12.4594L13.475 7.37502C14.1281 6.76877 14.5 5.91564 14.5 5.02502V4.92189C14.5 3.44377 13.45 2.17189 11.9969 1.89377C10.9344 1.69064 9.84062 2.06252 9.12187 2.86877C9.12187 2.86877 9.12187 2.86877 9.11875 2.87189C9.11562 2.87502 9.11875 2.87189 9.11563 2.87502L8.55937 3.50002C8.55 3.51252 8.5375 3.52189 8.52812 3.53439C8.3875 3.67502 8.19687 3.75314 8 3.75314C7.80312 3.75314 7.6125 3.67502 7.47188 3.53439V3.53127Z" fill="#4B5563"/>
-                </svg>
-            </div>
+            {
+                like?.productId === data.id ?
+                (
+                    <div onClick={() => addFavorite(data.id)} className={classes.favorite}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
+                        <path d="M1.30156 7.46406L6.24258 12.0769C6.44766 12.2684 6.71836 12.375 7 12.375C7.28164 12.375 7.55234 12.2684 7.75742 12.0769L12.6984 7.46406C13.5297 6.69023 14 5.60468 14 4.46992V4.31132C14 2.39999 12.6191 0.770306 10.7352 0.455853C9.48828 0.248041 8.21953 0.655463 7.32812 1.54687L7 1.87499L6.67188 1.54687C5.78047 0.655463 4.51172 0.248041 3.26484 0.455853C1.38086 0.770306 0 2.39999 0 4.31132V4.46992C0 5.60468 0.470312 6.69023 1.30156 7.46406Z" fill="#F42828"/>
+                        </svg>
+                    </div>
+                )
+                : 
+                (
+                    <div onClick={() => addFavorite(data.id)} className={classes.favorite}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
+                        <path d="M1.30156 7.46406L6.24258 12.0769C6.44766 12.2684 6.71836 12.375 7 12.375C7.28164 12.375 7.55234 12.2684 7.75742 12.0769L12.6984 7.46406C13.5297 6.69023 14 5.60468 14 4.46992V4.31132C14 2.39999 12.6191 0.770306 10.7352 0.455853C9.48828 0.248041 8.21953 0.655463 7.32812 1.54687L7 1.87499L6.67188 1.54687C5.78047 0.655463 4.51172 0.248041 3.26484 0.455853C1.38086 0.770306 0 2.39999 0 4.31132V4.46992C0 5.60468 0.470312 6.69023 1.30156 7.46406Z" fill="#6D6A6A"/>
+                        </svg>
+                    </div>
+                )
+}
             <div className={classes.image}>
                 <img src={data.img ?? flower} alt="Картинок пока нет : (" />
             </div>

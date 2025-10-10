@@ -17,7 +17,23 @@ import Catalog from "./pages/main/catalog/catalog"
 import Modal from "./components/modal/Modal"
 import Login from "./pages/login/login"
 import SignUp from "./pages/login/SignUp"
+import User from "./pages/user/user"
+import { useGetFavoriteQuery } from "./services/favorite"
+import { useCheckQuery } from "./services/user"
+import { useDispatch } from "react-redux"
+import { getFavorite } from "./features/favoriteSlice/favoriteSlice"
+import { getUserInfo } from "./features/userSlice/userSlice"
 function App() {
+
+  const dataFavorite = useGetFavoriteQuery(null)
+  const user = useCheckQuery(null)
+  const dispatch = useDispatch()
+  dispatch(getFavorite(dataFavorite.data))
+  dispatch(getUserInfo(user.data))
+      // if(user.error || dataFavorite.error){
+      //     dispatch(getFavorite(dataFavorite.data))
+      //       dispatch(getUserInfo(user.data))
+      // }
   return (
     <div>
       <Modal></Modal>
@@ -39,6 +55,7 @@ function App() {
           <Route path="payment" element ={<Payment/>} />
           <Route path="login" element={<Login/>}></Route>
           <Route path="signUp" element={<SignUp/>}></Route>
+          <Route path="user" element={<User/>}></Route>
         </Route>
       </Routes>
     </div>

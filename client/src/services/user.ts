@@ -1,6 +1,5 @@
 import type { RootState } from "@reduxjs/toolkit/query";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setCredentials, logOut } from "../features/userSlice/authSlice";
 import type { IUserResponse, ILoginRequest, IUser } from "../types";
 import { register } from "swiper/element";
 
@@ -10,8 +9,8 @@ export const UserApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:5001/api/user",
-        prepareHeaders: (headers, {getState}) => {
-            const token = (getState() as RootState).auth.token
+        prepareHeaders: (headers) => {
+            const token = localStorage.getItem('accessToken')
             if(token) {
                 headers.set('authorization', `Berear ${token}`)
             }
@@ -35,9 +34,13 @@ export const UserApi = createApi({
                 body: credentials
             })
         }),
-        protected: builder.mutation<{ message: string }, void>({
-            query: () => 'protected'
-        })   
+        check: builder.query<IUserResponse, null>({
+            query: () => '/check'
+        }),
+        refresh: builder.query<IUserResponse, null>({
+            query: () => '/refresh'
+        }),
+ 
     })
 })
-export const { useRegisterMutation, useLoginMutation, useProtectedMutation } = UserApi
+export const { useRegisterMutation, useLoginMutation, useRefreshQuery, useCheckQuery } = UserApi

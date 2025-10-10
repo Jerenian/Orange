@@ -11,10 +11,11 @@ const ApiError = require('../exeptions/apiError')
 const create = async (req, res, next)  =>{
 
     try {
-        const errors = validationResult(req)
-        if(!errors.isEmpty()) {
-            return next(ApiError.BadRequest('Ошибка валидации', errors.array()))
-        }
+        // const errors = validationResult(req)
+        // if(!errors.isEmpty()) {
+        //     return next(ApiError.BadRequest('Ошибка валидации', errors.array()))
+        // }
+        console.log(req.body)
         const {login, password, name, role} = req.body
         const userData = await userService.register(login, password, name, role)
         res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 1000, httpOnly: true})
@@ -73,5 +74,19 @@ const getUsers = async (req, res) => {
         next(error)
     }
 }
+const checkUser = async(req, res) => {
+        const token = req.headers.authorization.split(' ')[1]
+        console.log(token)
+        let decoded
+        if(token){
+            decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
+        } else{
+            res.status(401)
+        }
+        if(decoded) {
+            const user = await User.findOne({id: decoded.id})
+            res.json(user)
+        }
+}
     
-module.exports = {create, login, getUsers, refresh, activate, logout, getUsers}
+module.exports = {create, login, getUsers, refresh, activate, logout, getUsers, checkUser}

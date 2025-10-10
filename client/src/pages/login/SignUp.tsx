@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import classes from './Style.module.scss'
 import { NavLink } from 'react-router'
-import { useLoginMutation, useRegisterMutation } from '../../services/user'
+import { useRegisterMutation } from '../../services/user'
 import { useNavigate } from 'react-router'
 const SignUp = () => {
-
     const [user, setUser] = useState( {name:"", login: "", password: "", checkPassword: ""})
     const [errors, setError] = useState("")
     const [setLogin, {isLoading}] = useRegisterMutation()
@@ -13,8 +12,9 @@ const SignUp = () => {
     const handleClick = async () => {
         if(user.checkPassword === user.password) {
             const payload = {name: user.name, login: user.login, password: user.password}
-            const res = await setLogin(payload)
-            response(res.data)
+            const {data} = await setLogin(payload)
+            console.log(data.accessToken)
+            localStorage.setItem('accessToken', data.accessToken)
         } else {
             setError("Пароли не совпадают!")
             
@@ -27,7 +27,7 @@ const SignUp = () => {
         // else{
         //     //navigate('/')
         // }
-        console.log(res)
+        console.log()
     }
   return (
     <div className={classes.wrapper}>

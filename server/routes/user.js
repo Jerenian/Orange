@@ -11,6 +11,7 @@ router.post('/login', userController.login)
 router.get('/activate/:link', userController.activate)
 router.post('/logout', userController.logout)
 router.get('/refresh', userController.refresh)
+router.get('/check', userController.checkUser)
 router.get('/', authMiddleware, userController.getUsers)
 
 

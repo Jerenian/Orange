@@ -21,9 +21,13 @@ export interface ITypesProps {
     data: ITypes
 }
 export interface IUser {
-    login: string,
-    password: string,
+    activationLink?: string,
+    id?: string
+    isActivated?: boolean
+    login: string
     name?: string
+    password: string
+    role?: string
 }
 export interface IUserResponse {
     user: IUser,
@@ -36,4 +40,12 @@ export interface IAuthState  {
 export interface ILoginRequest {
     login: string,
     password: string
+}
+export interface IFavorite {  
+    favoriteId: string,
+    id: string,
+    productId: string,
+}
+export interface IFavoriteData {
+    data: IFavorite[]
 }

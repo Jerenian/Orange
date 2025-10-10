@@ -19,11 +19,9 @@ const jwt = require('jsonwebtoken')
 
         try {
             const token = req.headers.authorization.split(' ')[1]
-            if (!token) {
-                return res.status(401).json({message: "Не авторизован"})
+            if(!token) {
+               return res.status(401).json({message: "Не авторизован"})
             }
-            //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
-            console.log(process.env.JWT_SECRET_ACCESS_KEY)
             const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
             if (decoded.role !== 'admin') {
                 return res.status(403).json({message: "Нет доступа"})
@@ -91,6 +89,7 @@ const jwt = require('jsonwebtoken')
             
         }
     }
+
     const addPopular = async (req, res) => {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {

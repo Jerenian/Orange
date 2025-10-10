@@ -14,7 +14,7 @@ const register = async (login, password, name, role) => {
     const hashedpassword = await bcrypt.hash(password, 4)
     const activationLink = uuid.v4()
     const id = uuid.v4()
-    await MailService.sendActivationMail(login, `${process.env.API_URL}/api/user/activate/${activationLink}`)
+    //await MailService.sendActivationMail(login, `${process.env.API_URL}/api/user/activate/${activationLink}`)
     const user = await User.create({id, login, password:hashedpassword, name, role, activationLink})
     const userDto = new UserDto(user)
     const tokens = await tokenService.generationTokens({...userDto})

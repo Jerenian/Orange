@@ -26,6 +26,20 @@
             display: flex;
             padding: 20px 0;
             gap: 16px;
+            a{
+                position: relative;
+                .likeCouner{
+                    position: absolute;
+                    z-index: 4;
+                    top: -9px;
+                    right: -6px;
+                    padding:2px 5.5px;
+                    background-color: red;
+                    color: #fff;
+                    border-radius: 10px;
+                    font-size: 11px;
+                }
+            }
         }
     }
 }

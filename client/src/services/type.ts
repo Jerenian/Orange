@@ -6,7 +6,7 @@ export const typeApi = createApi({
     endpoints: (builder) => ({
         getAllTypes : builder.query<ITypes[], null>({
             query:() => '/'
-        })
+        }),
     })
 })
 

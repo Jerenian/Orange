@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './Header.module.scss'
 import { NavLink } from "react-router";
 import logo from "../../assets/logo.png"
+import { useSelector } from 'react-redux';
 const Header = () => {
+    const favorite = useSelector(state => state.favorite.data)
   return (
     <div className={classes.wrapper}>
         <div className={classes.row}>
@@ -15,6 +17,7 @@ const Header = () => {
             </nav>
             <nav className={classes.right}>
                 <NavLink to="/favorite">
+                    <div className={classes.likeCouner}>{favorite.length ? favorite.length : 0}</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
 
                         <path d="M1.67344 10.8109L8.02617 16.7418C8.28984 16.9879 8.63789 17.125 9 17.125C9.36211 17.125 9.71016 16.9879 9.97383 16.7418L16.3266 10.8109C17.3953 9.81602 18 8.42032 18 6.96133V6.75743C18 4.30001 16.2246 2.20469 13.8023 1.8004C12.1992 1.53321 10.568 2.05704 9.42188 3.20313L9 3.62501L8.57812 3.20313C7.43203 2.05704 5.80078 1.53321 4.19766 1.8004C1.77539 2.20469 0 4.30001 0 6.75743V6.96133C0 8.42032 0.604687 9.81602 1.67344 10.8109Z" fill="white"/>
