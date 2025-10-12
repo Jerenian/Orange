@@ -18,20 +18,7 @@ const TypeModal = () => {
       e.stopPropagation()
     }
     const saveClick = async () => {
-        console.log(data.file[0])
-        const formData = new FormData()
-        // formData.append('name', data.name)
-        // formData.append('img', data.file[0])
-        // const a = await fetch('http://localhost:5001/api/types', {
-        //     method: "POST",
-        //     body: formData
-        // })
-        //const result =  a
-        //console.log(result)
-        console.log(formData)
         const dataType = await type(data)
-        const res = dataType
-        console.log(res)
     }
     const uploadClick = () => inputRef.current.click()
   return (

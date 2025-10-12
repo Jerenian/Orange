@@ -25,6 +25,7 @@ import { getFavorite } from "./features/favoriteSlice/favoriteSlice"
 import { getUserInfo } from "./features/userSlice/userSlice"
 import ProductModal from "./components/modal/ProductModal"
 import TypeModal from "./components/modal/TypeModal"
+import EditTypeModal from "./components/modal/EditTypeModal"
 function App() {
 
   const dataFavorite = useGetFavoriteQuery(null)
@@ -38,6 +39,7 @@ function App() {
       <TypeModal></TypeModal>
       <Modal></Modal>
       <ProductModal></ProductModal>
+      <EditTypeModal></EditTypeModal>
       <Routes>
         <Route element={<Layout/>}>
           <Route index element={<Main />} ></Route>

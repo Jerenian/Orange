@@ -2,8 +2,8 @@ import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { IProduct, ICreateType } from "../types";
 
 
-export const CreateItemsApi = createApi({
-    reducerPath: 'createItems',
+export const ChangeItemsApi = createApi({
+    reducerPath: 'changeItems',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:5001/api/',
         
@@ -16,7 +16,7 @@ export const CreateItemsApi = createApi({
         }
     }),
     endpoints: builder => ({
-        createType : builder.mutation<any, any>({
+        changeType : builder.mutation<any, any>({
             query: (data) => {
                 const formData = new FormData()
                 formData.append('name', data.name)
@@ -28,7 +28,7 @@ export const CreateItemsApi = createApi({
                 }
             },
         }),
-        createProduct: builder.mutation<IProduct[], string[] | null>({
+        changeProduct: builder.mutation<IProduct[], string[] | null>({
             query: (data) => {
                 const formData = new FormData() 
                 formData.append('name', data.name)
@@ -48,4 +48,4 @@ export const CreateItemsApi = createApi({
     })
 
 })
-export const {useCreateProductMutation, useCreateTypeMutation } = CreateItemsApi
+export const {useChangeProductMutation, useChangeTypeMutation } = ChangeItemsApi

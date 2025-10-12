@@ -33,7 +33,7 @@ const jwt = require('jsonwebtoken')
             let fileName = uuid.v4() + ".jpg"
             let id = uuid.v4()
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const item = await Product.create({id, name, price, typeId, description, isPopular, country, length, img})
+            const item = await Product.create({id, name, price, typeId, description, isPopular, country, length, img: fileName})
             return res.json(item)
             
         } catch (error) {
