@@ -3,13 +3,13 @@ import classes from './style.module.scss'
 import type { IProductProps } from '../../types'
 import classicLove from '../../assets/images/pages/main/classicLove.png'
 import { useDispatch } from 'react-redux'
-import { changeModal } from '../../features/modalSlice/modalSlice'
+import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 const MainPopular = ({data}: IProductProps) => {
 
     const dispatch = useDispatch()
     
     const handleClick = () => {
-        dispatch(changeModal())
+        dispatch(changePaymentModal())
         
 }
   return (

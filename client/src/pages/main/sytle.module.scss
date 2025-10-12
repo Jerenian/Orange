@@ -59,7 +59,23 @@
             display: flex;
             justify-content: center;
             gap: 22px;
+            flex-wrap: wrap;
             padding: 20px ;
+            .createType{
+                cursor: pointer;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color:#fb9a8d ;
+                border: 6px solid #fb9a8d ;
+                border-radius: 10px;
+                background-color: #e8e8e8;
+                p{
+                    text-align: center;
+                }
+            }
         }
     }
     .category{

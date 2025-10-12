@@ -50,3 +50,7 @@ export interface IFavoriteData {
     data: IFavorite[]
     idList?: string[]
 }
+export interface ICreateType{
+    name?: string,
+    file: Blob | undefined | string 
+}

@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import classes from './Header.module.scss'
-import { NavLink } from "react-router";
+import { data, NavLink } from "react-router";
 import logo from "../../assets/logo.png"
 import { useSelector } from 'react-redux';
 const Header = () => {
     const favorite = useSelector(state => state.favorite.data)
     const user = useSelector(state => state.user)
-
   return (
     <div className={classes.wrapper}>
         <div className={classes.row}>
@@ -18,7 +17,7 @@ const Header = () => {
                 <NavLink className={classes.link} to="/delivery">Доставка</NavLink>
             </nav>
             <nav className={classes.right}>
-                {user?.role === 'admin' ? (<p>Вы вошли как администратор</p>): null} 
+                {user?.data?.role === 'admin' ? (<p className={classes.adminText} >Вы вошли как администратор</p>): null} 
                 <NavLink to="/favorite">
                     <div className={classes.likeCouner}>{favorite.length ? favorite.length : 0}</div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">

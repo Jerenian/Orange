@@ -16,21 +16,15 @@ const Login = () => {
     const handleClick = async () => {
         const userData = await setLogin({login: user.login, password: user.password})
         const body = userData
-        //(body.error)
         if(body?.error?.status === 400){
-            //('a')
             setError('Пользователь с таким email не найден')
         }
         else{
-        console.log(body.data.accessToken)
         localStorage.clear()
-        //(body.data.accessToken)
-        console.log()
         localStorage.setItem('accessToken', body.data.accessToken)
         setUser({...user, login: '', password: ''})
         dispatch(getUserInfo(body.data))
-        //(body)
-        navigate('/user') 
+        navigate('/') 
         }
 
     }

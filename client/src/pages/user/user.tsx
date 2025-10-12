@@ -12,6 +12,7 @@ const User = () => {
     }
     if(user.data)
     {
+        
        return (
           <div className={classes.wrapper}>
               <div className={classes.container}>

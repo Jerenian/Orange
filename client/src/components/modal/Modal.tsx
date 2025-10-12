@@ -1,14 +1,14 @@
 import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeModal } from '../../features/modalSlice/modalSlice'
+import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 import { useRef } from 'react'
 const Modal = () => {
     const blockRef = useRef(null)
-    const modal = useSelector(state => state.modal.visible)
+    const modal = useSelector(state => state.modal.payment)
     const dispatch = useDispatch()
     const handleClick = () => {
-        dispatch(changeModal())
+        dispatch(changePaymentModal())
     }
     const childClick = (e: React.MouseEvent) => {
       e.stopPropagation()

@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './style.module.scss'
 import type { IProductProps } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeModal } from '../../features/modalSlice/modalSlice'
+import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 import flower from '../../assets/images/pages/main/flowers.png'
 import { useAddFavoriteMutation } from '../../services/favorite'
 import Modal from '../modal/Modal'
@@ -14,9 +14,8 @@ const Product = ({data}: IProductProps) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const like = dataFavorites?.find(item => item.productId == data.id)
-    //(like)
     const handleClick = () => {
-        dispatch(changeModal())
+        dispatch(changePaymentModal())
     }
     const addFavorite = async (id: string) => {
             const favorite = await setFavorite(id)

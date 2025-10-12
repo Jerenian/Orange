@@ -2,15 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { IUser } from "../../types";
 
 
-let initialState : IUser = 
-    {
-    activationLink: "",
-    id: "",
-    isActivated: undefined,
-    login: "",
-    name: "",
-    password: "",
-    role: "",
+let initialState = 
+{
+    data: {
+        activationLink: "",
+        id: "",
+        isActivated: undefined,
+        login: "",
+        name: "",
+        password: "",
+        role: "",
+    }
 }
 
 export const UserSlice = createSlice({
@@ -18,8 +20,8 @@ export const UserSlice = createSlice({
     initialState: initialState,
     reducers : {
         getUserInfo (state, action) {
-            state = action.payload
-            //(action.payload)
+            state.data = action.payload
+            console.log(state)
         }
     }
 })

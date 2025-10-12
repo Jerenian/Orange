@@ -18,6 +18,7 @@ const jwt = require('jsonwebtoken')
     const create = async (req, res)  =>{
 
         try {
+
             const token = req.headers.authorization.split(' ')[1]
             if(!token) {
                return res.status(401).json({message: "Не авторизован"})
@@ -28,14 +29,15 @@ const jwt = require('jsonwebtoken')
             }
             const {name, price, typeId, description, isPopular, country, length} = req.body
             const {img} = req.files
+            console.log(img)
             let fileName = uuid.v4() + ".jpg"
             let id = uuid.v4()
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const item = await Product.create({id, name, price, typeId, description, isPopular, country, length})
+            const item = await Product.create({id, name, price, typeId, description, isPopular, country, length, img})
             return res.json(item)
             
         } catch (error) {
-            //(error.message)  
+            (error.message)  
         }
     }
     const put = async (req)  =>{

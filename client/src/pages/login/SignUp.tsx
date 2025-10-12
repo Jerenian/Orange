@@ -13,21 +13,13 @@ const SignUp = () => {
         if(user.checkPassword === user.password) {
             const payload = {name: user.name, login: user.login, password: user.password}
             const {data} = await setLogin(payload)
-            //(data.accessToken)
+            localStorage.clear()
             localStorage.setItem('accessToken', data.accessToken)
         } else {
             setError("Пароли не совпадают!")
-            
         }
     }
     const  response = (res: any) => {
-        // if(res?.error){
-        //     setError('Пользователь с таким логином уже существует')
-        // }
-        // else{
-        //     //navigate('/')
-        // }
-        //()
     }
   return (
     <div className={classes.wrapper}>

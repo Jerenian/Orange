@@ -8,12 +8,14 @@ import TypeReducer from '../features/TypeSlice/TypeSlice'
 import {FavoriteApi} from '../services/favorite'
 import  FavoriteReudcer from "../features/favoriteSlice/favoriteSlice";
 import userRducer from "../features/userSlice/userSlice"
+import { CreateItemsApi } from "../services/create";
 export const store = configureStore({
     reducer: {
         [ProductApi.reducerPath] : ProductApi.reducer,
         [typeApi.reducerPath] : typeApi.reducer,
         [UserApi.reducerPath]: UserApi.reducer,
         [FavoriteApi.reducerPath]: FavoriteApi.reducer,
+        [CreateItemsApi.reducerPath]: CreateItemsApi.reducer,
         "modal" : ModalReducer,
         "type": TypeReducer,
         "favorite": FavoriteReudcer,
@@ -21,7 +23,7 @@ export const store = configureStore({
     },
 
     middleware: (getDefaultMiddleware) => 
-        getDefaultMiddleware().concat(ProductApi.middleware, typeApi.middleware, UserApi.middleware, FavoriteApi.middleware),
+        getDefaultMiddleware().concat(ProductApi.middleware, typeApi.middleware, UserApi.middleware, FavoriteApi.middleware, CreateItemsApi.middleware),
     devTools: true
 })
 

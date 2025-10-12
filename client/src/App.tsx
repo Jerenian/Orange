@@ -23,6 +23,8 @@ import { useCheckQuery } from "./services/user"
 import { useDispatch } from "react-redux"
 import { getFavorite } from "./features/favoriteSlice/favoriteSlice"
 import { getUserInfo } from "./features/userSlice/userSlice"
+import ProductModal from "./components/modal/ProductModal"
+import TypeModal from "./components/modal/TypeModal"
 function App() {
 
   const dataFavorite = useGetFavoriteQuery(null)
@@ -30,14 +32,12 @@ function App() {
   const dispatch = useDispatch()
   dispatch(getFavorite(dataFavorite.data))
   dispatch(getUserInfo(user.data))
-  console.log(user.data)
-      // if(user.error || dataFavorite.error){
-      //     dispatch(getFavorite(dataFavorite.data))
-      //       dispatch(getUserInfo(user.data))
-      // }
+
   return (
     <div>
+      <TypeModal></TypeModal>
       <Modal></Modal>
+      <ProductModal></ProductModal>
       <Routes>
         <Route element={<Layout/>}>
           <Route index element={<Main />} ></Route>
