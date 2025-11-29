@@ -5,10 +5,10 @@ import type { IProduct } from "../types";
 export const FavoriteApi = createApi({
     reducerPath: 'favoriteApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001/api/favorite',
+        baseUrl: `${import.meta.env.VITE_API_URL}api/favorite`,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('accessToken')
-            //(token)
+
             if(token) {
                 headers.set('authorization', `Berear ${token}`)
             }
@@ -30,7 +30,7 @@ export const FavoriteApi = createApi({
             query: (credentials) => ({
                 url: '/products',
                 method: "POST",
-                body: credentials
+                body: {credentials}
             })
         })
     })

@@ -1,6 +1,5 @@
 const express = require('express')
 require('dotenv').config()
-const models = require('./models/model')
 const cors = require('cors')
 const PORT= process.env.PORT || 5001
 const app = express()
@@ -10,6 +9,10 @@ const fileUpload = require('express-fileupload')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const errorMiddleware = require('./middleware/errorMiddleware')
+
+
+
+
 app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')))
@@ -17,15 +20,18 @@ app.use(fileUpload({}))
 app.use(cookieParser())
 app.use('/api', router)
 app.use(errorMiddleware);
+
+
 const start = async () => {
     try {
         await sequelize.authenticate()
         await sequelize.sync()
-        app.listen(process.env.PORT, () => console.log('Server started on port ' + PORT))
+        app.listen(process.env.PORT, () => ('Server started on port ' + PORT))
     } catch (error) {
-        console.log(error.message)
+        res.json(error.message)
     }
 }
-start()
 
-//узнать пароль от яндекса
+
+
+start()

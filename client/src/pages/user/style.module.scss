@@ -1,0 +1,36 @@
+.wrapper{
+    background: linear-gradient(90deg, #E5FA39 0%, #FC8B48 100%) repeat;
+    flex: 1;
+    padding: 15% 0;
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .imageContainer{
+            border-radius: 100%;
+            padding: 30px;
+            background: #ff8239;
+        }
+        .title{
+            margin-top: 2%;
+            font-size: 18px;
+            padding:  10px;
+            background-color: #FC8B48;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .logOut{
+            box-sizing: 18px;
+            background-color: #f32121;
+            margin-top: 2%;
+            padding: 10px;
+            border-radius: 15px;
+            .btn{
+                color: #ffff;
+                background: transparent;
+                border: 0;
+            }
+        }
+    }
+}

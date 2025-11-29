@@ -14,16 +14,17 @@ export const FavoriteSlice = createSlice({
     initialState: initialState,
     reducers : {
         getFavorite (state, action) {
-            if(action?.payload){
+            //console.log(action.payload)
+            if(action?.payload)
+            {
                 state.data = action.payload
                 state.idList = state.data?.map(item => item.productId)
-                //(state.idList)
             }
-            else{
+            else
+            {
                 state.data = []
                 state.idList = []
             }
-            //(state)
         },
     }
 })

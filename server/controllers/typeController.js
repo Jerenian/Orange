@@ -1,12 +1,11 @@
-const {Type} = require('../models/model')
+const {Type, Product} = require('../models/model')
 const uuid = require('uuid')
 const path = require('path')
 const jwt = require('jsonwebtoken')
 const { log } = require('console')
-//const tokenService = require('../services/tokenService')
+const {Op} = require('sequelize')
+const fs = require('fs')
 const create = async (req, res) => {
-    console.log(req.files)
-
     try {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
@@ -24,12 +23,10 @@ const create = async (req, res) => {
         const type = await Type.create({id, name, img: fileName})
         return res.json(type)
     } catch (error) {
-        (error.message)
     }
 }
 
 const remove = async (req, res) => {
-    console.log(req.body)
     try {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
@@ -40,14 +37,29 @@ const remove = async (req, res) => {
             return res.status(403).json({message: "Нет доступа"})
         }
         const {id} = req.body
+        const getProducts = await Product.findAll({where: {typeId: id}})
+        const productsIdList = getProducts.map(item => item.id)
+        const fileList = getProducts.map(img => img.img)
+
+        await Product.destroy({
+            where: {
+                id: {
+                    [Op.in]: productsIdList
+                }
+            }
+        }) 
         const type = await Type.destroy({
             where: {
                 id
             },
         });
+        fileList.map(item => {
+            const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', item), () => {
+                console.log(item)
+            })
+        })
         res.json(type)
     } catch (error) {
-        console.log(error.message)
     }
 }
 const getAll = async (req, res) => {
@@ -55,7 +67,7 @@ const getAll = async (req, res) => {
         const types = await Type.findAll()
         return res.json(types)
     } catch (error) {
-        
+        console.log(error.message)
     }
 }
 
@@ -69,12 +81,33 @@ const update = async (req, res) => {
         if (decoded.role !== 'admin') {
             return res.status(403).json({message: "Нет доступа"})
         }
-        const {img, name, id} = req.body
-        const item = Type.findOne({id})
-        item.name = name
-        await item.save()
+        const {name, id} = req.body
+        console.log(name)
+        let item 
+        if(req.files) {
+            const {img} = req.files
+            let fileName = uuid.v4() + ".jpg"
+            img.mv(path.resolve(__dirname, '..', 'static', fileName))
+            item = await Type.update(
+                {
+                    img: fileName
+                },
+                {
+                    where:{id}
+                }
+            )
+        }
+        item = await Type.update(
+        {
+            name: name
+        },
+        { 
+            where:{id}
+        }
+    )
+        res.json(item)
     } catch (error) {
-        
+        //////console.log(error.message)
     }
 }
-module.exports = {create, remove, getAll}
+module.exports = {create, remove, getAll, update}

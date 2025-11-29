@@ -3,23 +3,30 @@ import classes from './Style.module.scss'
 import { NavLink } from 'react-router'
 import { useRegisterMutation } from '../../services/user'
 import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { getUserInfo } from '../../features/userSlice/userSlice'
 const SignUp = () => {
     const [user, setUser] = useState( {name:"", login: "", password: "", checkPassword: ""})
     const [errors, setError] = useState("")
-    const [setLogin, {isLoading}] = useRegisterMutation()
+    const [setLogin] = useRegisterMutation()
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     const handleClick = async () => {
         if(user.checkPassword === user.password) {
             const payload = {name: user.name, login: user.login, password: user.password}
-            const {data} = await setLogin(payload)
+            const data = await setLogin(payload)
+            if(data?.error){
+                setError(data?.error?.data?.message)
+
+            } else {
             localStorage.clear()
-            localStorage.setItem('accessToken', data.accessToken)
+            localStorage.setItem('accessToken', data?.data.accessToken)
+            dispatch(getUserInfo(data.data))
+            navigate('/') 
+            }
         } else {
             setError("Пароли не совпадают!")
         }
-    }
-    const  response = (res: any) => {
     }
   return (
     <div className={classes.wrapper}>

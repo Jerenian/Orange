@@ -1,13 +1,41 @@
 .wrapper{
     .row{
-        padding:10px 45px;
+        padding:1% 2%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         background-color: black;
+        align-items: center;
         color: #fff;
+        @media (max-width: 620px) {
+
+        }
+        .burger{
+            display: none;
+            @media (max-width: 1280px) {
+                display: block;
+                margin-top:10px ;
+            }
+            .item{
+                .line{
+                    height: 4px;
+                    width: 35px;
+                    background-color: #FB6D41;
+                    margin-bottom: 8px;
+                }
+            }
+
+        }
         .left{
+            flex: 35%;
             display: flex;
             gap: 47px;
+            font-size: 18px;
+            align-items: center;
+            @media (max-width: 1280px) {
+                display: none;
+                
+            }
+
             .logo{
                 width: 108px;
                 height: 48px;
@@ -15,18 +43,47 @@
                 list-style: none;
             }
             .link{
-                padding: 20px 0;
+                padding: 2% 0;
             }
             a{
                 color: #fff;
                 text-decoration: none;
             }
         }
+        .center{
+            flex: 50%;
+            align-items: stretch;
+                 @media (max-width: 1280px) {
+                    flex: 80%;
+                    justify-content: center;
+                }
+            .searchBlock{
+                @media (max-width: 1280px) {
+                    display: flex;
+                    justify-content: center;
+                }
+                position: relative;
+            }
+        }
         .right{
+            flex: 10%;
+         @media (max-width: 1280px) {
+                    flex: 5%;
+            }
+            display: flex;
+            justify-content: flex-end;
+            
+            @media (max-width: 620px) {
+                display: none;
+            }
             .adminText{
                 background-color: #FB6D41;
                 padding: 8px;
                 border-radius: 4px;
+                @media (max-width: 720px) {
+                    display: none;
+                }
+
             }
             display: flex;
             padding: 20px 0;

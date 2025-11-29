@@ -5,6 +5,6 @@ const authMiddleware = require('../middleware/authMiddleware')
 router.post('/',typeController.create)
 router.get('/', typeController.getAll)
 router.delete('/', typeController.remove)
-
+router.put('/', typeController.update)
 
 module.exports = router

@@ -1,0 +1,40 @@
+.wrapper{
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    
+    .container{
+            width: 100vw;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            padding: 20% 0;
+        background: linear-gradient(90deg, #E5FA39 0%, #FC8B48 100%);
+        .linkContainer{
+            display: flex;
+            font-size: 4vw;
+            justify-content: space-around;
+            flex-direction: column;
+            height: 50vh;
+            .link{
+                text-align: center;
+                border-radius: 5px;
+                width: 100vw;
+                font-size: 6vw;
+                text-decoration: none;
+                color: #000;
+            }
+
+        }
+    }
+}
+.unwrapper{
+    display: none;
+}

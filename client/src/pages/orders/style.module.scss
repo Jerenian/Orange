@@ -1,0 +1,293 @@
+.wrapper{
+    .container{
+        display: flex;
+        padding: 10px 20px; 
+            @media (max-width: 820px) {
+                flex-direction: column;
+            }
+        .active{
+            flex: 0 0 48%;
+            .container{
+                display: flex;
+                flex-direction: column;
+                .title{
+                    display: flex;
+                    justify-content: center;
+                    .item{
+                        background-color: #FB6D41;
+                        padding: 8px;
+                        border-radius: 10px;
+                        font-size: 22px;
+                        color: #fff;
+                    }
+                }
+                .column{
+                    position: relative;
+                    margin-top: 15px;
+                    .order{
+                        .orderItem{
+                            margin-top: 15px;
+                            border: 2px solid #FB6D41;
+                            border-radius: 10px;
+                            padding: 10px 20px;
+                            .remove{
+                                position: absolute;
+                                z-index: 4;
+                                top: 5px;
+                                right: 5px;
+                                background-color: rgb(245, 59, 59);
+                                border: 0;
+                                color: #fff;
+                                padding: 3px 5px;
+                                border-radius: 10px;
+                                font-size: 18px;
+                            }
+                            .info{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                                .item{
+                                    color: #000;
+                                    display: flex;
+                                    background-color: transparent;
+                                }
+                                .products{
+                                    padding: 5px 0 ;
+                                    display: flex;
+                                    flex-direction: column;
+                                    border-radius: 10px;
+                                    .title{
+                                        display: flex;
+                                        justify-content: start;
+                                        .item{
+                                            font-size: 18px;
+                                            color: #000;
+                                            font-weight: 600;
+                                        }
+                                    }
+                                    .productContainer{
+                                        display: flex;
+                                        flex-direction: column;
+                                        border: 2px solid #5c5a5a;
+                                        border-radius: 10px;
+                                        padding: 5px;
+                                        gap: 5px;
+                                        font-size: 18px;
+                                        .item{
+                                            cursor: pointer;
+                                            background-color: #9b999957;
+                                            .palette{
+                                                display: flex;
+                                                gap: 5px;
+                                                .paletteItem{
+                                                    border-radius: 5px;
+                                                    cursor: pointer;
+                                                    width: 20px;
+                                                    height: 20px;
+                                                    color: transparent;
+                                                    border: 0;
+                                                    border: 1px solid #000;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+                                .status{
+                                    background-color: transparent;
+                                    display: flex;
+                                    .succeeded{
+                                        color: #fff;
+                                        background-color:green ;
+                                        padding:  5px;
+                                        border-radius: 5px;
+                                    }
+                                    .pending{
+                                        color: #fff;
+                                        background-color: yellow;
+                                        padding: 3px 5px;
+                                        color: #000;
+                                        border: 1px solid #000;
+                                        border-radius: 10px;
+                                    }
+                                    .error{
+                                        color: #fff;
+                                        background-color: grey;
+                                        padding: 3px 5px;
+                                        color: #000;
+                                        border: 1px solid #000;
+                                        border-radius: 10px;
+                                    }
+                                }
+                                .changeStatus{
+                                    display: flex;
+                                    justify-content: center;
+                                    .item{
+                                        cursor: pointer;
+                                        padding: 5px;
+                                        border-radius: 10px;
+                                        background-color: green;
+                                        border: 0 solid #000;
+                                        font-size: 22px;
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .nothing{
+                    padding: 20px;
+                    display: flex;
+                    justify-content: center;
+                    p{
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+        .data{
+            flex: 0 0 48%;
+            .container{
+                display: flex;
+                flex-direction: column;
+                .title{
+                    display: flex;
+                    justify-content: center;
+                    
+                    .item{
+                        background-color: #5b5a59;
+                        padding: 8px;
+                        border-radius: 10px;
+                        font-size: 22px;
+                        color: #fff;
+                    }
+
+                }
+
+                .column{
+                    
+                    margin-top: 15px;
+                    .order{
+                        .orderItem{
+                            border: 2px solid #5b5a59;
+                            border-radius: 10px;
+                            padding: 10px 20px;
+                            margin-top: 15px;
+                            position: relative;
+                            .remove{
+                                position: absolute;
+                                z-index: 4;
+                                top: 5px;
+                                right: 5px;
+                                background-color: rgb(245, 59, 59);
+                                border: 0;
+                                color: #fff;
+                                padding: 3px 5px;
+                                border-radius: 10px;
+                                font-size: 18px;
+                            }
+                            .info{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                                .item{
+                                    color: #000;
+                                    display: flex;
+                                    background-color: transparent;
+                                }
+                                .products{
+                                    padding: 5px 0 ;
+                                    display: flex;
+                                    flex-direction: column;
+                                    border-radius: 10px;
+                                    .title{
+                                        display: flex;
+                                        justify-content: start;
+                                        .item{
+                                            font-size: 18px;
+                                            color: #000;
+                                            font-weight: 600;
+                                        }
+                                    }
+                                    .productContainer{
+                                        display: flex;
+                                        flex-direction: column;
+                                        border: 2px solid #5c5a5a;
+                                        border-radius: 10px;
+                                        padding: 5px;
+                                        gap: 5px;
+                                        font-size: 18px;
+                                        .palette{
+                                            display: flex;
+                                            gap: 5px;
+                                            align-items: center;
+                                            .paletteItem{
+                                                border-radius: 5px;
+                                                cursor: pointer;
+                                                width: 20px;
+                                                height: 20px;
+                                                color: transparent;
+                                                border: 0;
+                                                border: 1px solid #000;
+                                            }
+                                        }
+                                    }
+
+                                }
+                                .status{
+                                    background-color: transparent;
+                                    display: flex;
+                                    .succeeded{
+                                        color: #fff;
+                                        background-color:green ;
+                                        padding:  5px;
+                                        border-radius: 5px;
+                                    }
+                                    .pending{
+                                        color: #fff;
+                                        background-color: yellow;
+                                        padding: 3px 5px;
+                                        color: #000;
+                                        border: 1px solid #000;
+                                        border-radius: 10px;
+
+                                    }
+                                    .error{
+                                        color: #fff;
+                                        background-color: grey;
+                                        padding: 3px 5px;
+                                        color: #000;
+                                        border: 1px solid #000;
+                                        border-radius: 10px;
+                                    }
+                                }
+                                .changeStatus{
+                                    display: flex;
+                                    justify-content: center;
+                                    .item{
+                                        cursor: pointer;
+                                        padding: 5px;
+                                        border-radius: 10px;
+                                        background-color: green;
+                                        border: 0 solid #000;
+                                        font-size: 22px;
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .nothing{
+                    padding: 20px;
+                    display: flex;
+                    justify-content: center;
+                    p{
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+}

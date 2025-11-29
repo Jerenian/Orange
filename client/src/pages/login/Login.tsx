@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { useLoginMutation } from '../../services/user'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
-import { getUserInfo } from '../../features/userSlice/userSlice'
 const Login = () => {
 
     const [user, setUser] = useState({login: '', password: ''})
@@ -22,9 +21,8 @@ const Login = () => {
         else{
         localStorage.clear()
         localStorage.setItem('accessToken', body.data.accessToken)
-        setUser({...user, login: '', password: ''})
-        dispatch(getUserInfo(body.data))
-        navigate('/') 
+        navigate('/user') 
+        window.location.reload()
         }
 
     }

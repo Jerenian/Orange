@@ -11,17 +11,13 @@ const ApiError = require('../exeptions/apiError')
 const create = async (req, res, next)  =>{
 
     try {
-        // const errors = validationResult(req)
-        // if(!errors.isEmpty()) {
-        //     return next(ApiError.BadRequest('Ошибка валидации', errors.array()))
-        // }
-        //(req.body)
         const {login, password, name, role} = req.body
         const userData = await userService.register(login, password, name, role)
         res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 1000, httpOnly: true})
         return res.json(userData)
     } catch (error) {
         next(error)
+        console.log(error.message)
     }
 }
 const login = async (req, res, next) => {   
@@ -31,9 +27,7 @@ const login = async (req, res, next) => {
         await res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 1000, httpOnly: true})
         return res.json(userData)
     } catch (error) {
-
         next(error)
-
     }
 }
 const logout = async (req, res, next) => {
@@ -48,7 +42,6 @@ const logout = async (req, res, next) => {
 }
 const activate = async (req, res) =>{
     try {
-        //(req.params)
         const activationLink = req.params.link
         await userService.activate(activationLink)
         return res.redirect(process.env.CLIENT_URL)
@@ -75,6 +68,9 @@ const getUsers = async (req, res) => {
     }
 }
 const checkUser = async(req, res) => {
+        if(!req.headers.authorization){
+            res.status(401)
+        }
         const token = req.headers.authorization.split(' ')[1]
         let decoded
         if(token){

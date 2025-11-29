@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route  } from "react-router";
-import 'reset-css';
+import { BrowserRouter  } from "react-router";
 import App from './App.tsx'
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
+import 'reset-css'
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <Provider store={store}>
@@ -12,5 +12,5 @@ createRoot(document.getElementById('root')!).render(
             <App></App>
         </BrowserRouter>
         </Provider>
-    </StrictMode>
+    </StrictMode>/// тайп ид не переносится при создании продукта
 )

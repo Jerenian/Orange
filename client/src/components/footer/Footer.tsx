@@ -2,7 +2,9 @@ import React from 'react'
 import classes from "./style.module.scss"
 import logo from "../../assets/logo.png"
 import { NavLink } from 'react-router'
+import { useGetAllTypesQuery } from '../../services/type'
 const Footer = () => {
+    const dataTypes = useGetAllTypesQuery(null)
   return (
     <div className={classes.wrapper}>
       <div className={classes.top}>
@@ -54,11 +56,13 @@ const Footer = () => {
                 Каталог
             </h6>
                 <div>
-                    <NavLink to="/catalog/boquets">Букеты</NavLink>
-                    <NavLink to="/catalog/flowers">Цветы</NavLink>
-                    <NavLink to="/catalog/compositions">Композиции</NavLink>
-                    <NavLink to="/catalog/toys">Игрушки</NavLink>
-                    <NavLink to="/catalog/bolloons">Шары</NavLink>
+                    {
+                        dataTypes?.data?.map(item => (
+                            <NavLink to={`catalog/${item.id}`}>
+                                <p>{item.name}</p>
+                            </NavLink>
+                        ))
+                    }
                 </div>
         </div>
         <div className={classes.columnThird}>

@@ -5,7 +5,7 @@ import type { IProduct, ICreateType } from "../types";
 export const CreateItemsApi = createApi({
     reducerPath: 'createItems',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001/api/',
+        baseUrl: `${import.meta.env.VITE_API_URL}api/`,
         
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('accessToken')
@@ -33,11 +33,10 @@ export const CreateItemsApi = createApi({
                 const formData = new FormData() 
                 formData.append('name', data.name)
                 formData.append('price', data.price)
-                formData.append('country', data.country)
                 formData.append('description', data.description)
-                formData.append('length', data.lgth)
-                formData.append('typeId', data.typeId)
                 formData.append('img', data.file[0])
+                formData.append('typeId', data.typeId)
+                formData.append('palette', data.palette)
                 return{
                     url: '/products',
                     method: "POST",

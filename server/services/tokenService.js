@@ -4,7 +4,7 @@ const {Token} = require('../models/model')
 const userController = require('../controllers/userController')
 const ApiError = require('../exeptions/apiError')
 const generationTokens = async (payload) => {
-    //console.log(payload)
+    //(payload)
     const accessToken = jwt.sign(payload, process.env.JWT_SECRET_ACCESS_KEY, {expiresIn: '24h'})
     const refreshToken = jwt.sign(payload, process.env.JWT_SECRET_REFRESH_KEY, {expiresIn: '30d'})
     return {

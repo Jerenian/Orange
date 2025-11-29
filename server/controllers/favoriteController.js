@@ -8,74 +8,126 @@ const jwt = require('jsonwebtoken')
 
 const add = async (req, res, next) => {
     try {
+        if(!req.headers.authorization){
+            res.status(401)
+        }
         const token = req.headers.authorization.split(' ')[1]
         const productId = req.body.id
-        const id = uuid.v4()
+        //console.log('pam')
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
         }
         let decoded 
         decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
         
-        const favorite = await Favorite.findOne({userId: decoded.id})
-        const favoriteFind = await FavoriteProduct.findOne({
+        const favorite = await Favorite.findOne({where:{userId: decoded.id}})
+
+        const id = uuid.v4()
+        const favoriteFind = await FavoriteProduct.findAll({
             where: {
-                productId: productId
+                favoriteId: favorite.id,
             }
         })
-        if(favoriteFind){
-            await FavoriteProduct.destroy({
-                where: {
-                    productId: productId
-                },
-            });
-        }else{
+        let willDelete = false
+        favoriteFind.forEach( async (item) => {
+            if(item.productId === productId) {
+                willDelete = true
+            } 
+        })
+        if(!willDelete){
             await FavoriteProduct.create({id, productId, favoriteId: favorite.id})
+        } else{
+            await FavoriteProduct.destroy({
+                where : {
+                    productId: productId,
+                    favoriteId: favorite.id,
+                }
+            })
         }
-        const dataFavorite = await FavoriteProduct.findAll()
+        // await FavoriteProduct.destroy({
+        //     where: {
+        //         favoriteId: favorite.id,
+        //         productId: productId
+        //     },
+        //     });
+        //     await FavoriteProduct.create({id, productId, favoriteId: favorite.id})
+        //     await FavoriteProduct.destroy({
+        //             where: {
+        //                 favoriteId: null,
+        //             },
+        //     });
+        //     await FavoriteProduct.destroy({
+        //             where: {
+        //                 productId: null,
+        //             },
+        //     });
+        const dataFavorite = await FavoriteProduct.findAll({where: {favoriteId: favorite.id}})
         res.json(dataFavorite)
         
     } catch (error) {
-        next(error)
+        //console.log(error.message)
     }
 }
 
 const get = async (req, res, next) => {
     try {
+        if(!req.headers.authorization){
+            res.status(401)
+        }
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
         }
         let decoded 
         decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        //(decoded)
-        const favoriteId = await Favorite.findOne({userId: decoded.id})
-        //(favoriteId.id)
-        const productFavorite = await FavoriteProduct.findAll()
-        res.json(productFavorite)
+
+        const favoriteId = await Favorite.findOne({where: {userId: decoded.id}})
+
+        const productFavorite = await FavoriteProduct.findAll(
+            {where: {
+                favoriteId: favoriteId.id
+            }
+        }
+        )
+        //console.log(productFavorite)
+        const idList = productFavorite?.map(item => item.productId)
+        //console.log(idList)
+        const products = await Product.findAll({where : {
+            id : {
+                [Op.in] : idList
+            }
+        }})
+        const idProducts = products?.map(item => item.id)
+        const result = await FavoriteProduct.findAll({where : {
+            favoriteId: favoriteId.id,
+            productId : {
+                [Op.in] : idProducts
+            }
+        }})
+        res.json(result)
         
     } catch (error) {
-        next(error)
+        next()
     }
 }
     const getProducts = async(req, res) => {
-        try {
+        try{
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
         }
         let decoded 
         decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        const idList = req.body
+        const idList = req.body.credentials
+
         const products = await Product.findAll({where : {
             id : {
                 [Op.in] : idList
             }
         }})
         res.json(products)
-        //(products)
         } catch (error) {
-            
+            return res.status(401).json({message: "Не авторизован"})
         }
     }
 const remove = async (req, res) => {
@@ -92,4 +144,4 @@ const put = async (req) => {
         
     }
 }
-module.exports = {create, remove, put, get, add, getProducts}
+module.exports = {create,  get, add, getProducts}

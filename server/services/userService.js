@@ -1,4 +1,4 @@
-const {User, Favorite} = require('../models/model')
+const {User, Favorite, Basket} = require('../models/model')
 const bcrypt = require('bcrypt')
 const MailService = require('../services/mailService')
 const tokenService = require('../services/tokenService')
@@ -22,10 +22,13 @@ const register = async (login, password, name, role) => {
     //(user.id)
     const favoriteID = uuid.v4()
     const favorite = await Favorite.create({id: favoriteID, userId: user.id})
+    const basketId = uuid.v4()
+    const basket = await Basket.create({id: basketId, userId: user.id})
     return {
         ...tokens,
         user: userDto,
-        favorite
+        favorite,
+        basket
     }    
 } 
 
@@ -38,23 +41,30 @@ const activate = async (activationLink) => {
     await user.save();
 }
 const login = async(login, password) => {
-
-    const user = await User.findOne({where: {login}})
-        if (!user) {
-            throw ApiError.BadRequest('Пользователь с таким email не найден')
-        }
-        const isPassEquals = await bcrypt.compare(password, user.password);
-        if (!isPassEquals) {
-            throw ApiError.BadRequest('Неверный пароль');
-        }
-        const userDto = new UserDto(user);
-        const tokens = await tokenService.generationTokens({...userDto});
-        await tokenService.saveToken(userDto.id, tokens.refreshToken);
-        return {...tokens, user: userDto}
+    try{
+        const user = await User.findOne({where: {login}})
+        console.log(password)
+            if (user === null) {
+                throw ApiError.BadRequest('Пользователь с таким email не найден')
+            }
+            const isPassEquals = await bcrypt.compare(password, user.password);
+            const hashedpassword = await bcrypt.hash(password, 4)
+            console.log(hashedpassword)
+            console.log(user.password)
+            console.log(isPassEquals)
+            if (!isPassEquals) {
+                throw ApiError.BadRequest('Неверный пароль');
+            }
+            const userDto = new UserDto(user);
+            const tokens = await tokenService.generationTokens({...userDto});
+            await tokenService.saveToken(userDto.id, tokens.refreshToken);
+            return {...tokens, user: userDto}
+    } catch (error) {
+        console.log(error)
+    }
     
 }
 const logout = async (refreshToken) => {
-    //(refreshToken)
     const token = await tokenService.removeToken(refreshToken);
     return token;
 }

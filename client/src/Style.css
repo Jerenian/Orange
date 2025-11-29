@@ -1,9 +1,23 @@
+
+
+
 html, body{
     width: 100%;
     height: 100%;
     box-sizing: border-box;
     background: #F9FAFB ; 
-    font-family: "Montserrat", sans-serif !important;
     position: relative;
-}
+    font-style: normal;
+    font-family: "Podkova", serif !important;
 
+}
+input, button, a{
+    font-family: "Podkova", serif !important;
+}
+.root{
+    height: 100%;
+}
+.app{
+    position: relative;
+    height: 100%;
+}

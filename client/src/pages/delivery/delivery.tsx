@@ -1,6 +1,12 @@
 import React from 'react'
 import classes from './style.module.scss'
+import { useDispatch } from 'react-redux'
+import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 const Delivery = () => {
+    const dispatch = useDispatch()
+    const hendlePayment = () => {
+        dispatch(changePaymentModal())
+    }
   return (
         <div className={classes.wrapper}>
         <div className={classes.cover}>
@@ -437,7 +443,7 @@ const Delivery = () => {
                     </div>
                 </div>
                 <div className={classes.buttonContiner}>
-                    <button className={classes.item}>
+                    <button onClick={() => hendlePayment()} className={classes.item}>
                         Связаться с нами
                     </button>
                 </div>

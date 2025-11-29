@@ -1,15 +1,20 @@
 export interface IProduct  {
-    id: string
-    name: string
-    price: number | null;
+    id?: string
+    name?: string
+    price?: number | null | string;
     description?: string
     img?: string
-    typeId: string
+    typeId?: string
     categoryId?: string
-    isPopular?: string
+    isPopular?: string | boolean
+    quantity?: number
+    palette?: string 
+    file?: File | null
+    typeName?: string
 }
 export interface IProductProps  {
     data:IProduct
+    column?: boolean
 }
 export interface ITypes {
     id: string,
@@ -30,7 +35,7 @@ export interface IUser {
     role?: string
 }
 export interface IUserResponse {
-    user: IUser,
+    data: IUser,
     token: string
 }
 export interface IAuthState  {
@@ -51,6 +56,32 @@ export interface IFavoriteData {
     idList?: string[]
 }
 export interface ICreateType{
-    name?: string,
+    id?: string
+    name?: string
     file: Blob | undefined | string 
+}
+export interface IOrders {
+    id?: string
+    name?: string
+    surname?: string
+    phone?: string
+    email?: string
+    delivery?: boolean,
+    address?: string,
+    shop?: string,
+    isHanded?: boolean,
+    price?: number
+    paid?: boolean
+    products: IProduct[]
+}
+export interface IQuantity {
+        id?: string
+        productId?: string,
+        quantity?: number,
+        name?: string
+}
+export interface IOrdersData {
+    data?: IOrders[],
+    active?: IOrders[],
+    quantity?: IQuantity[]
 }

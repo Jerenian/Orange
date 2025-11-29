@@ -1,70 +1,104 @@
 .wrapper{
     .cover{
-        padding: 126px 80px ;
+        padding: 6% 2% ;
         background: linear-gradient(90deg, #E5FA39 0%, #FC8B48 100%);
         display: flex;
         align-items: start;
         flex-direction: column;
         gap: 21px;
+        word-spacing: 0.1em;
+            @media (max-width: 1280px) {
+                align-items: center;
+            }
         .title{
-            color: #000;
-            font-size: 60px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 60px; /* 100% */
+            font-size: 4vw;
+            font-weight: 400;
+            @media (max-width: 1280px) {
+                font-size: 5vw;
+            }
+            @media (max-width: 680px) {
+                font-size: 6vw;
+            }
+            @media (max-width: 480px) {
+                font-size: 22px;
+            }
         }
         .subTitle{
-            color: #000;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 32px; 
+
+            font-size: 2vw;
+            width: 80%;
+            @media (max-width: 1280px) {
+                font-weight: 400;
+                text-align: center;
+                width: 100%;
+                font-size: 3vw;
+            }  
+            @media (max-width: 680px) {
+                text-align: center;
+                font-size: 4vw;
+            }    
+            @media (max-width: 480px) {
+                font-size: 18px;
+            }          
         }
     }
     .info{
         display: flex;  
         gap: 30px;
-        font-size: 18px;
+        font-size: 16px;
         .container{
             display: flex;  
             gap: 7px;
+            align-items: center;
+             @media (max-width: 1280px) {
+                background-color: #e5e7ebc7;
+                padding: 5px 10px;
+                border-radius: 10px;
+                font-size: 14px;
+            }  
             p{
                 margin-top: 3px;
             }
         }
     }
     .area{
-        padding: 64px 0;
+        padding: 5% 0 0;
         display: flex;
         justify-content: center;
         .container{
             width: 60%;
             .titleContainer{
                 text-align: center;
+                
                 .title{
                     color: #1F2937;
                     font-size: 30px;
-                    font-weight: 700;
+                    font-weight: 400;
                     line-height: 36px;
                 }
                 .subTitle{
+                    font-weight: 400;
                     padding-top: 16px;
                     color: #4B5563;
                     text-align: center;
-                    font-size: 16px;
+                    font-size: 20px;
                     line-height: 24px; 
                 }
             }
             .cardContainer{
                 padding-top: 20px;
                 display: flex;
+                flex-wrap: wrap;
+                width: 100%;
                 gap: 10%;
                 .card1{
-                    width: 100%;
+                    flex: 40%;
+                    
                     border-radius: 12px;
                     border: 2px solid #E5FA3C;
                     background: #FFF;
                     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+
                     .continer{
                         padding: 26px;
                         .iconContiner{
@@ -82,8 +116,8 @@
                                 color: #1F2937;
                                 text-align: center;
                                 font-size: 20px;
-                                font-weight: 700;
                                 line-height: 28px;
+                                font-weight: 400;
                             }
                             .subTitle{
                                 padding-top: 4px;
@@ -91,7 +125,6 @@
                                 color: #FC8B48;
                                 font-size: 18px;
                                 font-weight: 700;
-
                             }
                         }
                         .textContiner{
@@ -104,124 +137,11 @@
                     }
                 }
                 .card2{
-                    width: 100%;
-                    border-radius: 12px;
-                    border: 2px solid #E5E7EB;
-                    background: #FFF;
-                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
-                    .continer{
-                        padding: 26px;
-                        .iconContiner{
-                            display: flex;
-                            justify-content: center;
-                            .icon{
-                                border-radius: 9999px;
-                                background: #E5E7EB;
-                                padding: 16px 20px;
-                            }
-                        }
-                        .titleContiner{
-                            padding: 16px 0;
-                            .title{
-                                color: #1F2937;
-                                text-align: center;
-                                font-size: 20px;
-                                font-weight: 700;
-                                line-height: 28px;
-                            }
-                            .subTitle{
-                                padding-top: 4px;
-                                text-align: center;
-                                color: #1F2937;
-                                font-size: 18px;
-                                font-weight: 700;
-
-                            }
-                        }
-                        .textContiner{
-                            .text{
-                                padding: 5px;
-                                display: flex;
-                                gap: 4px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .options{
-        padding: 64px 0;
-        display: flex;
-        justify-content: center;
-        .container{
-            width: 60%;
-            .titleContainer{
-                text-align: center;
-                .title{
-                    color: #1F2937;
-                    font-size: 30px;
-                    font-weight: 700;
-                    line-height: 36px;
-                }
-                .subTitle{
-                    padding-top: 16px;
-                    color: #4B5563;
-                    text-align: center;
-                    font-size: 16px;
-                    line-height: 24px; 
-                }
-            }
-            .cardContainer{
-                padding-top: 20px;
-                display: flex;
-                gap: 10%;
-                .card1{
-                    width: 100%;
-                    border-radius: 12px;
-                    border: 2px solid #E5FA3C;
-                    background: #FFF;
-                    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
-                    .continer{
-                        padding: 26px;
-                        .iconContiner{
-                            display: flex;
-                            justify-content: center;
-                            .icon{
-                                border-radius: 9999px;
-                                background-color: #E5FA39;
-                                padding: 16px 20px;
-                            }
-                        }
-                        .titleContiner{
-                            padding: 16px 0;
-                            .title{
-                                color: #1F2937;
-                                text-align: center;
-                                font-size: 20px;
-                                font-weight: 700;
-                                line-height: 28px;
-                            }
-                            .subTitle{
-                                padding-top: 4px;
-                                text-align: center;
-                                color: #FC8B48;
-                                font-size: 18px;
-                                font-weight: 700;
-
-                            }
-                        }
-                        .textContiner{
-                            .text{
-                                padding: 5px;
-                                display: flex;
-                                gap: 4px;
-                            }
-                        }
-                    }
-                }
-                .card2{
-                    width: 100%;
+                    flex: 40%;
+                    @media (max-width: 680px) {
+                        flex: 60%;
+                        margin-top: 15px;
+                    }  
                     border-radius: 12px;
                     border: 2px solid #E5E7EB;
                     background: #FFF;
@@ -268,18 +188,20 @@
         }
     }
     .conditons{
-        padding: 64px 0;
+        padding: 5% 0 ;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
+        @media (max-width: 580px) {
+            padding: 10% 0;
+        }
         .container{
-            width: 90%;
             .titleContainer{
                 text-align: center;
                 .title{
                     color: #1F2937;
                     font-size: 30px;
-                    font-weight: 700;
-                    line-height: 36px;
+                    font-weight: 400;
                 }
                 .subTitle{
                     padding-top: 16px;
@@ -290,11 +212,24 @@
                 }
             }
             .cardContainer{
-                padding-top: 20px;
+                padding: 2% 8%;
+                
                 display: flex;
                 gap: 2%;
+                flex-wrap: wrap;
+                justify-content: center;
+                    @media (max-width: 580px) {
+                        padding: 2% 20%;
+                    }
                 .card1{
-                    width: 100%;
+                    flex: 22%;
+                    @media (max-width: 1280px) {
+                        flex: 40%;
+                    }
+                    @media (max-width: 580px) {
+                        flex: 60%;
+                        margin-top: 2%;
+                    }
                     border-radius: 12px;
                     background: #FFF;
                     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
@@ -336,7 +271,14 @@
                     }
                 }
                 .card2{
-                    width: 100%;
+                    flex: 22%;
+                    @media (max-width: 1280px) {
+                        flex: 40%;
+                    }
+                    @media (max-width: 580px) {
+                        flex: 60%;
+                        margin-top: 10%;
+                    }
                     border-radius: 12px;
                     background: #FFF;
                     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
@@ -377,7 +319,15 @@
                     }
                 }
                 .card3{
-                    width: 100%;
+                    flex: 22%;
+                    @media (max-width: 1280px) {
+                        margin-top: 2%;
+                        flex: 40%;
+                    }
+                    @media (max-width: 580px) {
+                        flex: 60%;
+                        margin-top: 10%;
+                    }
                     border-radius: 12px;
                     background: #FFF;
                     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
@@ -418,7 +368,15 @@
                     }
                 }
                 .card4{
-                    width: 100%;
+                    flex: 22%;
+                    @media (max-width: 1280px) {
+                        flex: 40%;
+                        margin-top: 2%;
+                    }
+                    @media (max-width: 580px) {
+                        flex: 60%;
+                        margin-top: 10%;
+                    }
                     border-radius: 12px;
                     background: #FFF;
                     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
@@ -462,40 +420,48 @@
         }
     }
     .questions{
-        padding: 64px 0;
+        padding: 5% 0 ;
         display: flex;
         justify-content: center;
         background: linear-gradient(90deg, #E5FA3C 0%, #FB6D41 100%);
             .container{
-            width: 50%;
+                @media (max-width: 680px) { 
+                    padding:0 20px ;                       
+                }
                 .titleContainer{
                     text-align: center;
+                    @media (max-width: 680px) {
+                        text-align: left;                    
+                    }
                     .title{
                         color: #1F2937;
                         font-size: 30px;
-                        font-weight: 700;
-                        line-height: 36px;
+                        font-weight: 400;
                     }
                     .subTitle{
                         padding-top: 16px;
                         color: #4B5563;
-                        text-align: center;
                         font-size: 16px;
-                        line-height: 24px; 
                     }
                 }
                 .cardContainer{
                     padding-top: 20px;
                     display: flex;
                     gap: 10%;
+                    flex-wrap: wrap;
+                    align-items: stretch;
                     .card1{
-                        width: 100%;
+                        flex: 40%;
                         border-radius: 12px;
+                            @media (max-width: 680px) {
+                                flex: 60%;
+                            }
                         .continer{
                             display: flex;
-                            padding: 26px;
                             gap: 15px;
                             align-items: center;
+                            justify-content: start;
+
                             .iconContiner{
                                 .icon{
                                     border-radius: 9999px;
@@ -526,17 +492,23 @@
                         }
                     }
                     .card2{
-                        width: 100%;
+                        flex: 40%;
+                        @media (max-width: 680px) {
+                            flex: 60%;
+                        }
                         .continer{
-                            display: flex;
-                            padding: 26px;
                             gap: 15px;
+                            display: flex;
                             align-items: center;
+                            justify-content: flex-end;
+                            @media (max-width: 680px) {
+                                justify-content: start;
+                            }
                             .iconContiner{
                                 .icon{
                                     border-radius: 9999px;
                                     background: #E5FA39;
-                                    padding: 14px;
+                                    padding: 14px 15px;
                                 }
                             }
                             .titleContiner{

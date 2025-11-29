@@ -8,10 +8,9 @@ import { register } from "swiper/element";
 export const UserApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5001/api/user",
+        baseUrl: `${import.meta.env.VITE_API_URL}api/user`,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem('accessToken')
-            //console.log(token)
             if(token) {
                 headers.set('authorization', `Berear ${token}`)
             }

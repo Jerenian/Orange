@@ -10,7 +10,6 @@ let initialState =
         isActivated: undefined,
         login: "",
         name: "",
-        password: "",
         role: "",
     }
 }
@@ -20,11 +19,19 @@ export const UserSlice = createSlice({
     initialState: initialState,
     reducers : {
         getUserInfo (state, action) {
-            state.data = action.payload
-            console.log(state)
+            //////console.log(action)
+            state.data.id = action?.payload?.id
+            state.data.login = action?.payload?.login
+            state.data.name = action?.payload?.name
+            state.data.role = action?.payload?.role
+
+        },
+        logOut: (state) => {
+            state.data = initialState.data
+            localStorage.clear()
         }
     }
 })
 
-export const {getUserInfo} = UserSlice.actions
+export const {getUserInfo, logOut} = UserSlice.actions
 export default UserSlice.reducer

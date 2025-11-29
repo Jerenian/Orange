@@ -3,22 +3,40 @@ const uuid = require('uuid')
 const path = require('path')
 const {Product} = require('../models/model')
 const { where } = require('sequelize')
-const {Popular} = require('../models/model')
 const jwt = require('jsonwebtoken')
-
+const fs = require('fs')
 
     const remove = async  (req, res) =>{
-
-        try {
-            
-        } catch (error) {
-            
+    try {
+        const token = req.headers.authorization.split(' ')[1]
+        if (!token) {
+            return res.status(401).json({message: "Не авторизован"})
         }
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
+        if (decoded.role !== 'admin') {
+            return res.status(403).json({message: "Нет доступа"})
+        }
+        const {id} = req.body
+        console.log(req.body)
+        const {img} = await Product.findOne({id})
+        const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', img), () => {
+            console.log(img)
+        })
+        const type = await Product.destroy({
+            where: {
+                id
+            },
+        });
+
+        res.json(type)
+    } catch (error) {
+        console.log(error.message)
+    }
     }
     const create = async (req, res)  =>{
-
+        console.log('create')
         try {
-
+            console.log(req.headers)
             const token = req.headers.authorization.split(' ')[1]
             if(!token) {
                return res.status(401).json({message: "Не авторизован"})
@@ -27,42 +45,24 @@ const jwt = require('jsonwebtoken')
             if (decoded.role !== 'admin') {
                 return res.status(403).json({message: "Нет доступа"})
             }
-            const {name, price, typeId, description, isPopular, country, length} = req.body
+            const {name, price, typeId, description, isPopular, country, length, palette} = req.body
             const {img} = req.files
-            console.log(img)
+            console.log(req.body)
             let fileName = uuid.v4() + ".jpg"
             let id = uuid.v4()
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const item = await Product.create({id, name, price, typeId, description, isPopular, country, length, img: fileName})
+            const item = await Product.create({id, name, price, typeId, description, isPopular, country, length, img: fileName, palette})
             return res.json(item)
             
         } catch (error) {
-            (error.message)  
+            console.log(error.message)  
         }
     }
-    const put = async (req)  =>{
-        try {
-            const token = req.headers.authorization.split(' ')[1]
-            if (!token) {
-                return res.status(401).json({message: "Не авторизован"})
-            }
-            //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
-            //(process.env.JWT_SECRET_ACCESS_KEY)
-            const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-            //(decoded)
-            if (decoded.role !== 'admin') {
-                return res.status(403).json({message: "Нет доступа"})
-            }
-            
-        } catch (error) {
-            
-        }
-    }
+
     const getAll = async (req, res)=>{
-        //("GetAll")
+
         try {
             const {typeId, categoryId} = req.query
-            //(req.query)
             let product
             if(!typeId && !categoryId) {
                 product = await Product.findAll()
@@ -78,47 +78,194 @@ const jwt = require('jsonwebtoken')
             res.json(product)
 
         } catch (error) {
-            
+            console.log(error.message)
         }
     } 
     const getOne = async (req, res) =>{
-        //("GetOne")
+            console.log(req.params);
+        
         try {
             const {id} = req.params
             const product = await Product.findOne({where: {id}})
             return res.json(product)
         } catch (error) {
-            
+            //////console.log(error.message)
         }
     }
 
-    const addPopular = async (req, res) => {
+
+    const update = async(req, res) => {
+        console.log('update')
+        console.log(req.body)
+        try {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
         }
-        //const decoded = tokenService.validateAccessToken(token, process.env.SECRET_KEY)
-        //(process.env.JWT_SECRET_ACCESS_KEY)
         const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        //(decoded)
         if (decoded.role !== 'admin') {
             return res.status(403).json({message: "Нет доступа"})
         }
-        //('add Popular')
-        //(req.body)
-        try{
-            let id = uuid.v4()
-            const {productId} = req.body
-            const product = await Product.findOne({where: {id: productId}})
-            //(product)
-            //(productId)
-            const item = await Popular.create({id, productId})
-            //(item)
-            res.json(item)
-        } catch (error) {
-            //(error.message)
+        const {name, id, price, description, isPopular, palette} = req.body
+        console.log(palette)
+        let item
+
+        if(req.files) {
+            const {img} = req.files 
+            let fileName = uuid.v4() + ".jpg"
+            if(img){
+                img.mv(path.resolve(__dirname, '..', 'static', fileName))
+                const product = await Product.findOne({id})
+                const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', product.img), () => {
+                    console.log(img)
+                })
+            }
+            item = await Product.update(
+            {
+                name: name,
+                price: price,
+                description: description,
+                isPopular: isPopular,
+                img: fileName,
+                palette: palette,
+
+            },
+            { 
+                where:{id}
+            }
+            )
         }
+        else {
+            item = await Product.update(
+            {
+                name: name,
+                price: price,
+                description: description,
+                isPopular: isPopular,
+                palette: palette
+
+            },
+            { 
+                where:{id}
+            }
+            )
+        }
+        res.json(item)
+        
+    } catch (error) {
+        console.log(error.message)
+    }
 
     }
+
+const updatePopular = async (req,res) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1]
+        if (!token) {
+            return res.status(401).json({message: "Не авторизован"})
+        }
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
+        if (decoded.role !== 'admin') {
+            return res.status(403).json({message: "Нет доступа"})
+        }
+        const {id, isPopular} = req.body
+
+        const item = await Product.update(
+        {
+            isPopular: isPopular
+        },
+        {  
+            where:{id}
+        }
+        )
+        res.json(item)
+
+    } catch (error) {
+
+    }
+}
+const filter = async (req,res) => {
+    const request = req.body 
+    let products
+    let filteredProducts
+    console.log(request)
+    request?.typeId ? products = await Product.findAll({where: {typeId: request.typeId}}) : products = await Product.findAll()
+    if(request?.name.length && request?.price){
+        if(request.category.toUpperCase() == "ЦВЕТЫ") {
+            request.name = request.name?.map(item => item.toUpperCase())
+            filteredProducts = products?.filter(item => request?.name?.includes(item?.name.split(' ')[0].toUpperCase()))
+        } else {
+            filteredProducts = products?.map(item =>  {
+                return request.name?.map(names => {
+                    if(item?.description.toUpperCase().includes(names.toUpperCase())) {
+                        return item
+                    }
+                    else{
+                        return null
+                    }
+                })   
+            })
+        filteredProducts = filteredProducts?.map(item => item[0])?.filter(item => item !== null)
+        }
+    filteredProducts = filteredProducts?.filter(item =>  request.price.min <= item.price && item.price <= request.price.max)
+    } else if(request?.name.length && !request?.price){
+        if(request.category.toUpperCase() == "ЦВЕТЫ") {
+            request.name = request.name?.map(item => item.toUpperCase())
+            filteredProducts = products?.filter(item => request.name.includes(item.name.split(' ')[0].toUpperCase()))
+        } else {
+            filteredProducts = products?.map(item =>  {
+                return request.name?.map(names => {
+                    if(item?.description.toUpperCase().includes(names.toUpperCase())) {
+                        return item
+                    }
+                    else{
+                        return null
+                    }
+                })   
+            })
+        filteredProducts = filteredProducts?.map(item => item[0])?.filter(item => item !== null)
+    }
+    }else if(!request?.name.length && request?.price){
+        filteredProducts = products.filter(item => request.price.min <= item.price && item.price <= request.price.max)
+    }
+    res.json(filteredProducts)
+}
+const search = async (req,res) => {
+    const request = req.params.text
+    console.log(request)
+    const data = await Product.findAll()
+    let result = data.filter(item => JSON.stringify(item.name.toUpperCase()).includes(request.toUpperCase()) || JSON.stringify(item.description.toUpperCase()).includes(request.toUpperCase()));
+    res.json(result)
+}
+const sort = async (req,res) => {
+
+    const data = req.body.data
+    const param = req.body.param
+    if(param == 'down'){
+        data?.sort(function (a, b) {
+            if (a.price > b.price) {
+                return 1;
+            }
+            if (a.price < b.price) {
+                return -1;
+            }
+        return 0;
+        });
+    }
+    if(param == 'up'){
+        data?.sort(function (a, b) {
+            if (a.price > b.price) {
+                return -1;
+            }
+            if (a.price < b.price) {
+                return 1;
+            }
+        return 0;
+        });
     
-module.exports = {getAll, getOne, create, remove, addPopular}
+    }
+    res.json(data)
+  
+}
+    
+module.exports = {getAll, getOne, create, remove, update, updatePopular, filter, search, sort}

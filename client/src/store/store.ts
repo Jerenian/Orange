@@ -10,6 +10,14 @@ import  FavoriteReudcer from "../features/favoriteSlice/favoriteSlice";
 import userRducer from "../features/userSlice/userSlice"
 import { CreateItemsApi } from "../services/create";
 import { RemoveItemsApi } from "../services/remove";
+import { ChangeItemsApi } from "../services/change";
+import { FilterSortApi } from "../services/filterSort";
+import { BasketApi } from "../services/basket";
+import  ProductReducer from "../features/productSlice/ProductSlice";
+import BasketReducer from "../features/basketSlice/basketSlice"
+import OrderReducer  from "../features/orderSlice/orderSlice";
+import { OrderApi } from "../services/order";
+import MessageReducer from '../features/messageSlice/messageSlice'
 export const store = configureStore({
     reducer: {
         [ProductApi.reducerPath] : ProductApi.reducer,
@@ -18,14 +26,33 @@ export const store = configureStore({
         [FavoriteApi.reducerPath]: FavoriteApi.reducer,
         [CreateItemsApi.reducerPath]: CreateItemsApi.reducer,
         [RemoveItemsApi.reducerPath]: RemoveItemsApi.reducer,
+        [ChangeItemsApi.reducerPath]: ChangeItemsApi.reducer,
+        [FilterSortApi.reducerPath]: FilterSortApi.reducer,
+        [BasketApi.reducerPath]: BasketApi.reducer,
+        [OrderApi.reducerPath]: OrderApi.reducer,
         "modal" : ModalReducer,
         "type": TypeReducer,
         "favorite": FavoriteReudcer,
-        "user": userRducer
+        "user": userRducer,
+        "product": ProductReducer,
+        "basket": BasketReducer,
+        "orders" : OrderReducer,
+        "message" : MessageReducer
     },
 
     middleware: (getDefaultMiddleware) => 
-        getDefaultMiddleware().concat(ProductApi.middleware, typeApi.middleware, UserApi.middleware, FavoriteApi.middleware, CreateItemsApi.middleware, RemoveItemsApi.middleware),
+        getDefaultMiddleware().concat(
+            ProductApi.middleware,
+            typeApi.middleware, 
+            UserApi.middleware,
+            FavoriteApi.middleware,
+            CreateItemsApi.middleware,
+            RemoveItemsApi.middleware,
+            ChangeItemsApi.middleware,
+            FilterSortApi.middleware,
+            BasketApi.middleware,
+            OrderApi.middleware
+        ),
     devTools: true
 })
 
