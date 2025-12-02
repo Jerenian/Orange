@@ -109,13 +109,12 @@
                 }
                 }
                 button{
-                    padding: 10px 15px;
                     border-radius: 8px;
                     background-color: #FB6D41;
+                    padding: 5px;
                     color: #fff;
                 @media (max-width: 620px) {
                     font-size: 12px;
-                    padding: 8px 12px;
                 }
                 }
                 button:active{
