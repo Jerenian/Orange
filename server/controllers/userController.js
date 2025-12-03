@@ -17,7 +17,6 @@ const create = async (req, res, next)  =>{
         return res.json(userData)
     } catch (error) {
         next(error)
-        console.log(error.message)
     }
 }
 const login = async (req, res, next) => {   

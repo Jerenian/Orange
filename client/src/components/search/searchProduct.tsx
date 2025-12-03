@@ -42,7 +42,6 @@ const SearchProduct = ({data}: IProductProps) => {
             e.stopPropagation()
             if(item.palette.length) {
                 if(palette === '') {
-                    console.log('a')
                     setMessage({...message, chooseColor: 'Выберите цвет'})
                     throw new Error()
                 } else {

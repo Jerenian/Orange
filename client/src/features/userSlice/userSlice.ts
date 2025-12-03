@@ -19,7 +19,6 @@ export const UserSlice = createSlice({
     initialState: initialState,
     reducers : {
         getUserInfo (state, action) {
-            //////console.log(action)
             state.data.id = action?.payload?.id
             state.data.login = action?.payload?.login
             state.data.name = action?.payload?.name

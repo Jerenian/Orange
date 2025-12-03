@@ -46,7 +46,6 @@ const Product = ({data, column}: IProductProps) => {
             e.stopPropagation()
             if(item.palette.length) {
                 if(palette === '') {
-                    console.log('a')
                     setMessage({...message, chooseColor: 'Выберите цвет'})
                     throw new Error()
                 } else {

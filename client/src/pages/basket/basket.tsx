@@ -78,7 +78,6 @@ const Basket = () => {
         //     return acc
         // }, [])
         data.push({email: contact.email, phone: contact.phone, name: contact.name, surname: contact.surname, delivery: delivery, address: address.item, comment: address.comment, payOnline: payOnline, shop: shop, products: updatedData, price: basket.totalAmount})
-        console.log(basket.quantity)
         if(payOnline){
             const resPayment = delivery ? await payment(basket.totalAmount + 500) : await payment(basket.totalAmount)
             const {confirmation} = resPayment.data
@@ -93,7 +92,6 @@ const Basket = () => {
             })
             window.location.href = confirmation.confirmation_url
         } else {
-            console.log('a')
             data = data.map(item => {
                 return {
                     ...item,
@@ -104,11 +102,9 @@ const Basket = () => {
 
         const resOrder = await order(data)
         if(resOrder.data){
-            console.log(resOrder.data)
             dispatch(getOrders(resOrder.data))
         }
         else {
-            console.log('err')
             setError('Произошла ошибка')
         }
     }
@@ -130,7 +126,6 @@ const Basket = () => {
     }
     const hendleClear = async () => {
         const result = await clear('')
-        console.log(result)
         if(result.data === "success"){
             dispatch(getBasket(null))
         } else {
@@ -141,7 +136,7 @@ const Basket = () => {
         <div className={classes.wrapper}>
              <div className={classes.cover}>
                 <div className={classes.iconContainer}>
-                    <svg width="64px" height="64px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.41600000000000004"></g><g id="SVGRepo_iconCarrier"> <path d="M1.24264 8.24264L8 15L14.7574 8.24264C15.553 7.44699 16 6.36786 16 5.24264V5.05234C16 2.8143 14.1857 1 11.9477 1C10.7166 1 9.55233 1.55959 8.78331 2.52086L8 3.5L7.21669 2.52086C6.44767 1.55959 5.28338 1 4.05234 1C1.8143 1 0 2.8143 0 5.05234V5.24264C0 6.36786 0.44699 7.44699 1.24264 8.24264Z" fill="#FC8B48"></path> </g></svg>
+                    <svg width="64px" height="64px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="0.41600000000000004"></g><g id="SVGRepo_iconCarrier"> <path d="M1.24264 8.24264L8 15L14.7574 8.24264C15.553 7.44699 16 6.36786 16 5.24264V5.05234C16 2.8143 14.1857 1 11.9477 1C10.7166 1 9.55233 1.55959 8.78331 2.52086L8 3.5L7.21669 2.52086C6.44767 1.55959 5.28338 1 4.05234 1C1.8143 1 0 2.8143 0 5.05234V5.24264C0 6.36786 0.44699 7.44699 1.24264 8.24264Z" fill="#FC8B48"></path> </g></svg>
                 </div>
                 <div className={classes.text}>
                     <h1 className={classes.title}>Корзина товаров</h1>
@@ -503,7 +498,7 @@ const Basket = () => {
                                     className={classes.circle}></div>
                                     <div className={classes.iconContainer}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="20" viewBox="0 0 23 20" fill="none">
-                                        <g clip-path="url(#clip0_44_2447)">
+                                        <g clipPath="url(#clip0_44_2447)">
                                             <path d="M2.5 1.25C1.12109 1.25 0 2.37109 0 3.75V5H22.5V3.75C22.5 2.37109 21.3789 1.25 20 1.25H2.5ZM22.5 8.75H0V16.25C0 17.6289 1.12109 18.75 2.5 18.75H20C21.3789 18.75 22.5 17.6289 22.5 16.25V8.75ZM4.375 13.75H6.875C7.21875 13.75 7.5 14.0312 7.5 14.375C7.5 14.7188 7.21875 15 6.875 15H4.375C4.03125 15 3.75 14.7188 3.75 14.375C3.75 14.0312 4.03125 13.75 4.375 13.75ZM8.75 14.375C8.75 14.0312 9.03125 13.75 9.375 13.75H14.375C14.7188 13.75 15 14.0312 15 14.375C15 14.7188 14.7188 15 14.375 15H9.375C9.03125 15 8.75 14.7188 8.75 14.375Z" fill="#4B5563"/>
                                         </g>
                                         <defs>
@@ -523,7 +518,7 @@ const Basket = () => {
                                     className={classes.circle}></div>
                                     <div className={classes.iconContainer}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="20" viewBox="0 0 23 20" fill="none">
-                                        <g clip-path="url(#clip0_44_2453)">
+                                        <g clipPath="url(#clip0_44_2453)">
                                             <path d="M2.5 2.5C1.12109 2.5 0 3.62109 0 5V15C0 16.3789 1.12109 17.5 2.5 17.5H20C21.3789 17.5 22.5 16.3789 22.5 15V5C22.5 3.62109 21.3789 2.5 20 2.5H2.5ZM5 15H2.5V12.5C3.87891 12.5 5 13.6211 5 15ZM2.5 7.5V5H5C5 6.37891 3.87891 7.5 2.5 7.5ZM17.5 15C17.5 13.6211 18.6211 12.5 20 12.5V15H17.5ZM20 7.5C18.6211 7.5 17.5 6.37891 17.5 5H20V7.5ZM11.25 6.25C12.2446 6.25 13.1984 6.64509 13.9017 7.34835C14.6049 8.05161 15 9.00544 15 10C15 10.9946 14.6049 11.9484 13.9017 12.6517C13.1984 13.3549 12.2446 13.75 11.25 13.75C10.2554 13.75 9.30161 13.3549 8.59835 12.6517C7.89509 11.9484 7.5 10.9946 7.5 10C7.5 9.00544 7.89509 8.05161 8.59835 7.34835C9.30161 6.64509 10.2554 6.25 11.25 6.25Z" fill="#4B5563"/>
                                         </g>
                                         <defs>

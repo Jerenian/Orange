@@ -5,8 +5,6 @@ import { changePaymentModal, changeProductInfo } from '../../features/modalSlice
 const ProductInfoModal = () => {
     const modal = useSelector((state) => state.modal.productInfo.visible)
     const data = useSelector((state) => state.modal.productInfo.product)
-    //console.log(modal)
-    //console.log(data)
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(changeProductInfo(null))

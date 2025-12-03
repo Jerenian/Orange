@@ -55,7 +55,6 @@ const remove = async (req, res) => {
         });
         fileList.map(item => {
             const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', item), () => {
-                console.log(item)
             })
         })
         res.json(type)
@@ -67,7 +66,6 @@ const getAll = async (req, res) => {
         const types = await Type.findAll()
         return res.json(types)
     } catch (error) {
-        console.log(error.message)
     }
 }
 
@@ -82,7 +80,6 @@ const update = async (req, res) => {
             return res.status(403).json({message: "Нет доступа"})
         }
         const {name, id} = req.body
-        console.log(name)
         let item 
         if(req.files) {
             const {img} = req.files
@@ -107,7 +104,6 @@ const update = async (req, res) => {
     )
         res.json(item)
     } catch (error) {
-        //////console.log(error.message)
     }
 }
 module.exports = {create, remove, getAll, update}

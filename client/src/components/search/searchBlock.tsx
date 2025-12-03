@@ -10,7 +10,6 @@ const SearchBlock = () => {
     const searchData = useSearchQuery(value)
     useEffect(() => {
         setValue(search)
-        console.log(searchData)
     }, [search])
     return (
         <div

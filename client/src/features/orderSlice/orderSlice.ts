@@ -8,7 +8,6 @@ export const OrderSlice = createSlice({
     reducers : {
         getOrders: (state, {payload}) => {
             if(payload){
-                console.log(payload)
                 state.data = payload?.filter(item => item)
                 state.active = payload?.filter(item => !item.isHanded)
             }

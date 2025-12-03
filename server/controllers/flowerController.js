@@ -19,7 +19,6 @@ const create = async (req, res) => {
         const type = await FlowerData.create({id, name,})
         return res.json(type)
     } catch (error) {
-        console.log(error.message)
     }
 }
 
@@ -41,7 +40,6 @@ const remove = async (req, res) => {
         })
         res.json(result)
     } catch (error) {
-        console.log(error.message)
     }
 }
 const getAll = async (req, res) => {
@@ -49,7 +47,6 @@ const getAll = async (req, res) => {
         const data = await FlowerData.findAll()
         return res.json(data)
     } catch (error) {
-        console.log(error.message)
     }
 }
 

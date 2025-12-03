@@ -45,14 +45,14 @@ export const BasketApi = createApi({
             })
         }),
         remove: builder.mutation<IProduct[], string[] | null>({
-            query: (credentials) => ( console.log(credentials), {
+            query: (credentials) => ({
                 url: '/',
                 method: "DELETE",
                 body: {credentials}
             })
         }),
         payment:  builder.mutation<any, string[] | null>({
-            query: (price) => ( console.log(price), {
+            query: (price) => ({
                 url: '/payment',
                 method: "POST",
                 body: {price}

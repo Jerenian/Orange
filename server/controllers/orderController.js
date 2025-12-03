@@ -7,14 +7,11 @@ const jwt = require('jsonwebtoken')
 
 const add = async (req, res, next) => {
     const request = req.body[0]
-    console.log("request")
-    console.log(request)
     try {
         const item = await Purchase.create(request)
         const data = await Purchase.findAll()
         res.json(data)
     } catch (error) {
-        console.log(error)
     }
 }
 
@@ -32,7 +29,6 @@ const getAll = async (req, res, next) => {
         const items = await Purchase.findAll()
         res.json(items)
     } catch (error) {
-        console.log(error.message)
     }
 }
 
@@ -62,7 +58,6 @@ const put = async (req, res) => {
     }
 }
 const remove = async (req, res) => {
-    console.log(req.body)
     try {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
@@ -78,7 +73,6 @@ const remove = async (req, res) => {
         }})
         res.json(id)
     } catch (error) {
-        console.log(error.message)
         res.status(400).json({message: "Произошла ошибка при удалении информации о заказе"})
     }
 }

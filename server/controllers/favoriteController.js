@@ -13,7 +13,6 @@ const add = async (req, res, next) => {
         }
         const token = req.headers.authorization.split(' ')[1]
         const productId = req.body.id
-        //console.log('pam')
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
         }
@@ -44,28 +43,10 @@ const add = async (req, res, next) => {
                 }
             })
         }
-        // await FavoriteProduct.destroy({
-        //     where: {
-        //         favoriteId: favorite.id,
-        //         productId: productId
-        //     },
-        //     });
-        //     await FavoriteProduct.create({id, productId, favoriteId: favorite.id})
-        //     await FavoriteProduct.destroy({
-        //             where: {
-        //                 favoriteId: null,
-        //             },
-        //     });
-        //     await FavoriteProduct.destroy({
-        //             where: {
-        //                 productId: null,
-        //             },
-        //     });
         const dataFavorite = await FavoriteProduct.findAll({where: {favoriteId: favorite.id}})
         res.json(dataFavorite)
         
     } catch (error) {
-        //console.log(error.message)
     }
 }
 
@@ -89,9 +70,7 @@ const get = async (req, res, next) => {
             }
         }
         )
-        //console.log(productFavorite)
         const idList = productFavorite?.map(item => item.productId)
-        //console.log(idList)
         const products = await Product.findAll({where : {
             id : {
                 [Op.in] : idList

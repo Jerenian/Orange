@@ -14,7 +14,6 @@ export const FavoriteSlice = createSlice({
     initialState: initialState,
     reducers : {
         getFavorite (state, action) {
-            //console.log(action.payload)
             if(action?.payload)
             {
                 state.data = action.payload

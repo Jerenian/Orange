@@ -59,7 +59,6 @@ export const BasketSlice = createSlice({
 
                 }, [])
                 state.quantity = state?.quantity?.filter(item => item.productId !== null )
-                console.log(state.quantity)
             }
             else
             {
@@ -69,7 +68,6 @@ export const BasketSlice = createSlice({
         },
         setAmount (state, {payload}){
             state.totalAmount = payload
-            console.log(state.totalAmount)
         },
         setNames (state, action) {
 

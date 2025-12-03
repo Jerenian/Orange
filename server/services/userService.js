@@ -43,15 +43,11 @@ const activate = async (activationLink) => {
 const login = async(login, password) => {
     try{
         const user = await User.findOne({where: {login}})
-        console.log(password)
             if (user === null) {
                 throw ApiError.BadRequest('Пользователь с таким email не найден')
             }
             const isPassEquals = await bcrypt.compare(password, user.password);
             const hashedpassword = await bcrypt.hash(password, 4)
-            console.log(hashedpassword)
-            console.log(user.password)
-            console.log(isPassEquals)
             if (!isPassEquals) {
                 throw ApiError.BadRequest('Неверный пароль');
             }
@@ -60,7 +56,6 @@ const login = async(login, password) => {
             await tokenService.saveToken(userDto.id, tokens.refreshToken);
             return {...tokens, user: userDto}
     } catch (error) {
-        console.log(error)
     }
     
 }

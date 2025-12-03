@@ -102,7 +102,6 @@ export const ModalSlice = createSlice({
             state.menu = !state.menu
         },
         changeProductInfo(state, actions){
-            console.log(actions.payload)
             state.productInfo.visible = !state.productInfo.visible
             if(actions?.payload){
                 state.productInfo.product.id = actions.payload.id

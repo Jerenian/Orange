@@ -27,7 +27,6 @@ const Catalog = () => {
     const [typeName, setTypeName] = useState('')
     const filterArrayValues = useGetFlowersQuery(null)
     const [filterData, setFilterData] = useState()
-    console.log(filterArrayValues)
     useEffect(() => {
         setDataProducts(filter?.data)
     }, [filter])
@@ -57,12 +56,10 @@ const Catalog = () => {
         if(filterValue.name.includes(item)){
             let num = filterValue.name.indexOf(item)
             filterValue.name.splice(num, 1)
-            console.log(filterValue)
             e.target.style = 'background-color: transparent'
          } else {
              filterValue.name.push(item)
              e.target.style = 'background-color: #fff;'
-             console.log(e.target)
          }
     }
     const hendleChoose = (value: string) => {
@@ -81,7 +78,6 @@ const Catalog = () => {
         setTypeName(name)
         if(name.toUpperCase() == "ЦВЕТЫ" || name.toUpperCase() == "БУКЕТЫ") {
            setFilterData(filterArrayValues?.data.map(item => item.name))
-           console.log(filterData)
         }
     }
     const saveFilter = async () => {

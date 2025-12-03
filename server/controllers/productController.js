@@ -17,10 +17,8 @@ const fs = require('fs')
             return res.status(403).json({message: "Нет доступа"})
         }
         const {id} = req.body
-        console.log(req.body)
         const {img} = await Product.findOne({id})
         const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', img), () => {
-            console.log(img)
         })
         const type = await Product.destroy({
             where: {
@@ -30,13 +28,10 @@ const fs = require('fs')
 
         res.json(type)
     } catch (error) {
-        console.log(error.message)
     }
     }
     const create = async (req, res)  =>{
-        console.log('create')
         try {
-            console.log(req.headers)
             const token = req.headers.authorization.split(' ')[1]
             if(!token) {
                return res.status(401).json({message: "Не авторизован"})
@@ -47,7 +42,6 @@ const fs = require('fs')
             }
             const {name, price, typeId, description, isPopular, country, length, palette} = req.body
             const {img} = req.files
-            console.log(req.body)
             let fileName = uuid.v4() + ".jpg"
             let id = uuid.v4()
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
@@ -55,7 +49,6 @@ const fs = require('fs')
             return res.json(item)
             
         } catch (error) {
-            console.log(error.message)  
         }
     }
 
@@ -78,25 +71,20 @@ const fs = require('fs')
             res.json(product)
 
         } catch (error) {
-            console.log(error.message)
         }
     } 
     const getOne = async (req, res) =>{
-            console.log(req.params);
         
         try {
             const {id} = req.params
             const product = await Product.findOne({where: {id}})
             return res.json(product)
         } catch (error) {
-            //////console.log(error.message)
         }
     }
 
 
     const update = async(req, res) => {
-        console.log('update')
-        console.log(req.body)
         try {
         const token = req.headers.authorization.split(' ')[1]
         if (!token) {
@@ -107,7 +95,6 @@ const fs = require('fs')
             return res.status(403).json({message: "Нет доступа"})
         }
         const {name, id, price, description, isPopular, palette} = req.body
-        console.log(palette)
         let item
 
         if(req.files) {
@@ -117,7 +104,6 @@ const fs = require('fs')
                 img.mv(path.resolve(__dirname, '..', 'static', fileName))
                 const product = await Product.findOne({id})
                 const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', product.img), () => {
-                    console.log(img)
                 })
             }
             item = await Product.update(
@@ -153,7 +139,6 @@ const fs = require('fs')
         res.json(item)
         
     } catch (error) {
-        console.log(error.message)
     }
 
     }
@@ -188,7 +173,6 @@ const filter = async (req,res) => {
     const request = req.body 
     let products
     let filteredProducts
-    console.log(request)
     request?.typeId ? products = await Product.findAll({where: {typeId: request.typeId}}) : products = await Product.findAll()
     if(request?.name.length && request?.price){
         if(request.category.toUpperCase() == "ЦВЕТЫ") {
@@ -232,7 +216,6 @@ const filter = async (req,res) => {
 }
 const search = async (req,res) => {
     const request = req.params.text
-    console.log(request)
     const data = await Product.findAll()
     let result = data.filter(item => JSON.stringify(item.name.toUpperCase()).includes(request.toUpperCase()) || JSON.stringify(item.description.toUpperCase()).includes(request.toUpperCase()));
     res.json(result)

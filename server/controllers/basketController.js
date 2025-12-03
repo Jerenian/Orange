@@ -23,13 +23,10 @@ const add = async (req, res, next) => {
         const basket = await Basket.findOne({where:{userId: decoded.id}})
 
         const id = uuid.v4()
-        console.log(req.body)
         if(req.body.palette){
             const palette = req.body.palette
-            console.log(palette)
             await BasketProduct.create({id, productId, palette, basketId: basket.id})
         } else {
-            console.log('b')
             await BasketProduct.create({id, productId, basketId: basket.id})
         }
 
@@ -136,7 +133,6 @@ const remove = async (req, res) => {
         let result = basketData?.map(item => item?.productId)
         res.json(basketData)
     } catch (error) {
-        console.log(error.message)
     }
 }
 const clear = async(req, res) => {
@@ -162,7 +158,6 @@ const clear = async(req, res) => {
         res.json('success')
     }
     catch(error) {
-        console.log(error.message)
     }
 }
 module.exports = {create,  get, add, getProducts, remove, clear}

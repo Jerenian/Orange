@@ -11,16 +11,13 @@ export const ProductSlice = createSlice({
     },
     reducers : {
         minPriceOfTheType: (state, acitons) => {
-            console.log(acitons.payload)
             state.product = acitons.payload
         },
         searchItems: (state, actions) => {
             state.search = actions.payload
-            console.log(actions.payload)
 
         },
         allProducts: (state, {payload}) => {
-            console.log(payload)
             if(payload){
                 state.data = payload?.filter(item => item)
             }

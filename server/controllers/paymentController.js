@@ -9,9 +9,7 @@ const YouKassa = new YooCheckout({
 
 const payment =  async (req, res) => {
     const {price} = req.body
-    console.log(price)
     const indKey = uuid.v4()
-    console.log('asdfasd')
     const createPayload = {
         amount: {
           "value": price ,
@@ -49,11 +47,9 @@ const notifications = async( req, res ) => {
                 where:{id}
             }
         )
-        console.log(item)
         res.setHeader('Content-Type', 'application/json');
         res.json(item)
     } catch (error) {
-        console.log('payment : ', error.message)
     }
 }
 module.exports = {payment, notifications}

@@ -12,25 +12,23 @@ const Orders = () => {
     const [setHanded] = useChangeOrderMutation()
     const dataTypes = useSelector(state => state.type.types)
     const [error, setError] = useState({handed:'', remove:''})
-    // const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
     useEffect(()=>{
        products.length ? dispatch(setQuantity(products)) : null
     },[products])
-    console.log(orders.data)
     const hendleRemove = async (id) => {
         const rem = await remove(id)
         dispatch(removeOrder(id))
     }
+
+
     let typeName
     const getType = (item): void => {
         dataTypes?.map(type => {
             type.id === item.typeId ? typeName = type.name : null
         })
-        console.log(typeName)
     }
     const showProduct = (id) => {
         const item = products.filter(el => el.id === id)
-        console.log(item)
         dispatch(changeProductInfo(item[0]))
     }
     const hendleHanded = async (id: string) => {
@@ -41,6 +39,16 @@ const Orders = () => {
         } else {
             setError({...error, handed: "Не удалось изменить статус заказа"})
         }
+    }
+    const getDateTime = (dateStr): string => {
+        const date = new Date(dateStr);
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+        const result = `${day}.${month}.${year} ${hours}:${minutes}`;
+        return result
     }
     return (
         <div className={classes.wrapper}>
@@ -63,11 +71,17 @@ const Orders = () => {
                                                         <h2 className={classes.item}>
                                                             Номер заказа : {item.id}
                                                         </h2>
+                                                            <div className={classes.date}>
+                                                                <p>{getDateTime(item.createdAt)}</p>
+                                                            </div>
                                                             <div className={classes.products}>
                                                                 <div className={classes.title}>
                                                                     <h4 className={classes.item}>
                                                                         Состав заказ
                                                                     </h4>
+                                                                </div>
+                                                                <div className={classes.date}>
+                                                                    <p>{getDateTime(item.createdAt)}</p>
                                                                 </div>
                                                                 <div className={classes.productContainer}>
                                                                 {
@@ -219,12 +233,16 @@ const Orders = () => {
                                                         <h2 className={classes.item}>
                                                             Номер заказа : {item.id}
                                                         </h2>
+                                                            <div className={classes.date}>
+                                                                <p>{getDateTime(item.createdAt)}</p>
+                                                            </div>
                                                             <div className={classes.products}>
                                                                 <div className={classes.title}>
                                                                     <h4 className={classes.item}>
                                                                         Состав заказ
                                                                     </h4>
                                                                 </div>
+
                                                                 <div className={classes.productContainer}>
                                                                 {
                                                                     item?.products.map(product => (
