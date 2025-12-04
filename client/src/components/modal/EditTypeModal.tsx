@@ -8,7 +8,7 @@ import type { ICreateType } from '../../types'
 const EditTypeModal = () => {
     const modal = useSelector(state => state.modal.editType)
     const typeId = useSelector(state => state.modal.typeId)
-    const [dataEdit, setData] = useState<ICreateType>({id: "", name: "", file: undefined})
+    const [dataEdit, setData] = useState<ICreateType>({id: "", name: "", file: null})
     const [edit, {isLoading, data}] = useChangeTypeMutation()
     useEffect(()=> {
         setData({...dataEdit,id: modal.id, name: modal.name, file: modal.img})

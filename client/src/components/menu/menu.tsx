@@ -8,10 +8,8 @@ import { searchItems } from '../../features/productSlice/ProductSlice'
 const Menu = () => {
     const blockRef = useRef(null)
     const modal = useSelector(state => state.modal.menu)
-    //console.log(modal)
     const dispatch = useDispatch()
     const handleClick = () => {
-      console.log('asdfafa')
         dispatch(searchItems(''))
         dispatch(changeMenu(null))
     }

@@ -21,7 +21,7 @@ const About = () => {
           <section className={classes.history}>
             <div className={classes.container}>
                 <div className={classes.img}>
-                    <img src={aboutCover} alt="" />
+                    <img decoding="async" loading="lazy" src={aboutCover} alt="" />
                 </div>
                 <div className={classes.text}>
                     <h3 className={classes.title}>Наша история</h3>

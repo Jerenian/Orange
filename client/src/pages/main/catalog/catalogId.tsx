@@ -12,15 +12,14 @@ import { useChangeProductMutation } from '../../../services/change'
 import { changePaymentModal } from '../../../features/modalSlice/modalSlice'
 import { NavLink } from 'react-router'
 import cover from '../../../assets/images/mainCover.png'
-import { useGetAllTypesQuery } from '../../../services/type'
 import { useFilterMutation, useSortMutation} from '../../../services/filterSort'
 import { Oval } from 'react-loader-spinner'
 import { useGetFlowersQuery } from '../../../services/product'
 const CatalogId = () => {
     const user = useCheckQuery(null)
     let param = useParams()
-    const dataTypes = useGetAllTypesQuery(null)
-    const typeName = dataTypes?.data?.find(item => item.id === param.id)?.name
+    const dataTypes = useSelector(state => state.type.types)
+    const typeName = dataTypes?.find(item => item.id === param.id)?.name
     const [remove] = useRemoveProductMutation()
     const dispatch = useDispatch() 
     const { data, error, isLoading } = useGetByTypeProductQuery(param.id as string)
@@ -154,7 +153,7 @@ const CatalogId = () => {
                     </div>
                 </div>
                 <div className={classes.img}>
-                    <img src={cover} alt="" />
+                    <img decoding="async" loading="lazy" src={cover} alt="" />
                 </div>
             </div>
             <div className={classes.titleContainer}>
@@ -234,7 +233,7 @@ const CatalogId = () => {
                 </div>
                     ) :
                    dataProducts?.length ? dataProducts?.map((item: IProduct) => (
-                    <div className={classes.rowContainer}>
+                    <div key={item.id} className={classes.rowContainer}>
                     { user?.data?.role === 'admin' ? (
                                 <div className={classes.row}>
                                     <button className={classes.remove} onClick={() => hendleRemove(item.id)}>

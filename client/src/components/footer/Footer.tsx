@@ -2,14 +2,18 @@ import React from 'react'
 import classes from "./style.module.scss"
 import logo from "../../assets/logo.png"
 import { NavLink } from 'react-router'
-import { useGetAllTypesQuery } from '../../services/type'
+import { useSelector } from 'react-redux'
+
 const Footer = () => {
-    const dataTypes = useGetAllTypesQuery(null)
+    const dataTypes = useSelector(state => state.type.types)
   return (
     <div className={classes.wrapper}>
       <div className={classes.top}>
         <div className={classes.columnFirst}>
-            <img src={logo} alt="" />
+            <img
+            decoding="async"
+            loading="lazy"
+             src={logo} alt="" />
 
             <p>Создаем красоту и дарим радость <br /> через цветы</p>
             <div className={classes.socialMedia}>
@@ -57,8 +61,8 @@ const Footer = () => {
             </h6>
                 <div>
                     {
-                        dataTypes?.data?.map(item => (
-                            <NavLink to={`catalog/${item.id}`}>
+                        dataTypes?.map(item => (
+                            <NavLink key={item.id} to={`catalog/${item.id}`}>
                                 <p>{item.name}</p>
                             </NavLink>
                         ))

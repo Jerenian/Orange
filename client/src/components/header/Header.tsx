@@ -8,10 +8,10 @@ import Field from '../search/field';
 import SearchBlock from '../search/searchBlock';
 import { searchItems } from '../../features/productSlice/ProductSlice';
 const Header = () => {
-    const favorite = useSelector(state => state.favorite.data)
-    const basket = useSelector(state => state.basket.quantity)
-    const user = useSelector(state => state.user)
-    const orders = useSelector(state => state.orders.active)
+    const favorite = useSelector((state: any) => state.favorite.data)
+    const basket = useSelector((state: any) => state.basket.quantity)
+    const user = useSelector((state: any) => state.user)
+    const orders = useSelector((state: any) => state.orders.active)
     const dispatch = useDispatch()
   return (
     <div className={classes.wrapper}>
@@ -26,11 +26,9 @@ const Header = () => {
             <nav
             onClick={() => dispatch(searchItems(''))}
              className={classes.left}>
-
-                <NavLink to="/"><img className={classes.logo} src={logo} alt="logo" /></NavLink>
+                <NavLink to="/"><img decoding="async" loading='lazy' className={classes.logo} src={logo} alt="logo" /></NavLink>
                 <NavLink className={classes.link} to="about">О нас</NavLink>
                 <NavLink className={classes.link} to="/contact">Контакты</NavLink>
-                {/* <NavLink className={classes.link} to="/payment">Оплата</NavLink> */}
                 <NavLink className={classes.link} to="/delivery">Доставка</NavLink>
             </nav>
             <nav className={classes.center}>

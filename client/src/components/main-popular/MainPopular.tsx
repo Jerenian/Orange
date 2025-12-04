@@ -1,26 +1,21 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import classes from './style.module.scss'
 import type { IProductProps } from '../../types'
-import classicLove from '../../assets/images/pages/main/classicLove.png'
-import { useDispatch } from 'react-redux'
-import { changePaymentModal, changeProductInfo } from '../../features/modalSlice/modalSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 import { useNavigate } from 'react-router'
 import { useAddBasketMutation } from '../../services/basket'
 import { changeMessage } from '../../features/messageSlice/messageSlice'
 import { getBasket } from '../../features/basketSlice/basketSlice'
-import { useGetAllTypesQuery } from '../../services/type'
 const MainPopular = ({data}: IProductProps) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [palette, setPalette] = useState('')
     const [message, setMessage] = useState({chooseColor: '' })
     const [setBasket] = useAddBasketMutation()
-    const dataTypes = useGetAllTypesQuery(null)
-    const typeName = dataTypes?.data?.find(item => item.id === data.typeId)?.name
-    const handleClick = () => {
-        dispatch(changePaymentModal())
-    }
-        const addBasket = async (item, e) => {      
+    const dataTypes = useSelector(state => state.type.types)
+    const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
+        const addBasket = async (item, e: any) => {      
                 e.stopPropagation()
                 if(item.palette.length) {
                     if(palette === '') {
@@ -66,7 +61,7 @@ const MainPopular = ({data}: IProductProps) => {
     <div 
     onClick={() => dispatch(changeProductInfo(data))}
     className={classes.wrapper} >
-        <img src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="" />
+        <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="" />
         <div className={classes.text}>
             <h4 className={classes.title}>{data.name}</h4>
                             <div className={classes.palette}>
@@ -76,8 +71,9 @@ const MainPopular = ({data}: IProductProps) => {
                         ) : null
                     }
                     {
-                        data?.palette?.toString() !== "" ? data.palette.toString().split(',').map(item => (
+                        data?.palette?.toString() !== "" ? data?.palette.toString().split(',').map((item, i) => (
                             <div 
+                            key={i}
                             className={classes.paletteContainer}>
                             {
                                 typeName?.toUpperCase() != 'ОТКРЫТКИ' ? (

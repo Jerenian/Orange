@@ -11,7 +11,6 @@ import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
 import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 import { useAddBasketMutation } from '../../services/basket'
 import { getBasket } from '../../features/basketSlice/basketSlice'
-import { useGetAllTypesQuery } from '../../services/type'
 import { changeMessage } from '../../features/messageSlice/messageSlice'
 const Product = ({data, column}: IProductProps) => {
     const [setFavorite] = useAddFavoriteMutation()
@@ -20,10 +19,10 @@ const Product = ({data, column}: IProductProps) => {
     const dataBaskets = useSelector(state => state.basket.data)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const dataTypes = useGetAllTypesQuery(null)
+    const dataTypes = useSelector(state => state.type.types)
     const [message, setMessage] = useState({chooseColor: '' })
     const [palette, setPalette] = useState('')
-    const typeName = dataTypes?.data?.find(item => item.id === data.typeId)?.name
+    const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
     const like = dataFavorites?.find(item => item.productId == data.id)
     const basketItem = dataBaskets?.find(item => item.productId == data.id)
     const handleClick = (e:React.MouseEvent) => {
@@ -109,7 +108,7 @@ const Product = ({data, column}: IProductProps) => {
                 )
 }
             <div className={classes.image}>
-                <img src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="Картинок пока нет : (" />
+                <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="Картинок пока нет : (" />
             </div>
             <div className={classes.info}>
                 <h4 className={classes.title}>{data.name}</h4>

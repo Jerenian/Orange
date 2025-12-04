@@ -17,7 +17,7 @@ const Contacts = () => {
         <main className={classes.container}>
             <section className={classes.main}>
                 <div className={classes.imageContainer}>
-                    <img src={cover} alt="" />
+                    <img decoding="async" loading="lazy" src={cover} alt="" />
                 </div>
                 <div className={classes.description}>
                     <div className={classes.addressContainer}>
@@ -44,7 +44,7 @@ const Contacts = () => {
             
             <section className={width < 700 ? classes.main : classes.right}>
                 <div className={classes.imageContainer}>
-                    <img src={left} alt="" />
+                    <img decoding="async" loading="lazy" src={left} alt="" />
                 </div>
                 <div className={classes.description}>
                     <div className={classes.addressContainer}>
@@ -70,7 +70,7 @@ const Contacts = () => {
             </section>
             <section className={width < 700 ? classes.main : classes.left}>
                                 <div className={classes.imageContainer}>
-                    <img src={right} alt="" />
+                    <img decoding="async" loading="lazy" src={right} alt="" />
                 </div>
                 <div className={classes.description}>
                     <div className={classes.addressContainer}>

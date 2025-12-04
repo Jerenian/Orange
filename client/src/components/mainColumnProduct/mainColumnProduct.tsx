@@ -77,7 +77,7 @@ const MainColumnProduct = ({data}) => {
                     </div>
                 )
             }
-                <img src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="Картинок пока нет : (" />
+                <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="Картинок пока нет : (" />
             </div>
             <div onClick={(e) => e.stopPropagation()} className={classes.quantity}>
                 <div className={classes.container}>

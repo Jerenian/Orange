@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classes from './style.module.scss'
 import { useSelector } from 'react-redux'
 import { useSearchQuery } from '../../services/filterSort'
@@ -47,7 +47,7 @@ const SearchBlock = () => {
          className={classes.searchBlock}>
             {
                 searchData?.data?.map(item => (
-                    <SearchProduct data = {item}></SearchProduct>
+                    <SearchProduct key={item.id} data = {item}></SearchProduct>
                 ))
             }
         </div>

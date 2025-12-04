@@ -1,7 +1,7 @@
 export interface IProduct  {
     id?: string
     name?: string
-    price?: number | null | string;
+    price?: any;
     description?: string
     img?: string
     typeId?: string
@@ -15,6 +15,7 @@ export interface IProduct  {
 export interface IProductProps  {
     data:IProduct
     column?: boolean
+    allProduct?:IProduct[]
 }
 export interface ITypes {
     id: string,
@@ -75,10 +76,10 @@ export interface IOrders {
     products: IProduct[]
 }
 export interface IQuantity {
-        id?: string
-        productId?: string,
-        quantity?: number,
-        name?: string
+    id?: string
+    productId?: string,
+    quantity?: number,
+    name?: string
 }
 export interface IOrdersData {
     data?: IOrders[],

@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classes from './style.module.scss'
 import { useGetAllProductsQuery, useGetFlowersQuery } from '../../../services/product'
-import { useGetByTypeProductQuery } from '../../../services/product'
 import Product from '../../../components/product/product'
 import type { IProduct } from '../../../types'
 import cover from '../../../assets/images/mainCover.png'
-import { NavLink } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { changePaymentModal } from '../../../features/modalSlice/modalSlice'
 import { useFilterMutation, useSortMutation } from '../../../services/filterSort'
-import { useGetAllTypesQuery } from '../../../services/type'
 import { Oval } from 'react-loader-spinner'
 const Catalog = () => {
     const dispatch = useDispatch()
-    const dataTypes = useGetAllTypesQuery(null)
+    const dataTypes = useSelector(state => state.type.types)
     const { data, error, isLoading } = useGetAllProductsQuery(null)
     const [dataProducts, setDataProducts] = useState()
     const [filter, filterLoad = {isLoading}] = useFilterMutation() 
@@ -139,7 +136,7 @@ const Catalog = () => {
                     </div>
                 </div>
                 <div className={classes.img}>
-                    <img src={cover} alt="" />
+                    <img decoding="async" loading="lazy" src={cover} alt="" />
                 </div>
             </div>
             <div className={classes.titleContainer}>
@@ -171,8 +168,8 @@ const Catalog = () => {
                             </div>
                             <div className={classes.itemsList}>
                                 <div className={classes.typeDropdown}>
-                                    {dataTypes?.data?.map(item => (
-                                        <div className={typeId  === item.id ? classes.dropdownItemActive : classes.dropdownItem} onClick={(e) => hendleSetTypes(item.id, item.name, e)}>
+                                    {dataTypes?.map(item => (
+                                        <div key={item.id} className={typeId  === item.id ? classes.dropdownItemActive : classes.dropdownItem} onClick={(e) => hendleSetTypes(item.id, item.name, e)}>
                                             {item.name}
                                         </div>
                                     ))}
@@ -182,7 +179,7 @@ const Catalog = () => {
                                             <div className={classes.filterList}>
                                                 {
                                                     filterData?.map(item => (
-                                                        <div onClick={(e) => hendleCheck(item, e)} className={classes.items}>
+                                                        <div key={item.id} onClick={(e) => hendleCheck(item, e)} className={classes.items}>
                                                             {item}
                                                         </div>
                                                     ))
@@ -232,7 +229,7 @@ const Catalog = () => {
                         </div>
                         ) :                   
                             dataProducts?.length ? dataProducts?.map((item: IProduct) => (
-                            <div className={classes.rowContainer}>
+                            <div key={item.id} className={classes.rowContainer}>
                                 <div className={classes.row}>
                                     <Product data = {item} />
                                 </div>

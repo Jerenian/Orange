@@ -7,7 +7,7 @@ import { useCreateTypeMutation } from '../../services/create'
 import type { ICreateType } from '../../types'
 const TypeModal = () => {
     const modal = useSelector(state => state.modal.createType)
-    const [dataType, setData] = useState<ICreateType>({name:'', file: undefined})
+    const [dataType, setData] = useState<ICreateType>({name:'', file: null})
     const inputRef = useRef(null);
     const dispatch = useDispatch()
     const [type, {isLoading, data}] = useCreateTypeMutation()

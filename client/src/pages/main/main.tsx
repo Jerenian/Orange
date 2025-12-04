@@ -1,33 +1,24 @@
-import React, { useEffect } from 'react'
+
 import classes from './sytle.module.scss'
 import { NavLink } from 'react-router'
 import cover from '../../assets/images/mainCover.png'
-import flowers from '../../assets/images/pages/main/flowers.png'
-import Romantic from '../../assets/images/pages/main/romantic.png'
-import classicLove from '../../assets/images/pages/main/classicLove.png'
-import { useGetAllTypesQuery } from '../../services/type'
 import MainCatalog from '../../components/main-catalog/MainCatalog'
 import { useGetAllProductsQuery } from '../../services/product'
 import MainPopular from '../../components/main-popular/MainPopular'
 import { useDispatch, useSelector } from 'react-redux'
-import { useCheckQuery, useRefreshQuery } from '../../services/user'
-import { MoonLoader } from 'react-spinners'
-import Spinner from 'react-bootstrap/Spinner';
+import { useCheckQuery } from '../../services/user'
 import { changeDeleteType, changeEditType, changePaymentModal, changeTypeModal } from '../../features/modalSlice/modalSlice'
 import { Oval } from 'react-loader-spinner'
-import { useRemoveTypeMutation } from '../../services/remove'
 import { useChangePopularMutation } from '../../services/change'
-import { useGetProductsMutation } from '../../services/favorite'
-import { allProducts, minPriceOfTheType } from '../../features/productSlice/ProductSlice'
-const Main = (props) => {
-    const dataTypes = useGetAllTypesQuery(null)
+const Main = () => {
+    const dataTypes = useSelector(state => state.type.types)
     const dataProducts = useGetAllProductsQuery(null)
     const dataPopular = dataProducts.data?.filter((item) => item.isPopular)
     const typePrice = useSelector(state => state.type.product)
     const dispatch = useDispatch()
     const [removePopular] = useChangePopularMutation()
     const user = useCheckQuery(null)
-    const mergerDataTypes = dataTypes.data?.map((type:any) => {
+    const mergerDataTypes = dataTypes?.map((type:any) => {
         const prices = typePrice.find((item: any) => item.typeId === type.id)
         return {...type, price: prices?.items}
     })
@@ -50,7 +41,7 @@ const Main = (props) => {
     }   
     return  ( 
         <div className={classes.wrapper}>
-            {user.isLoading || dataTypes.isLoading || dataProducts.isLoading ?  (   
+            {user.isLoading || dataProducts.isLoading ?  (   
                 <div className={classes.loader}>
                     <div className={classes.loaderItem}>
                         <Oval
@@ -79,7 +70,7 @@ const Main = (props) => {
                     </div>
                 </div>
                 <div className={classes.img}>
-                    <img src={cover} alt="" />
+                    <img fetchPriority="high" decoding="async" loading="lazy" src={cover} alt="" />
                 </div>
             </div>
                 <section className={classes.catalog}>
@@ -91,7 +82,9 @@ const Main = (props) => {
                         
                 {
                     mergerDataTypes?.map((item: any) => (
-                    <div className={classes.rowContainer}>
+                    <div 
+                    key={item.id}
+                    className={classes.rowContainer}>
                     { user?.data?.role === 'admin' ? (
                                 <div className={classes.row}>
                                     <button className={classes.remove} onClick={() => hendleRemove(item.id)}>
@@ -137,7 +130,9 @@ const Main = (props) => {
                         >
                             {
                                 dataPopular?.map((item) => (
-                                    <div className={classes.rowContainer}>
+                                    <div
+                                    key={item.id}
+                                     className={classes.rowContainer}>
                                         {
                                             user?.data?.role === 'admin' ? (
                                             

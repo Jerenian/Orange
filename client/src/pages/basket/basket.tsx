@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux'
 import classes from './style.module.scss'
-import Product from '../../components/product/product'
-import { useClearMutation, useGetProductsMutation, usePaymentMutation, useRemoveMutation } from '../../services/basket'
-import type { IProductProps } from '../../types'
+import { useClearMutation, useGetProductsMutation, usePaymentMutation } from '../../services/basket'
 import { Oval } from 'react-loader-spinner'
 import { useCheckQuery } from '../../services/user'
-import { getUserInfo } from '../../features/userSlice/userSlice'
-import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router'
-import cover from '../../../src/assets/images/mainCover.png'
 import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 import ColumnProduct from '../../components/columnProduct/columnProduct'
-import { useGetBasketQuery } from '../../services/basket'
 import MainColumnProduct from '../../components/mainColumnProduct/mainColumnProduct'
 import { useCreateOrderMutation } from '../../services/order'
 import { getBasket, setAmount, setNames } from '../../features/basketSlice/basketSlice'
@@ -34,7 +28,6 @@ const Basket = () => {
     const [payOnline, setPayOnline] = useState(false)
     const [shop, setShop] = useState('')
     const [error, setError] = useState('')
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [payment] = usePaymentMutation()
     const [order] = useCreateOrderMutation()
@@ -48,35 +41,27 @@ const Basket = () => {
     const hendlePayment = () => {
         dispatch(changePaymentModal())
     }
-    const payload = data?.filter(item => {
-        return {
-            name: item.name,
-            id: item.id
-        }
-    })
+    // const payload = data?.filter(item => {
+    //     return {
+    //         name: item.name,
+    //         id: item.id
+    //     }
+    // })
     let updatedData = data?.reduce((acc, item) => {
         const {id} = item
-        const res = basket.quantity?.map(product => {
+        const res = basket.quantity?.map((product) => {
             if(id == product.productId){
                 acc.push({...item, selectPalette: product.palette, quantity: product.quantity})
             }
         })
         return acc 
-    },[])
-    const cost = updatedData?.map(item =>
+    },[] as any)
+    const cost = updatedData?.map((item: any) =>
         item.price * item.quantity
     ).reduce((x, y) => x + y, 0)
     cost !== undefined ? dispatch(setAmount(cost)) : null
     const Pay  = async () => {
         let data = []
-        // const infoProducts = basket.quantity.reduce((acc, item) =>{
-        //     payload?.map(product => {
-        //         if(product.id === item.productId) {
-        //             acc.push({productId: item.productId, quantity: item.quantity, name: product.name})
-        //         }
-        //     })
-        //     return acc
-        // }, [])
         data.push({email: contact.email, phone: contact.phone, name: contact.name, surname: contact.surname, delivery: delivery, address: address.item, comment: address.comment, payOnline: payOnline, shop: shop, products: updatedData, price: basket.totalAmount})
         if(payOnline){
             const resPayment = delivery ? await payment(basket.totalAmount + 500) : await payment(basket.totalAmount)
@@ -197,8 +182,8 @@ const Basket = () => {
                                     <p>Вы пока ничего не добавили </p>
                                 </div>
                             ) :
-                            updatedData?.map( item => (
-                                <div className={classes.row}><MainColumnProduct data={item}></MainColumnProduct></div>
+                            updatedData?.map(item => (
+                                <div key={item.id} className={classes.row}><MainColumnProduct data={item}></MainColumnProduct></div>
                             ))
                         }
                         {
@@ -274,7 +259,7 @@ const Basket = () => {
                                             </div>
                                         ) :
                                         updatedData?.map( item => (
-                                            <div className={classes.row}><ColumnProduct allProduct = {data} data={item}></ColumnProduct></div>
+                                            <div key={item.id} className={classes.row}><ColumnProduct allProduct = {data} data={item}></ColumnProduct></div>
                                         ))
                                     }
                                 </div>

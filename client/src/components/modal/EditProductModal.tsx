@@ -7,7 +7,7 @@ import { useChangeProductMutation, useChangeTypeMutation } from '../../services/
 import type { IProduct } from '../../types'
 const EditProductModal = () => {
     const modal = useSelector(state => state.modal.editProduct)
-    const [dataEdit, setData] = useState<IProduct>({id: "", name: "", file: undefined, description: "", price: "", isPopular: false, palette: '' })
+    const [dataEdit, setData] = useState<IProduct>({id: "", name: "", file: null, description: "", price: "", isPopular: false, palette: '' })
     const [edit, {isLoading, data}] = useChangeProductMutation()
     useEffect(()=> {
         setData({...dataEdit, id: modal.id, name: modal.name, file: modal.img, description: modal.description, price: modal.price, isPopular: modal.isPopular, palette: modal.palette })

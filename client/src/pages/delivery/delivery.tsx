@@ -1,4 +1,4 @@
-import React from 'react'
+
 import classes from './style.module.scss'
 import { useDispatch } from 'react-redux'
 import { changePaymentModal } from '../../features/modalSlice/modalSlice'
@@ -137,116 +137,6 @@ const Delivery = () => {
             </div>
             </div>
         </section>
-        {/* <section className={classes.options}>
-            <div className={classes.container}>
-                <div className={classes.titleContainer}>
-                    <h4 className={classes.title}>Варианты доставки</h4>
-                    <p className={classes.subTitle}>Выберите удобный для вас способ получения цветов</p>
-                </div>
-                <div className={classes.cardContainer}>
-                    <div className={classes.card1}>
-                        <div className={classes.continer}>
-                            <div className={classes.iconContiner}>
-                                <div className={classes.icon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
-                                        <g clipPath="url(#clip0_43_2257)">
-                                        <path d="M10.4391 23.4C12.8438 20.3906 18.3281 13.0969 18.3281 9C18.3281 4.03125 14.2969 0 9.32812 0C4.35938 0 0.328125 4.03125 0.328125 9C0.328125 13.0969 5.8125 20.3906 8.21719 23.4C8.79375 24.1172 9.8625 24.1172 10.4391 23.4ZM9.32812 6C10.1238 6 10.8868 6.31607 11.4494 6.87868C12.0121 7.44129 12.3281 8.20435 12.3281 9C12.3281 9.79565 12.0121 10.5587 11.4494 11.1213C10.8868 11.6839 10.1238 12 9.32812 12C8.53248 12 7.76941 11.6839 7.2068 11.1213C6.6442 10.5587 6.32812 9.79565 6.32812 9C6.32812 8.20435 6.6442 7.44129 7.2068 6.87868C7.76941 6.31607 8.53248 6 9.32812 6Z" fill="#1F2937"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_43_2257">
-                                        <path d="M0.328125 0H18.3281V24H0.328125V0Z" fill="white"/>
-                                        </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div className={classes.titleContiner}>
-                                <h6 className={classes.title}></h6>
-                                <p className={classes.subTitle}></p>
-                            </div>
-                            <div className={classes.textContiner}>
-                                <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>Доставка за 2 часа</p>
-                                </div>
-                                                        <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>До двери</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.card2}>
-                        <div className={classes.continer}>
-                            <div className={classes.iconContiner}>
-                                <div className={classes.icon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
-                                        <g clipPath="url(#clip0_43_2257)">
-                                        <path d="M10.4391 23.4C12.8438 20.3906 18.3281 13.0969 18.3281 9C18.3281 4.03125 14.2969 0 9.32812 0C4.35938 0 0.328125 4.03125 0.328125 9C0.328125 13.0969 5.8125 20.3906 8.21719 23.4C8.79375 24.1172 9.8625 24.1172 10.4391 23.4ZM9.32812 6C10.1238 6 10.8868 6.31607 11.4494 6.87868C12.0121 7.44129 12.3281 8.20435 12.3281 9C12.3281 9.79565 12.0121 10.5587 11.4494 11.1213C10.8868 11.6839 10.1238 12 9.32812 12C8.53248 12 7.76941 11.6839 7.2068 11.1213C6.6442 10.5587 6.32812 9.79565 6.32812 9C6.32812 8.20435 6.6442 7.44129 7.2068 6.87868C7.76941 6.31607 8.53248 6 9.32812 6Z" fill="#1F2937"/>
-                                        </g>
-                                        <defs>
-                                        <clipPath id="clip0_43_2257">
-                                        <path d="M0.328125 0H18.3281V24H0.328125V0Z" fill="white"/>
-                                        </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div className={classes.titleContiner}>
-                                <h6 className={classes.title}></h6>
-                                <p className={classes.subTitle}></p>
-                            </div>
-                            <div className={classes.textContiner}>
-                                <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>Доставка за 2 часа</p>
-                                </div>
-                                                        <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>До двери</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> */}
         <section className={classes.conditons}>
             <div className={classes.container}>
                 <div className={classes.titleContainer}>
@@ -361,34 +251,6 @@ const Delivery = () => {
                                 <h6 className={classes.title}>Режим работы</h6>
                                 <p className={classes.subTitle}>Круглосуточно</p>
                             </div>
-                            {/* <div className={classes.textContiner}>
-                                <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>Доставка за 2 часа</p>
-                                </div>
-                                        <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>До двери</p>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                     <div className={classes.card2}>
@@ -411,34 +273,6 @@ const Delivery = () => {
                                 <h6 className={classes.title}>Телефон</h6>
                                 <p className={classes.subTitle}>+7 (495) 123-45-67</p>
                             </div>
-                            {/* <div className={classes.textContiner}>
-                                <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>Доставка за 2 часа</p>
-                                </div>
-                                                        <div className={classes.text}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                    <g clipPath="url(#clip0_43_2148)">
-                                    <path d="M13.7062 3.29376C14.0968 3.68439 14.0968 4.31876 13.7062 4.70939L5.70615 12.7094C5.31553 13.1 4.68115 13.1 4.29053 12.7094L0.290527 8.70939C-0.100098 8.31876 -0.100098 7.68439 0.290527 7.29376C0.681152 6.90314 1.31553 6.90314 1.70615 7.29376L4.9999 10.5844L12.2937 3.29376C12.6843 2.90314 13.3187 2.90314 13.7093 3.29376H13.7062Z" fill="#E5FA3C"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_43_2148">
-                                    <path d="M0 0H14V16H0V0Z" fill="white"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    <p>До двери</p>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ const ProductModal = () => {
     const inputRef = useRef(null)
     const [product, {isLoading, isError, data}] = useCreateProductMutation()
     const modal = useSelector(state => state.modal.createProduct)
-    const [dataProduct, setDataProduct] = useState<IProduct>({name: '', price: null, description: '', typeId: '', file: null, palette: "", isPopular: false})
+    const [dataProduct, setDataProduct] = useState<IProduct>({name: '', price: 0, description: '', typeId: '', file: null, palette: "", isPopular: false})
     const id = useSelector(state => state.modal.typeId)
     const [error, setError] = useState({messaage: ''})
 
@@ -29,9 +29,8 @@ const ProductModal = () => {
           setError({...error, messaage: "Заполните все поля со звездочкой"})
         }
         else {
-        const a = await product(dataProduct)
-
-          setDataProduct({name: '', price: 0, description: '', typeId: '', file: null, palette: '', isPopular: false})
+          await product(dataProduct)
+          setDataProduct({name: '', price: '', description: '', typeId: '', file: null, palette: '', isPopular: false})
           setTimeout(() => {
             window.location.reload()
           }, 1500);
