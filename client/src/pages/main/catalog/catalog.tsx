@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import classes from './style.module.scss'
-import { useGetAllProductsQuery, useGetFlowersQuery } from '../../../services/product'
+import { useGetFlowersQuery } from '../../../services/product'
 import Product from '../../../components/product/product'
 import type { IProduct } from '../../../types'
 import cover from '../../../assets/images/mainCover.png'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changePaymentModal } from '../../../features/modalSlice/modalSlice'
 import { useFilterMutation, useSortMutation } from '../../../services/filterSort'
 import { Oval } from 'react-loader-spinner'
 const Catalog = () => {
     const dispatch = useDispatch()
     const dataTypes = useSelector(state => state.type.types)
-    const { data, error, isLoading } = useGetAllProductsQuery(null)
+    const data  = useSelector(state => state.product.data)
     const [dataProducts, setDataProducts] = useState()
     const [filter, filterLoad = {isLoading}] = useFilterMutation() 
     const [sort, sortLoad = {isLoading}] = useSortMutation()
@@ -102,7 +102,7 @@ const Catalog = () => {
     }
     return (
         <div onClick={() => {setSortModal(false); setFilterModal(false)}} className={classes.wrapper}>
-        {error ? (               
+        {!data.length ? (               
             <div className={classes.nothing}>
                 <div className={classes.nothingItem}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="150" height="142" viewBox="0 0 150 142" fill="none">
@@ -111,20 +111,7 @@ const Catalog = () => {
                 </div>
                 <p>Произошла ошибка</p>
             </div>
-        ) : isLoading ? (
-            <div className={classes.loader}>
-                <div className={classes.loaderItem}>
-                    <Oval
-                    height="80"
-                    width="80"
-                    secondaryColor= '#FB6D41'
-                    color="#E5FA39"
-                    ariaLabel="three-dots-loading"
-                    strokeWidth='3'
-                    />
-                </div> 
-            </div>
-        ) : data ? (
+        ) : (
             <div>
                 <div>
                 <div className={classes.cover}>
@@ -250,7 +237,7 @@ const Catalog = () => {
                     </div> 
                 </div>
             </div>
-        ) : null}
+        )}
         </div>
     )
 }

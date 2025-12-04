@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import classes from './style.module.scss'
 import { useClearMutation, useGetProductsMutation, usePaymentMutation } from '../../services/basket'
 import { Oval } from 'react-loader-spinner'
-import { useCheckQuery } from '../../services/user'
 import { NavLink } from 'react-router'
 import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 import ColumnProduct from '../../components/columnProduct/columnProduct'
@@ -16,7 +15,7 @@ import { getOrders } from '../../features/orderSlice/orderSlice';
 const Basket = () => {
     const basket = useSelector(state => state.basket)
     const [product, {data, isLoading}] = useGetProductsMutation()
-    const user = useCheckQuery(null)
+    const user = useSelector(state => state.user)
     const [contact, setContact] = useState({
         name:'',
         surname:'',
@@ -136,7 +135,7 @@ const Basket = () => {
                 </div>
             </div>
             {
-                isLoading || user.isLoading ? (
+                isLoading ? (
                 <div className={classes.loader}>
                     <div className={classes.loaderItem}>
                         <Oval
@@ -149,7 +148,7 @@ const Basket = () => {
                         />
                     </div> 
                 </div>
-                ) : user.status === "rejected" ? (
+                ) : user.data.id == "" ? (
                             <div className={classes.nothing}>
                                 <div className={classes.nothingItem}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="150" height="142" viewBox="0 0 150 142" fill="none">

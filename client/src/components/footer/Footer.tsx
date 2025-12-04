@@ -1,4 +1,4 @@
-import React from 'react'
+
 import classes from "./style.module.scss"
 import logo from "../../assets/logo.png"
 import { NavLink } from 'react-router'

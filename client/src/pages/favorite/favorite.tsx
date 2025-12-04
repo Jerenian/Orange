@@ -3,21 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import classes from './style.module.scss'
 import Product from '../../components/product/product'
 import { useGetProductsMutation } from '../../services/favorite'
-import type { IProductProps } from '../../types'
 import { Oval } from 'react-loader-spinner'
-import { useCheckQuery } from '../../services/user'
-import { getUserInfo } from '../../features/userSlice/userSlice'
-import { useNavigate } from 'react-router'
-import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
-import { useAddFavoriteMutation } from '../../services/favorite'
 import { NavLink } from 'react-router'
-import cover from '../../../src/assets/images/mainCover.png'
 import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 const Favorite = () => {
     const favorite = useSelector(state => state.favorite)
     const [product, {data, isLoading}] = useGetProductsMutation()
-    const user = useCheckQuery(null)
-    const navigate = useNavigate()
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     useEffect(() => {
         const fn = async () =>  await product(favorite.idList)
@@ -46,7 +38,7 @@ const Favorite = () => {
                 </div>
             </div>
             {
-                isLoading || user.isLoading ? (
+                isLoading ? (
                 <div className={classes.loader}>
                     <div className={classes.loaderItem}>
                         <Oval
@@ -59,7 +51,7 @@ const Favorite = () => {
                         />
                     </div> 
                 </div>
-                ) : user.status === "rejected" ? (
+                ) : user.data.id === "" ? (
                             <div className={classes.nothing}>
                                 <div className={classes.nothingItem}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="150" height="142" viewBox="0 0 150 142" fill="none">

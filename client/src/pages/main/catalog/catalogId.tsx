@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import classes from './style.module.scss'
 import { useGetByTypeProductQuery } from '../../../services/product'
 import Product from '../../../components/product/product'
 import type { IProduct } from '../../../types'
 import { useParams } from 'react-router'
-import { useCheckQuery } from '../../../services/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeProductModal, getTypeId, changeEditProduct, changeDeleteProduct } from '../../../features/modalSlice/modalSlice'
+import { changeProductModal, getTypeId, changeEditProduct } from '../../../features/modalSlice/modalSlice'
 import { useRemoveProductMutation } from '../../../services/remove'
-import { useChangeProductMutation } from '../../../services/change'
 import { changePaymentModal } from '../../../features/modalSlice/modalSlice'
 import { NavLink } from 'react-router'
 import cover from '../../../assets/images/mainCover.png'
@@ -16,7 +14,7 @@ import { useFilterMutation, useSortMutation} from '../../../services/filterSort'
 import { Oval } from 'react-loader-spinner'
 import { useGetFlowersQuery } from '../../../services/product'
 const CatalogId = () => {
-    const user = useCheckQuery(null)
+    const user = useSelector(state => state.user)
     let param = useParams()
     const dataTypes = useSelector(state => state.type.types)
     const typeName = dataTypes?.find(item => item.id === param.id)?.name

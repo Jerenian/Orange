@@ -3,21 +3,19 @@ import classes from './sytle.module.scss'
 import { NavLink } from 'react-router'
 import cover from '../../assets/images/mainCover.png'
 import MainCatalog from '../../components/main-catalog/MainCatalog'
-import { useGetAllProductsQuery } from '../../services/product'
 import MainPopular from '../../components/main-popular/MainPopular'
 import { useDispatch, useSelector } from 'react-redux'
-import { useCheckQuery } from '../../services/user'
 import { changeDeleteType, changeEditType, changePaymentModal, changeTypeModal } from '../../features/modalSlice/modalSlice'
 import { Oval } from 'react-loader-spinner'
 import { useChangePopularMutation } from '../../services/change'
 const Main = () => {
     const dataTypes = useSelector(state => state.type.types)
-    const dataProducts = useGetAllProductsQuery(null)
-    const dataPopular = dataProducts.data?.filter((item) => item.isPopular)
+    const dataProducts = useSelector(state => state.product.data)
+    const dataPopular = dataProducts?.filter((item) => item.isPopular)
     const typePrice = useSelector(state => state.type.product)
     const dispatch = useDispatch()
     const [removePopular] = useChangePopularMutation()
-    const user = useCheckQuery(null)
+    const user = useSelector(state => state.user)
     const mergerDataTypes = dataTypes?.map((type:any) => {
         const prices = typePrice.find((item: any) => item.typeId === type.id)
         return {...type, price: prices?.items}
@@ -41,20 +39,6 @@ const Main = () => {
     }   
     return  ( 
         <div className={classes.wrapper}>
-            {user.isLoading || dataProducts.isLoading ?  (   
-                <div className={classes.loader}>
-                    <div className={classes.loaderItem}>
-                        <Oval
-                        height="80"
-                        width="80"
-                        secondaryColor= '#FB6D41'
-                        color="#E5FA39"
-                        ariaLabel="three-dots-loading"
-                        strokeWidth='3'
-                        />
-                    </div> 
-                </div>
-              ) : ( 
             <div> 
             <div className={classes.cover}>
                 <div className={classes.text}>
@@ -153,7 +137,7 @@ const Main = () => {
                     </section>
                     ): null
                 }
-            </div>)}
+            </div>
         </div>
         
     )
