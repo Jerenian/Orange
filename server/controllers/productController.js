@@ -215,10 +215,15 @@ const filter = async (req,res) => {
     res.json(filteredProducts)
 }
 const search = async (req,res) => {
+    try{
     const request = req.params.text
     const data = await Product.findAll()
     let result = data.filter(item => JSON.stringify(item.name.toUpperCase()).includes(request.toUpperCase()) || JSON.stringify(item.description.toUpperCase()).includes(request.toUpperCase()));
     res.json(result)
+    }
+    catch(e) {
+        console.log(e.message)
+    }
 }
 const sort = async (req,res) => {
 
