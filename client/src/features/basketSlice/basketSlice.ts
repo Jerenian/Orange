@@ -69,11 +69,8 @@ export const BasketSlice = createSlice({
         setAmount (state, {payload}){
             state.totalAmount = payload
         },
-        setNames (state, action) {
-
-        }
     }
 })
 
-export const {getBasket, setAmount, setNames} = BasketSlice.actions
+export const {getBasket, setAmount} = BasketSlice.actions
 export default BasketSlice.reducer

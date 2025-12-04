@@ -84,7 +84,7 @@ const Delivery = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={classes.card2}>
+                    {/* <div className={classes.card2}>
                         <div className={classes.continer}>
                             <div className={classes.iconContiner}>
                                 <div className={classes.icon}>
@@ -133,7 +133,7 @@ const Delivery = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
             </div>
             </div>
         </section>

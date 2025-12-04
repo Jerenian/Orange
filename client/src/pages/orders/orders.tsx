@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import  { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import classes from './style.module.scss'
-import { addHandedState, removeOrder, setQuantity } from '../../features/orderSlice/orderSlice'
+import { addHandedState, removeOrder } from '../../features/orderSlice/orderSlice'
 import { useRemoveOrderMutation,  useChangeOrderMutation } from '../../services/order'
 import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 const Orders = () => {
@@ -12,16 +12,13 @@ const Orders = () => {
     const [setHanded] = useChangeOrderMutation()
     const dataTypes = useSelector(state => state.type.types)
     const [error, setError] = useState({handed:'', remove:''})
-    useEffect(()=>{
-       products.length ? dispatch(setQuantity(products)) : null
-    },[products])
     const hendleRemove = async (id) => {
         const rem = await remove(id)
         dispatch(removeOrder(id))
     }
 
 
-    let typeName
+    let typeName: any
     const getType = (item): void => {
         dataTypes?.map(type => {
             type.id === item.typeId ? typeName = type.name : null

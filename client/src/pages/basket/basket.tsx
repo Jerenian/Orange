@@ -9,7 +9,7 @@ import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 import ColumnProduct from '../../components/columnProduct/columnProduct'
 import MainColumnProduct from '../../components/mainColumnProduct/mainColumnProduct'
 import { useCreateOrderMutation } from '../../services/order'
-import { getBasket, setAmount, setNames } from '../../features/basketSlice/basketSlice'
+import { getBasket, setAmount } from '../../features/basketSlice/basketSlice'
 import useWindowDimensions from '../../hook'
 import { getOrders } from '../../features/orderSlice/orderSlice';
 const Basket = () => {
@@ -40,12 +40,6 @@ const Basket = () => {
     const hendlePayment = () => {
         dispatch(changePaymentModal())
     }
-    // const payload = data?.filter(item => {
-    //     return {
-    //         name: item.name,
-    //         id: item.id
-    //     }
-    // })
     let updatedData = data?.reduce((acc, item) => {
         const {id} = item
         const res = basket.quantity?.map((product) => {
@@ -55,9 +49,11 @@ const Basket = () => {
         })
         return acc 
     },[] as any)
+
     const cost = updatedData?.map((item: any) =>
         item.price * item.quantity
     ).reduce((x, y) => x + y, 0)
+    
     cost !== undefined ? dispatch(setAmount(cost)) : null
     const Pay  = async () => {
         let data = []
@@ -120,7 +116,7 @@ const Basket = () => {
         <div className={classes.wrapper}>
              <div className={classes.cover}>
                 <div className={classes.iconContainer}>
-                    <svg width="64px" height="64px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="0.41600000000000004"></g><g id="SVGRepo_iconCarrier"> <path d="M1.24264 8.24264L8 15L14.7574 8.24264C15.553 7.44699 16 6.36786 16 5.24264V5.05234C16 2.8143 14.1857 1 11.9477 1C10.7166 1 9.55233 1.55959 8.78331 2.52086L8 3.5L7.21669 2.52086C6.44767 1.55959 5.28338 1 4.05234 1C1.8143 1 0 2.8143 0 5.05234V5.24264C0 6.36786 0.44699 7.44699 1.24264 8.24264Z" fill="#FC8B48"></path> </g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FC8B48"><path d="M381-656v-60h227v60H381ZM289.79-80Q260-80 239-101.21t-21-51Q218-182 239.21-203t51-21Q320-224 341-202.79t21 51Q362-122 340.79-101t-51 21Zm404 0Q664-80 643-101.21t-21-51Q622-182 643.21-203t51-21Q724-224 745-202.79t21 51Q766-122 744.79-101t-51 21ZM62-820v-60h116l170 364h287.71L796-796h67L701-493q-11 19-28.56 30.5T634-451H331l-56 104h491v60H284q-37.66 0-57.33-30T224-378l64-118-148-324H62Z"/></svg>
                 </div>
                 <div className={classes.text}>
                     <h1 className={classes.title}>Корзина товаров</h1>
@@ -450,18 +446,6 @@ const Basket = () => {
                                         className={classes.item}>
                                             Петра Мерлина улица, 51в к1
                                         </div>
-                                        {/* <div 
-                                        style={shop === 'Владимира Ленина улица, 260 к1' ? {border: '1px solid #FB6D41'} : {border: '1px solid #000'}}
-                                        onClick={() => setShop('Владимира Ленина улица, 260 к1')}
-                                        className={classes.item}>
-                                            Владимира Ленина улица, 260 к1
-                                        </div>
-                                        <div 
-                                        style={shop === 'Краснооктябрьская улица, 93 к1' ? {border: '1px solid #FB6D41'} : {border: '1px solid #000'}}
-                                        onClick={() => setShop('Краснооктябрьская улица, 93 к1')}
-                                        className={classes.item}>
-                                            Краснооктябрьская улица, 93 к1
-                                        </div> */}
                                     </div>
                                 </div>
                             </div>

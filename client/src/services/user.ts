@@ -1,7 +1,7 @@
-import type { RootState } from "@reduxjs/toolkit/query";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { IUserResponse, ILoginRequest, IUser } from "../types";
-import { register } from "swiper/element";
+
 
 
 

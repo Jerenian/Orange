@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { IFavoriteData, IFavorite } from "../../types";
-import { data } from "react-router";
+import type { IFavoriteData } from "../../types";
 
 
 let initialState: IFavoriteData  = {

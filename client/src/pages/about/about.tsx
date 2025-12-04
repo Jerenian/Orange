@@ -1,17 +1,11 @@
-import React from 'react'
+
 import classes from "./style.module.scss"
 import aboutCover from '../../assets/images/aboutCover.png'
 import { useDispatch } from 'react-redux'
 import { changeNumber, changePaymentModal } from '../../features/modalSlice/modalSlice'
 const About = () => {
     const dispatch = useDispatch()
-    const hendleNumber = async () => {
-    try {
-        await navigator.clipboard.writeText('+7 (495) 123-45-67');
-    } catch (err) {
-        
-    }
-    }
+
   return (
         <div className={classes.wrapper}>
           <section className={classes.cover}>
@@ -114,7 +108,7 @@ const About = () => {
                 <h2 className={classes.title}>Готовы создать что-то прекрасное?</h2>
                 <p className={classes.subTitle}>Свяжитесь с нами сегодня, и мы поможем вам выбрать идеальные цветы для любого случая.</p>
                 <div className={classes.buttons}>
-                    <button onClick={() => {dispatch(changeNumber()), hendleNumber()}} className={classes.call}>
+                    <button onClick={() => {dispatch(changeNumber())}} className={classes.call}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M5.15312 0.768722C4.9125 0.187472 4.27812 -0.121903 3.67188 0.0437222L0.921875 0.793722C0.378125 0.943722 0 1.43747 0 1.99997C0 9.73122 6.26875 16 14 16C14.5625 16 15.0563 15.6218 15.2063 15.0781L15.9563 12.3281C16.1219 11.7218 15.8125 11.0875 15.2312 10.8468L12.2312 9.59685C11.7219 9.38435 11.1313 9.53122 10.7844 9.95935L9.52188 11.5C7.32188 10.4593 5.54063 8.6781 4.5 6.4781L6.04063 5.21872C6.46875 4.86872 6.61562 4.28122 6.40312 3.77185L5.15312 0.771847V0.768722Z" fill="white"/>
                         </svg>

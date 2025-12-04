@@ -1,6 +1,5 @@
 import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { IProduct, ICreateType } from "../types";
-import { data } from "react-router";
+import type { IProduct } from "../types";
 
 
 export const ChangeItemsApi = createApi({

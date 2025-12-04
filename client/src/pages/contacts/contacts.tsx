@@ -1,11 +1,11 @@
-import React from 'react'
+
 import classes from './style.module.scss'
 import cover from '../../assets/Копия e6543243-f46f-4242-a861-594b08ce2c37.png'
 import left from '../../assets/ленина.jpg'
 import right from '../../assets/Краснооктярьская.jpg'
 import useWindowDimensions from '../../hook'
 const Contacts = () => {
-    const { height, width } = useWindowDimensions();
+    const {width} = useWindowDimensions();
     return (
     <div className={classes.wrapper}>  
         <section className={classes.cover}>

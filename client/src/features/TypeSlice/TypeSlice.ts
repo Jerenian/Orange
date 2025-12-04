@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductApi } from "../../services/product";
-import type { IProduct } from "../../types";
-import { data } from "react-router";
-import { useDispatch } from "react-redux";
+
 
 const initialState = {
     product: [{

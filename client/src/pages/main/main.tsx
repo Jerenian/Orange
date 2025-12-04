@@ -6,7 +6,6 @@ import MainCatalog from '../../components/main-catalog/MainCatalog'
 import MainPopular from '../../components/main-popular/MainPopular'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeDeleteType, changeEditType, changePaymentModal, changeTypeModal } from '../../features/modalSlice/modalSlice'
-import { Oval } from 'react-loader-spinner'
 import { useChangePopularMutation } from '../../services/change'
 const Main = () => {
     const dataTypes = useSelector(state => state.type.types)

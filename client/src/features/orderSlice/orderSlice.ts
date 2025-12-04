@@ -12,9 +12,7 @@ export const OrderSlice = createSlice({
                 state.active = payload?.filter(item => !item.isHanded)
             }
         },
-        setQuantity: (state, action) => {
-            
-        },
+
         removeOrder: (state, {payload}) => {
             state.data = state.active?.filter(item => item.id !== payload)
             state.active = state.active?.filter(item => item.id !== payload)
@@ -25,5 +23,5 @@ export const OrderSlice = createSlice({
     }
 })
 
-export const {getOrders, setQuantity, removeOrder, addHandedState} = OrderSlice.actions
+export const {getOrders, removeOrder, addHandedState} = OrderSlice.actions
 export default OrderSlice.reducer

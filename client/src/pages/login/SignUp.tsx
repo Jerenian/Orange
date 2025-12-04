@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import classes from './Style.module.scss'
 import { NavLink } from 'react-router'
 import { useRegisterMutation } from '../../services/user'
