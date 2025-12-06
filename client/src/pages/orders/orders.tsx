@@ -4,28 +4,29 @@ import classes from './style.module.scss'
 import { addHandedState, removeOrder } from '../../features/orderSlice/orderSlice'
 import { useRemoveOrderMutation,  useChangeOrderMutation } from '../../services/order'
 import { changeProductInfo } from '../../features/modalSlice/modalSlice'
+import type { IProduct } from '../../types'
 const Orders = () => {
     const dispatch = useDispatch()
-    const orders = useSelector(state => state.orders)
-    const products = useSelector(state => state.product.data)
+    const orders = useSelector((state:any) => state.orders)
+    const products = useSelector((state: any) => state.product.data)
     const [remove] = useRemoveOrderMutation()
     const [setHanded] = useChangeOrderMutation()
-    const dataTypes = useSelector(state => state.type.types)
+    const dataTypes = useSelector((state: any) => state.type.types)
     const [error, setError] = useState({handed:'', remove:''})
-    const hendleRemove = async (id) => {
-        const rem = await remove(id)
+    const hendleRemove = async (id:string) => {
+        await remove(id)
         dispatch(removeOrder(id))
     }
 
 
     let typeName: any
-    const getType = (item): void => {
-        dataTypes?.map(type => {
+    const getType = (item: IProduct): void => {
+        dataTypes?.map((type:IProduct) => {
             type.id === item.typeId ? typeName = type.name : null
         })
     }
-    const showProduct = (id) => {
-        const item = products.filter(el => el.id === id)
+    const showProduct = (id:string) => {
+        const item = products.filter((el: IProduct) => el.id === id)
         dispatch(changeProductInfo(item[0]))
     }
     const hendleHanded = async (id: string) => {
@@ -37,7 +38,7 @@ const Orders = () => {
             setError({...error, handed: "Не удалось изменить статус заказа"})
         }
     }
-    const getDateTime = (dateStr): string => {
+    const getDateTime = (dateStr: string): string => {
         const date = new Date(dateStr);
         const minutes = String(date.getUTCMinutes()).padStart(2, '0');
         const hours = String(date.getUTCHours()).padStart(2, '0');
@@ -61,7 +62,7 @@ const Orders = () => {
                             orders?.active.length ? (
                                 <div className={classes.column}>
                                     {
-                                        orders?.active?.map(item => (
+                                        orders?.active?.map((item: any) => (
                                             <div className={classes.order}>
                                                 <div className={classes.orderItem}>
                                                         <div className={classes.info}>
@@ -82,7 +83,7 @@ const Orders = () => {
                                                                 </div>
                                                                 <div className={classes.productContainer}>
                                                                 {
-                                                                    item?.products.map(product => (
+                                                                    item?.products.map((product: any) => (
                                                                         <div onClick={() => showProduct(product.id)} className={classes.item} >
                                                                             <p>{product.name} : {product.quantity} шт</p>
                                                                             {
@@ -218,7 +219,7 @@ const Orders = () => {
                             orders?.data ? (
                                 <div className={classes.column}>
                                     {
-                                        orders?.data?.map(item => (
+                                        orders?.data?.map((item: any) => (
                                             <div className={classes.order}>
                                                 <div className={classes.orderItem}>
                                                     <div className={classes.title}>
@@ -242,7 +243,7 @@ const Orders = () => {
 
                                                                 <div className={classes.productContainer}>
                                                                 {
-                                                                    item?.products.map(product => (
+                                                                    item?.products.map((product: any) => (
                                                                         <div>
                                                                             <p>{product.name} : {product.quantity} шт</p>
                                                                         </div>

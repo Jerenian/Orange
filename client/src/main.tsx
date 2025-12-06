@@ -4,7 +4,7 @@ import { BrowserRouter  } from "react-router";
 import App from './App.tsx'
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
-import 'reset-css'
+import 'normalize.css'
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <Provider store={store}>
@@ -12,5 +12,5 @@ createRoot(document.getElementById('root')!).render(
             <App></App>
         </BrowserRouter>
         </Provider>
-    </StrictMode>/// тайп ид не переносится при создании продукта
+    </StrictMode>
 )

@@ -12,10 +12,11 @@ import { useCreateOrderMutation } from '../../services/order'
 import { getBasket, setAmount } from '../../features/basketSlice/basketSlice'
 import useWindowDimensions from '../../hook'
 import { getOrders } from '../../features/orderSlice/orderSlice';
+import type { IProduct } from '../../types';
 const Basket = () => {
-    const basket = useSelector(state => state.basket)
+    const basket = useSelector((state: any) => state.basket)
     const [product, {data, isLoading}] = useGetProductsMutation()
-    const user = useSelector(state => state.user)
+    const user = useSelector((state: any) => state.user)
     const [contact, setContact] = useState({
         name:'',
         surname:'',
@@ -42,7 +43,7 @@ const Basket = () => {
     }
     let updatedData = data?.reduce((acc, item) => {
         const {id} = item
-        const res = basket.quantity?.map((product) => {
+        basket.quantity?.map((product: any) => {
             if(id == product.productId){
                 acc.push({...item, selectPalette: product.palette, quantity: product.quantity})
             }
@@ -52,7 +53,7 @@ const Basket = () => {
 
     const cost = updatedData?.map((item: any) =>
         item.price * item.quantity
-    ).reduce((x, y) => x + y, 0)
+    ).reduce((x:number, y:number) => x + y, 0)
     
     cost !== undefined ? dispatch(setAmount(cost)) : null
     const Pay  = async () => {
@@ -80,7 +81,7 @@ const Basket = () => {
             })
         }
 
-        const resOrder = await order(data)
+        const resOrder = await order(data as any)
         if(resOrder.data){
             dispatch(getOrders(resOrder.data))
         }
@@ -177,7 +178,7 @@ const Basket = () => {
                                     <p>Вы пока ничего не добавили </p>
                                 </div>
                             ) :
-                            updatedData?.map(item => (
+                            updatedData?.map((item: any) => (
                                 <div key={item.id} className={classes.row}><MainColumnProduct data={item}></MainColumnProduct></div>
                             ))
                         }
@@ -253,7 +254,7 @@ const Basket = () => {
                                                 <p>Вы пока ничего не добавили </p>
                                             </div>
                                         ) :
-                                        updatedData?.map( item => (
+                                        updatedData?.map( (item: IProduct) => (
                                             <div key={item.id} className={classes.row}><ColumnProduct allProduct = {data} data={item}></ColumnProduct></div>
                                         ))
                                     }

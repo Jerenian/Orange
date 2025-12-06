@@ -3,16 +3,16 @@ import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
 import { changeEditProduct} from '../../features/modalSlice/modalSlice'
 import { useRef } from 'react'
-import { useChangeProductMutation, useChangeTypeMutation } from '../../services/change'
+import { useChangeProductMutation } from '../../services/change'
 import type { IProduct } from '../../types'
 const EditProductModal = () => {
-    const modal = useSelector(state => state.modal.editProduct)
+    const modal = useSelector((state:any) => state.modal.editProduct)
     const [dataEdit, setData] = useState<IProduct>({id: "", name: "", file: null, description: "", price: "", isPopular: false, palette: '' })
     const [edit, {isLoading, data}] = useChangeProductMutation()
     useEffect(()=> {
         setData({...dataEdit, id: modal.id, name: modal.name, file: modal.img, description: modal.description, price: modal.price, isPopular: modal.isPopular, palette: modal.palette })
     },[modal])
-    const inputRef = useRef(null);
+    const inputRef = useRef<any>(null);
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(changeEditProduct(null))

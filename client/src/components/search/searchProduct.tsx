@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import classes from './style.module.scss'
-import type { IProductProps } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
-import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 import { useAddFavoriteMutation } from '../../services/favorite'
 import { useNavigate } from 'react-router'
 import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
@@ -11,29 +9,29 @@ import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 import { useAddBasketMutation } from '../../services/basket'
 import { searchItems } from '../../features/productSlice/ProductSlice'
 import { changeMessage } from '../../features/messageSlice/messageSlice'
-const SearchProduct = ({data}: IProductProps) => {
+const SearchProduct = ({data}: any) => {
     const [setFavorite] = useAddFavoriteMutation()
     const [setBasket] = useAddBasketMutation()
     const [message, setMessage] = useState({chooseColor: '' })
     const [palette, setPalette] = useState('')
-    const dataFavorites = useSelector(state => state.favorite.data)
+    const dataFavorites = useSelector((state:any) => state.favorite.data)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const dataTypes = useSelector(state => state.type.types)
-    const like = dataFavorites?.find(item => item.productId == data.id)
-    const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
-    const addFavorite = async (id: string, e) => {
+    const dataTypes = useSelector((state:any) => state.type.types)
+    const like = dataFavorites?.find((item:any) => item.productId == data.id)
+    const typeName = dataTypes?.find((item:any) => item.id === data.typeId)?.name
+    const addFavorite = async (id: string, e:any) => {
         e.stopPropagation()
         const favorite = await setFavorite(id)
         const data = favorite
-        if(data?.error?.status){
+        if(data?.error){
             navigate('/login')
         }
         if(!data?.error) {
             dispatch(getFavorite(data.data))
         }
     }
-    const addBasket = async (item, e) => {
+    const addBasket = async (item:any, e:any) => {
             e.stopPropagation()
             if(item.palette.length) {
                 if(palette === '') {
@@ -45,7 +43,7 @@ const SearchProduct = ({data}: IProductProps) => {
                         id: item.id,
                         palette: palette
                     }
-                    const res = await setBasket(data)
+                    const res:any = await setBasket(data)
                     if(res?.error?.status === 403 || res?.error?.status === 401) {
                         navigate('/login') 
                         dispatch(searchItems(''))
@@ -61,7 +59,7 @@ const SearchProduct = ({data}: IProductProps) => {
                 }
             } else {
             const basket = await setBasket({id: item.id})
-            const res = basket
+            const res:any = basket
             
                 if(res?.error?.status === 403 || res?.error?.status === 401) {
                     navigate('/login') 
@@ -113,13 +111,13 @@ const SearchProduct = ({data}: IProductProps) => {
                     ) : null
                 }
                 {
-                    data?.palette?.toString() !== "" ? data.palette.toString().split(',').map(item => (
+                    data?.palette?.toString() !== "" ? data.palette.toString().split(',').map((item:any) => (
                         <div 
                         className={classes.paletteContainer}>
                         {
                             typeName?.toUpperCase() != 'ОТКРЫТКИ' ? (
                             <button 
-                            onClick={(e) => setPalette(e.target.value)}
+                            onClick={(e:any) => setPalette(e.target.value)}
                             value={item}
                             className={palette === item ? classes.paletteItem : classes.paletteChosen}
                             style={{
@@ -129,7 +127,7 @@ const SearchProduct = ({data}: IProductProps) => {
                         ) : (
 
                         <p 
-                            onClick={(e) => setPalette(item) }
+                            onClick={() => setPalette(item) }
                             className={palette === item ? classes.numberChosen : classes.numberItem}
                         >
                             {item}

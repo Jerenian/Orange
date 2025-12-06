@@ -7,11 +7,10 @@ import Delivery from "./pages/delivery/delivery"
 import Favorite from "./pages/favorite/favorite"
 import Main from "./pages/main/main"
 import Layout from "./components/layout/Layout"
-import Payment from "./components/payment/payment"
-import CatalogId from "./pages/main/catalog/CatalogId"
+import CatalogId from "./pages/main/catalog/catalogId"
 import Catalog from "./pages/main/catalog/catalog"
 import Modal from "./components/modal/Modal"
-import Login from "./pages/login/login"
+import Login from "./pages/login/Login"
 import SignUp from "./pages/login/SignUp"
 import User from "./pages/user/user"
 import { useGetFavoriteQuery } from "./services/favorite"
@@ -46,7 +45,7 @@ const App = () => {
   const dataOrders = useGetOrdersQuery(null)
   const dataBasket = useGetBasketQuery(null)
   const dataProducts = useGetAllProductsQuery(null)
-  const user = useCheckQuery(null)
+  const user: any = useCheckQuery(null)
   const dataTypes = useGetAllTypesQuery(null)
   const dispatch = useDispatch()
 
@@ -97,7 +96,6 @@ const App = () => {
                 <Route path="contact" element ={<Contacts/>} />
                 <Route path="delivery" element ={<Delivery/>} />
                 <Route path="favorite" element ={<Favorite/>} />
-                <Route path="payment" element ={<Payment/>} />
                 <Route path="login" element={<Login/>}></Route>
                 <Route path="signUp" element={<SignUp/>}></Route>
                 <Route path="user" element={<User/>}></Route>

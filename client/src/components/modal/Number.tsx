@@ -2,10 +2,8 @@ import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
 import { changeNumber } from '../../features/modalSlice/modalSlice'
-import { useRef } from 'react'
 const NumberModal = () => {
-    const blockRef = useRef(null)
-    const modal = useSelector(state => state.modal.number)
+    const modal = useSelector((state:any) => state.modal.number)
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(changeNumber())

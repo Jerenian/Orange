@@ -4,11 +4,10 @@ import { useSelector,useDispatch } from 'react-redux'
 import { changeTypeModal } from '../../features/modalSlice/modalSlice'
 import { useRef } from 'react'
 import { useCreateTypeMutation } from '../../services/create'
-import type { ICreateType } from '../../types'
 const TypeModal = () => {
-    const modal = useSelector(state => state.modal.createType)
-    const [dataType, setData] = useState<ICreateType>({name:'', file: null})
-    const inputRef = useRef(null);
+    const modal = useSelector((state:any) => state.modal.createType)
+    const [dataType, setData] = useState<any>({name:'', file: null})
+    const inputRef = useRef<any>(null);
     const dispatch = useDispatch()
     const [type, {isLoading, data}] = useCreateTypeMutation()
     const handleClick = () => {

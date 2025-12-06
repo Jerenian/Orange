@@ -19,7 +19,7 @@ export const ProductSlice = createSlice({
         },
         allProducts: (state, {payload}) => {
             if(payload){
-                state.data = payload?.filter(item => item)
+                state.data = payload?.filter((item:any) => item)
             }
             
         }

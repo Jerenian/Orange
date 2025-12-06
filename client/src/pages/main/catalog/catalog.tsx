@@ -10,12 +10,12 @@ import { useFilterMutation, useSortMutation } from '../../../services/filterSort
 import { Oval } from 'react-loader-spinner'
 const Catalog = () => {
     const dispatch = useDispatch()
-    const dataTypes = useSelector(state => state.type.types)
-    const data  = useSelector(state => state.product.data)
-    const [dataProducts, setDataProducts] = useState()
-    const [filter, filterLoad = {isLoading}] = useFilterMutation() 
-    const [sort, sortLoad = {isLoading}] = useSortMutation()
-    const [filterValue, setFilterValue] = useState({name: [], min: 0, max:0})
+    const dataTypes = useSelector((state:any) => state.type.types)
+    const data  = useSelector((state:any) => state.product.data)
+    const [dataProducts, setDataProducts] = useState<any>()
+    const [filter, filterLoad] = useFilterMutation() 
+    const [sort, sortLoad] = useSortMutation()
+    const [filterValue, setFilterValue] = useState<any>({name: [], min: 0, max:0})
     const [sortValue, setSortValue] = useState('')
     const [filterModal, setFilterModal] = useState(false)
     const [sortModal, setSortModal] = useState(false)
@@ -23,15 +23,13 @@ const Catalog = () => {
     const [typeId, setTypeId] = useState('')
     const [typeName, setTypeName] = useState('')
     const filterArrayValues = useGetFlowersQuery(null)
-    const [filterData, setFilterData] = useState()
-    useEffect(() => {
-        setDataProducts(filter?.data)
-    }, [filter])
+    const [filterData, setFilterData] = useState<any>()
+
     useEffect(() => {
         setDataProducts(data)
     }, [data])
     
-    const prices = data?.map(item => (
+    const prices = data?.map((item:any) => (
         item.price
     ))
     const min = Math.min.apply(null, prices)
@@ -48,7 +46,7 @@ const Catalog = () => {
     setSortModal(!sortModal)
     setFilterModal(false)
     }
-    const hendleCheck = (item: string, e) => {
+    const hendleCheck = (item: string, e: any) => {
         
         if(filterValue.name.includes(item)){
             let num = filterValue.name.indexOf(item)
@@ -70,11 +68,14 @@ const Catalog = () => {
         }
         
     }
-    const hendleSetTypes = (id: string, name: string, e) => {
+    const hendleSetTypes = (id: string, name: string) => {
         setTypeId(id)
         setTypeName(name)
+        console.log('name')
         if(name.toUpperCase() == "ЦВЕТЫ" || name.toUpperCase() == "БУКЕТЫ") {
-           setFilterData(filterArrayValues?.data.map(item => item.name))
+           setFilterData(filterArrayValues?.data.map((item:any) => item.name))
+        } else {
+            setFilterData(null)
         }
     }
     const saveFilter = async () => {
@@ -155,8 +156,8 @@ const Catalog = () => {
                             </div>
                             <div className={classes.itemsList}>
                                 <div className={classes.typeDropdown}>
-                                    {dataTypes?.map(item => (
-                                        <div key={item.id} className={typeId  === item.id ? classes.dropdownItemActive : classes.dropdownItem} onClick={(e) => hendleSetTypes(item.id, item.name, e)}>
+                                    {dataTypes?.map((item:any) => (
+                                        <div key={item.id} className={typeId  === item.id ? classes.dropdownItemActive : classes.dropdownItem} onClick={() => hendleSetTypes(item.id, item.name)}>
                                             {item.name}
                                         </div>
                                     ))}
@@ -165,7 +166,7 @@ const Catalog = () => {
                                         filterData ? (
                                             <div className={classes.filterList}>
                                                 {
-                                                    filterData?.map(item => (
+                                                    filterData?.map((item:any) => (
                                                         <div key={item.id} onClick={(e) => hendleCheck(item, e)} className={classes.items}>
                                                             {item}
                                                         </div>

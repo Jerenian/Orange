@@ -26,7 +26,7 @@ export const OrderApi = createApi({
         getOrders: builder.query<IOrdersData, null>({
             query: () => '/'
         }),
-        removeOrder: builder.mutation<string, null>({
+        removeOrder: builder.mutation<null, string>({
             query: (id) => ({
                 url: '/',
                 method: "DELETE",

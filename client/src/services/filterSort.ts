@@ -7,14 +7,14 @@ export const FilterSortApi = createApi({
         baseUrl: `${import.meta.env.VITE_API_URL}api/products`,
     }),
     endpoints: (builder) => ({
-        filter: builder.mutation<IProduct[], null>({
+        filter: builder.mutation<any, any>({
         query: (credentials) =>({
                 url: 'filter',
                 method: 'POST',
                 body: credentials
             })
         }),
-        sort: builder.mutation<IProduct, string>({
+        sort: builder.mutation<any, any>({
             query: (credentials) =>({
                 url: 'sort',
                 method: 'POST',

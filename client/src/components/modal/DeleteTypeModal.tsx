@@ -5,7 +5,7 @@ import classes from './style.module.scss'
 import { useRemoveTypeMutation } from '../../services/remove'
 const DeleteTypeModal = () => {
 
-    const modal = useSelector(state => state.modal.deleteType)
+    const modal = useSelector((state:any) => state.modal.deleteType)
     const dispatch = useDispatch()
     const [remove, {data, isLoading}] = useRemoveTypeMutation()
     const handleClick = () => {

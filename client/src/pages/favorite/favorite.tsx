@@ -7,9 +7,9 @@ import { Oval } from 'react-loader-spinner'
 import { NavLink } from 'react-router'
 import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 const Favorite = () => {
-    const favorite = useSelector(state => state.favorite)
+    const favorite = useSelector((state:any) => state.favorite)
     const [product, {data, isLoading}] = useGetProductsMutation()
-    const user = useSelector(state => state.user)
+    const user = useSelector((state:any) => state.user)
     const dispatch = useDispatch()
     useEffect(() => {
         const fn = async () =>  await product(favorite.idList)

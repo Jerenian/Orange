@@ -8,8 +8,7 @@ import { useEffect } from 'react'
 const User = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const user = useSelector(state => state.user.data)
-    console.log(user)
+    const user = useSelector((state: any) => state.user.data)
     const hendleLogOut = () => {
         dispatch(logOut())
         dispatch(getFavorite(null))

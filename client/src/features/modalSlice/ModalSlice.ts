@@ -97,7 +97,7 @@ export const ModalSlice = createSlice({
                 state.deleteProduct.id = actions.payload
             }
         },
-        changeMenu(state, actions){
+        changeMenu(state){
             state.menu = !state.menu
         },
         changeProductInfo(state, actions){
@@ -113,5 +113,19 @@ export const ModalSlice = createSlice({
         }
     }
 })
-export const {changePaymentModal, changeTypeModal, changeProductModal, changeEditType, getTypeId, changeEditProduct, changeNumber, changeDeleteType, changeMenu, changeProductInfo, changeDeleteProduct} = ModalSlice.actions
+export const {
+    changePaymentModal,
+    changeTypeModal, 
+    changeProductModal,
+    changeEditType,
+    getTypeId, 
+    changeEditProduct,
+    changeNumber, 
+    changeDeleteType,
+    changeMenu, 
+    changeProductInfo,
+    changeDeleteProduct
+    } = ModalSlice.actions
+
 export default ModalSlice.reducer
+

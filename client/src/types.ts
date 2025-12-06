@@ -9,7 +9,7 @@ export interface IProduct  {
     isPopular?: string | boolean
     quantity?: number
     palette?: string 
-    file?: File | null
+    file?: any
     typeName?: string
 }
 export interface IProductProps  {
@@ -59,7 +59,7 @@ export interface IFavoriteData {
 export interface ICreateType{
     id?: string
     name?: string
-    file: Blob | undefined | string 
+    file: any
 }
 export interface IOrders {
     id?: string

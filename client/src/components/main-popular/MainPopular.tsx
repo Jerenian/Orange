@@ -1,21 +1,20 @@
 import { useState } from 'react'
 import classes from './style.module.scss'
-import type { IProductProps } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 import { useNavigate } from 'react-router'
 import { useAddBasketMutation } from '../../services/basket'
 import { changeMessage } from '../../features/messageSlice/messageSlice'
 import { getBasket } from '../../features/basketSlice/basketSlice'
-const MainPopular = ({data}: IProductProps) => {
+const MainPopular = ({data}: any) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [palette, setPalette] = useState('')
     const [message, setMessage] = useState({chooseColor: '' })
     const [setBasket] = useAddBasketMutation()
-    const dataTypes = useSelector(state => state.type.types)
-    const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
-        const addBasket = async (item, e: any) => {      
+    const dataTypes = useSelector((state:any) => state.type.types)
+    const typeName = dataTypes?.find((item:any) => item.id === data.typeId)?.name
+        const addBasket = async (item:any, e: any) => {      
                 e.stopPropagation()
                 if(item.palette.length) {
                     if(palette === '') {
@@ -28,7 +27,7 @@ const MainPopular = ({data}: IProductProps) => {
                             palette: palette
                         }
                         const basket = await setBasket(data)
-                        const res = basket
+                        const res:any = basket
                         if(res?.error?.status === 403 || res?.error?.status === 401) {
                             navigate('/login') 
                         }
@@ -44,7 +43,7 @@ const MainPopular = ({data}: IProductProps) => {
                 } else {
                 
                 const basket = await setBasket({id: item.id})
-                const data = basket
+                const data:any = basket
                 if(data?.error?.status === 403 || data?.error?.status === 401) {
                     navigate('/login')
                 }
@@ -71,14 +70,14 @@ const MainPopular = ({data}: IProductProps) => {
                         ) : null
                     }
                     {
-                        data?.palette?.toString() !== "" ? data?.palette.toString().split(',').map((item, i) => (
+                        data?.palette?.toString() !== "" ? data?.palette.toString().split(',').map((item:any, i:number) => (
                             <div 
                             key={i}
                             className={classes.paletteContainer}>
                             {
                                 typeName?.toUpperCase() != 'ОТКРЫТКИ' ? (
                                 <button 
-                                onClick={(e) => {e.stopPropagation(), setPalette(e.target.value) }}
+                                onClick={(e:any) => {e.stopPropagation(), setPalette(e.target.value) }}
                                 value={item}
                                 className={palette === item ? classes.paletteItem : classes.paletteChosen}
                                 style={{

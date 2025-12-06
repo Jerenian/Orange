@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import {useState } from 'react'
 import classes from './style.module.scss'
 import {useDispatch } from 'react-redux'
 import { searchItems } from '../../features/productSlice/ProductSlice'
@@ -7,8 +7,8 @@ const Field = () => {
     const dispatch = useDispatch()
     dispatch(searchItems(fieldValue))
     
-    const hendleSearch = (e) => {
-        setFieldValue(state => e.target.value)
+    const hendleSearch = (e:any) => {
+        setFieldValue(e.target.value)
     }
     return (
         <div className={classes.field}>

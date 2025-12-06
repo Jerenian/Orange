@@ -1,39 +1,31 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import classes from './style.module.scss'
-import type { IProductProps } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
-import { changePaymentModal } from '../../features/modalSlice/modalSlice'
-import flower from '../../assets/images/pages/main/flowers.png'
 import { useAddFavoriteMutation } from '../../services/favorite'
-import Modal from '../modal/Modal'
 import { useNavigate } from 'react-router'
 import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
 import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 import { useAddBasketMutation } from '../../services/basket'
 import { getBasket } from '../../features/basketSlice/basketSlice'
 import { changeMessage } from '../../features/messageSlice/messageSlice'
-const Product = ({data, column}: IProductProps) => {
+const Product = ({data, column}: any) => {
     const [setFavorite] = useAddFavoriteMutation()
     const [setBasket] = useAddBasketMutation()
-    const dataFavorites = useSelector(state => state.favorite.data)
-    const dataBaskets = useSelector(state => state.basket.data)
+    const dataFavorites = useSelector((state:any) => state.favorite.data)
+    //const dataBaskets = useSelector((state:any) => state.basket.data)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const dataTypes = useSelector(state => state.type.types)
+    const dataTypes = useSelector((state:any) => state.type.types)
     const [message, setMessage] = useState({chooseColor: '' })
     const [palette, setPalette] = useState('')
-    const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
-    const like = dataFavorites?.find(item => item.productId == data.id)
-    const basketItem = dataBaskets?.find(item => item.productId == data.id)
-    const handleClick = (e:React.MouseEvent) => {
-        e.stopPropagation()
-        dispatch(changePaymentModal())
-    }
-    const addFavorite = async (id: string, e) => {
+    const typeName = dataTypes?.find((item:any) => item.id === data.typeId)?.name
+    const like = dataFavorites?.find((item:any) => item.productId == data.id)
+    // const basketItem = dataBaskets?.find(item => item.productId == data.id)
+    const addFavorite = async (id: string, e:any) => {
         e.stopPropagation()
             const favorite = await setFavorite(id)
             const data = favorite
-            if(data?.error?.status){
+            if(data?.error){
                 navigate('/login')
             }
             if(!data?.error) {
@@ -41,7 +33,7 @@ const Product = ({data, column}: IProductProps) => {
         }
     }
     
-    const addBasket = async (item, e) => {      
+    const addBasket = async (item:any, e:any) => {      
             e.stopPropagation()
             if(item.palette.length) {
                 if(palette === '') {
@@ -54,7 +46,7 @@ const Product = ({data, column}: IProductProps) => {
                         palette: palette
                     }
                     const basket = await setBasket(data)
-                    const res = basket
+                    const res:any = basket
                     if(res?.error?.status === 403 || res?.error?.status === 401) {
                         navigate('/login') 
                     }
@@ -70,7 +62,7 @@ const Product = ({data, column}: IProductProps) => {
             } else {
             
             const basket = await setBasket({id: item.id})
-            const data = basket
+            const data:any = basket
             if(data?.error?.status === 403 || data?.error?.status === 401) {
                 navigate('/login')
             }
@@ -119,13 +111,13 @@ const Product = ({data, column}: IProductProps) => {
                         ) : null
                     }
                     {
-                        data?.palette?.toString() !== "" ? data.palette.toString().split(',').map(item => (
+                        data?.palette?.toString() !== "" ? data.palette.toString().split(',').map((item:any )=> (
                             <div 
                             className={classes.paletteContainer}>
                             {
                                 typeName?.toUpperCase() != 'ОТКРЫТКИ' ? (
                                 <button 
-                                onClick={(e) => {e.stopPropagation(), setPalette(e.target.value)}}
+                                onClick={(e:any) => {e.stopPropagation(), setPalette(e.target.value)}}
                                 value={item}
                                 className={palette === item ? classes.paletteItem : classes.paletteChosen}
                                 style={{
@@ -150,7 +142,7 @@ const Product = ({data, column}: IProductProps) => {
                     }
                 </div>
                 <div className={classes.priceContainer}>
-                    <span>{data.price} ₽ / шт</span> 
+                    <span>{data.price} ₽/шт</span> 
                     {/* {
                         basketItem?.productId == data.id ? (
                             <button>Товар добавлен</button>

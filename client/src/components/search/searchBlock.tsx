@@ -5,7 +5,7 @@ import { useSearchQuery } from '../../services/filterSort'
 import SearchProduct from './searchProduct'
 import { Oval } from 'react-loader-spinner'
 const SearchBlock = () => {
-    const {search} = useSelector(state => state.product)
+    const {search} = useSelector((state:any) => state.product)
     const [value, setValue] = useState('')
     const searchData = useSearchQuery(value)
     useEffect(() => {

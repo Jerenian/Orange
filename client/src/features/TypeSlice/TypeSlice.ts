@@ -23,21 +23,21 @@ export const TypeSlice = createSlice({
         builder.addMatcher(
             ProductApi.endpoints.getAllProducts.matchFulfilled,
             (state, {payload}) => {
-                const result = payload.reduce((acc, item) => {
+                const result = payload.reduce((acc: any, item) => {
                 const { typeId, price } = item;
                 
-                if (!acc.find(obj => obj.typeId === typeId)) {
+                if (!acc.find((obj:any) => obj.typeId === typeId)) {
                     acc.push({ typeId, prices: [] });
                 }
                 
-                const typeObj = acc.find(obj => obj.typeId === typeId);
+                const typeObj = acc.find((obj:any) => obj.typeId === typeId);
                 typeObj.prices.push(price);
                 
                 return acc;
                 }, []);
 
                 for(let i = 0; i < result.length; i++){
-                    result[i].prices.sort(function (a, b) {
+                    result[i].prices.sort(function (a: number, b: number) {
                     if (a > b) {
                         return 1;
                     }
@@ -47,7 +47,7 @@ export const TypeSlice = createSlice({
                 return 0;
                 })
                 }
-                state.product  = result.map(item => {
+                state.product  = result.map((item: any) => {
                     return {
                         typeId: item.typeId,
                         items: item.prices[0]

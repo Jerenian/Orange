@@ -6,14 +6,14 @@ import { useRef } from 'react'
 import { useChangeTypeMutation } from '../../services/change'
 import type { ICreateType } from '../../types'
 const EditTypeModal = () => {
-    const modal = useSelector(state => state.modal.editType)
-    const typeId = useSelector(state => state.modal.typeId)
+    const modal = useSelector((state:any) => state.modal.editType)
+    const typeId = useSelector((state:any) => state.modal.typeId)
     const [dataEdit, setData] = useState<ICreateType>({id: "", name: "", file: null})
     const [edit, {isLoading, data}] = useChangeTypeMutation()
     useEffect(()=> {
         setData({...dataEdit,id: modal.id, name: modal.name, file: modal.img})
     },[modal])
-    const inputRef = useRef(null);
+    const inputRef = useRef<any>(null);
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(changeEditType(null))
@@ -24,7 +24,7 @@ const EditTypeModal = () => {
     }
     const saveClick = async () => {
       setData({...dataEdit, id: typeId})
-      const dataType = await edit(dataEdit)
+      await edit(dataEdit)
       setTimeout(() => {
         window.location.reload()
       }, 1500);

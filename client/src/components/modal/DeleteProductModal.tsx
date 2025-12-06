@@ -2,10 +2,10 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {changeDeleteProduct } from '../../features/modalSlice/modalSlice'
 import classes from './style.module.scss'
-import { useRemoveTypeMutation, useRemoveProductMutation } from '../../services/remove'
+import {useRemoveProductMutation } from '../../services/remove'
 const DeleteProductModal = () => {
 
-    const modal = useSelector(state => state.modal.deleteProduct)
+    const modal = useSelector((state: any) => state.modal.deleteProduct)
     const dispatch = useDispatch()
     const [remove, {data, isLoading}] = useRemoveProductMutation()
     const handleClick = () => {

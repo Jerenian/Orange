@@ -1,5 +1,4 @@
 import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { IProduct } from "../types";
 
 
 export const ChangeItemsApi = createApi({
@@ -29,7 +28,7 @@ export const ChangeItemsApi = createApi({
                 }
             },
         }),
-        changeProduct: builder.mutation<IProduct[], string[] | null>({
+        changeProduct: builder.mutation<null, any>({
             query: (data) => {
                     const formData = new FormData() 
                     if(data?.file.length) {

@@ -11,6 +11,9 @@ html, body{
     font-family: "Podkova", serif !important;
 
 }
+h1, p, h2, h3, h4, h5{
+    margin: 0;
+}
 input, button, a{
     font-family: "Podkova", serif !important;
 }

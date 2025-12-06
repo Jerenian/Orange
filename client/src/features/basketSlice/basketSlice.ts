@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { IFavoriteData, IFavorite } from "../../types";
-import { data } from "react-router";
 
 
-let initialState  = {
+let initialState: any  = {
     data:[
     ],
     idList: [],
@@ -39,14 +37,14 @@ export const BasketSlice = createSlice({
             if(action?.payload?.length)
             {
                 state.data = action?.payload
-                state.idList = state?.data?.map(item => item.productId)
-                state.quantity = state.data?.reduce((acc, item) => {
+                state.idList = state?.data?.map((item:any) => item.productId)
+                state.quantity = state.data?.reduce((acc:any, item:any) => {
                     const {productId} = item
                     const {palette} = item
                     if (!acc.length) {
                         acc.push({ productId,  quantity: 1, palette})
                     } else {
-                    let array = acc.find(item => {
+                    let array = acc.find((item:any) => {
                         if(item.productId == productId && item.palette == palette) {
                             return true
                         } else {
@@ -58,7 +56,7 @@ export const BasketSlice = createSlice({
                 return acc
 
                 }, [])
-                state.quantity = state?.quantity?.filter(item => item.productId !== null )
+                state.quantity = state?.quantity?.filter((item:any) => item.productId !== null )
             }
             else
             {

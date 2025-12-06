@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react'
+
 import classes from './style.module.scss'
-import type { IProductProps } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
-import { changePaymentModal } from '../../features/modalSlice/modalSlice'
-import flower from '../../assets/images/pages/main/flowers.png'
 import { useAddFavoriteMutation } from '../../services/favorite'
-import Modal from '../modal/Modal'
 import { useNavigate } from 'react-router'
 import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
 import { getBasket } from '../../features/basketSlice/basketSlice'
 import { changeProductInfo } from '../../features/modalSlice/modalSlice'
 import { useAddBasketMutation, useRemoveMutation } from '../../services/basket'
-const MainColumnProduct = ({data}) => {
-    const [setFavorite, favIsLoading = {isLoading}] = useAddFavoriteMutation()
-    const [setBasket, setBaskIsLoading  = {isLoading}] = useAddBasketMutation()
-    const dataFavorites = useSelector(state => state.favorite.data)
-    const dataBasket = useSelector(state => state.basket.quantity)
+const MainColumnProduct = ({data}: any) => {
+    const [setFavorite] = useAddFavoriteMutation()
+    const [setBasket] = useAddBasketMutation()
+    const dataFavorites = useSelector((state: any) => state.favorite.data)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [remove, remIsLoading = {isLoading}] = useRemoveMutation()
-    const dataTypes = useSelector(state => state.type.types)
-    const typeName = dataTypes?.find(item => item.id === data.typeId)?.name
-    const like = dataFavorites?.find(item => item.productId == data.id)
-        const addFavorite = async (id: string, e) => {
+    const [remove] = useRemoveMutation()
+    const dataTypes = useSelector((state: any) => state.type.types)
+    const typeName = dataTypes?.find((item:any) => item.id === data.typeId)?.name
+    const like = dataFavorites?.find((item:any) => item.productId == data.id)
+        const addFavorite = async (id: string, e:any) => {
         e.stopPropagation()
         const favorite = await setFavorite(id)
         const data = favorite
-        if(data?.error?.status){
+        if(data?.error){
             navigate('/login')
         }
         if(!data?.error) {
@@ -36,7 +31,7 @@ const MainColumnProduct = ({data}) => {
     const addBasket = async(id: string) => {
         const basket = await setBasket(id)
         const data = basket
-        if(data?.error?.status){
+        if(data?.error){
             navigate('/login')
         }
         if(!data?.error) {
@@ -44,8 +39,8 @@ const MainColumnProduct = ({data}) => {
         }
     }
     const removeBasket = async (id: string) =>{
-        const basket = await remove(id)
-        const data = basket
+        const basket = await remove(id as any)
+        const data:any = basket
         if(data?.error?.status){
             navigate('/login')
         } else {

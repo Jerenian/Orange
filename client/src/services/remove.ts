@@ -26,7 +26,7 @@ export const RemoveItemsApi = createApi({
                 }
             },
         }),
-        removeProduct: builder.mutation<IProduct[], string[] | null>({
+        removeProduct: builder.mutation<IProduct[], string[] | null | string>({
             query: (id) => ({
                     url: '/products',
                     method: "DELETE",

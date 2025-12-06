@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changePaymentModal, changeProductInfo } from '../../features/modalSlice/modalSlice'
+import {changeProductInfo } from '../../features/modalSlice/modalSlice'
 const ProductInfoModal = () => {
-    const modal = useSelector((state) => state.modal.productInfo.visible)
-    const data = useSelector((state) => state.modal.productInfo.product)
+    const modal = useSelector((state:any) => state.modal.productInfo.visible)
+    const data = useSelector((state:any) => state.modal.productInfo.product)
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(changeProductInfo(null))
@@ -12,10 +12,6 @@ const ProductInfoModal = () => {
     }
     const childClick = (e: React.MouseEvent) => {
       e.stopPropagation()
-    }
-    const sendClick = () => {
-        dispatch(changeProductInfo(null))
-        dispatch(changePaymentModal())
     }
     
   return (

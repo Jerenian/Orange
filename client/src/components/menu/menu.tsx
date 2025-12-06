@@ -1,21 +1,17 @@
-import React from 'react'
+
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
 import { changeMenu } from '../../features/modalSlice/modalSlice'
-import { useRef } from 'react'
 import { NavLink } from 'react-router'
 import { searchItems } from '../../features/productSlice/ProductSlice'
 const Menu = () => {
-    const blockRef = useRef(null)
-    const modal = useSelector(state => state.modal.menu)
+    const modal = useSelector((state: any) => state.modal.menu)
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(searchItems(''))
-        dispatch(changeMenu(null))
+        dispatch(changeMenu())
     }
-    const childClick = (e: React.MouseEvent) => {
-      e.stopPropagation()
-    }
+
   return (
     <div onClick={() => handleClick()} className={modal ? classes.wrapper : classes.unwrapper}>
       <div className={classes.container}>

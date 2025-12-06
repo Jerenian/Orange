@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeProductModal, changeTypeModal } from '../../features/modalSlice/modalSlice'
+import { changeProductModal } from '../../features/modalSlice/modalSlice'
 import { useRef, useState } from 'react'
 import { useCreateProductMutation } from '../../services/create'
 import type { IProduct } from '../../types'
 const ProductModal = () => {
-    const inputRef = useRef(null)
-    const [product, {isLoading, isError, data}] = useCreateProductMutation()
-    const modal = useSelector(state => state.modal.createProduct)
+    const inputRef = useRef<any>(null)
+    const [product, {isLoading, data}] = useCreateProductMutation()
+    const modal = useSelector((state:any) => state.modal.createProduct)
     const [dataProduct, setDataProduct] = useState<IProduct>({name: '', price: 0, description: '', typeId: '', file: null, palette: "", isPopular: false})
-    const id = useSelector(state => state.modal.typeId)
+    const id = useSelector((state:any) => state.modal.typeId)
     const [error, setError] = useState({messaage: ''})
 
     

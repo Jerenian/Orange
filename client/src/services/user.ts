@@ -1,6 +1,6 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { IUserResponse, ILoginRequest, IUser } from "../types";
+import type { IUserResponse, ILoginRequest } from "../types";
 
 
 

@@ -1,5 +1,4 @@
 import { createApi,fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { IProduct } from "../types";
 
 
 export const CreateItemsApi = createApi({
@@ -28,7 +27,7 @@ export const CreateItemsApi = createApi({
                 }
             },
         }),
-        createProduct: builder.mutation<IProduct[], string[] | null>({
+        createProduct: builder.mutation<null, any>({
             query: (data) => {
                 const formData = new FormData() 
                 formData.append('name', data.name)

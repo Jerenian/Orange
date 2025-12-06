@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
 import classes from './Header.module.scss'
-import { data, NavLink } from "react-router";
+import { NavLink } from "react-router";
 import logo from "../../assets/logo.png"
 import { useDispatch, useSelector } from 'react-redux';
 import { changeMenu } from '../../features/modalSlice/modalSlice';
@@ -16,7 +15,7 @@ const Header = () => {
   return (
     <div className={classes.wrapper}>
         <div className={classes.row}>
-            <div onClick={() => dispatch(changeMenu(null))} className={classes.burger}>
+            <div onClick={() => dispatch(changeMenu())} className={classes.burger}>
                 <div className={classes.item}>
                     <p className={classes.line}></p>
                     <p className={classes.line}></p>

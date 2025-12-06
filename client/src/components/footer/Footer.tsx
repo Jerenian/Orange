@@ -3,9 +3,10 @@ import classes from "./style.module.scss"
 import logo from "../../assets/logo.png"
 import { NavLink } from 'react-router'
 import { useSelector } from 'react-redux'
+import type { IProduct } from "../../types"
 
 const Footer = () => {
-    const dataTypes = useSelector(state => state.type.types)
+    const dataTypes = useSelector((state:any) => state.type.types)
   return (
     <div className={classes.wrapper}>
       <div className={classes.top}>
@@ -61,7 +62,7 @@ const Footer = () => {
             </h6>
                 <div>
                     {
-                        dataTypes?.map(item => (
+                        dataTypes?.map((item:IProduct) => (
                             <NavLink key={item.id} to={`catalog/${item.id}`}>
                                 <p>{item.name}</p>
                             </NavLink>

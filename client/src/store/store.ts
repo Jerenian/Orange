@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { ProductApi } from "../services/product";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { typeApi } from "../services/type";
-import ModalReducer from "../features/modalSlice/modalSlice"
 import { UserApi } from "../services/user";
 import TypeReducer from '../features/TypeSlice/TypeSlice'
 import {FavoriteApi} from '../services/favorite'
@@ -14,6 +13,7 @@ import { ChangeItemsApi } from "../services/change";
 import { FilterSortApi } from "../services/filterSort";
 import { BasketApi } from "../services/basket";
 import  ProductReducer from "../features/productSlice/ProductSlice";
+import ModalReducer  from "../features/modalSlice/modalSlice";
 import BasketReducer from "../features/basketSlice/basketSlice"
 import OrderReducer  from "../features/orderSlice/orderSlice";
 import { OrderApi } from "../services/order";

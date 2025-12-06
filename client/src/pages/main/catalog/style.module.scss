@@ -333,7 +333,6 @@
                         border-radius: 10px;
                         padding: 5px;
                         :hover{
-                            background-color: red;
                             border-radius: 10px;
                             padding: 5px;
                             transition: 0.2s;
@@ -389,7 +388,6 @@
         align-items: center;
         flex-direction: column;
         font-size: 18px;
-        background-color: red !important;
         .loaderItem{
             display: flex;
             justify-content: center;

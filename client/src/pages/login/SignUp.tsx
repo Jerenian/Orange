@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import  { useState } from 'react'
 import classes from './Style.module.scss'
 import { NavLink } from 'react-router'
 import { useRegisterMutation } from '../../services/user'
@@ -16,8 +16,8 @@ const SignUp = () => {
             const payload = {name: user.name, login: user.login, password: user.password}
             const data = await setLogin(payload)
             if(data?.error){
-                setError(data?.error?.data?.message)
-
+                const error: any = data.error
+                setError(error.data.message)
             } else {
             localStorage.clear()
             localStorage.setItem('accessToken', data?.data.accessToken)

@@ -4,18 +4,15 @@ import { NavLink } from 'react-router'
 import { useState } from 'react'
 import { useLoginMutation } from '../../services/user'
 import { useNavigate } from 'react-router'
-import { useDispatch } from 'react-redux'
 const Login = () => {
-
     const [user, setUser] = useState({login: '', password: ''})
-    const [setLogin, {isLoading}] = useLoginMutation()
+    const [setLogin] = useLoginMutation()
     const [errors, setError] = useState("")
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const handleClick = async () => {
         const userData = await setLogin({login: user.login, password: user.password})
-        const body = userData
-        if(body?.error?.status === 400){
+        const body: any = userData
+        if(body?.error){
             setError('Пользователь с таким email не найден')
         }
         else{
