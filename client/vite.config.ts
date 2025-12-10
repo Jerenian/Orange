@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-  allowedHosts: ['exactingly-oriented-eel.cloudpub.ru']
+  allowedHosts: ['https://client-4673mo1i7-jerenians-projects.vercel.app']
 }
 })
