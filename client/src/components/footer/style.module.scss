@@ -17,6 +17,7 @@
         @media (max-width: 680px) {
             flex-direction: column;
             align-items: center;
+            padding: 18px 0 0 0;
         }
         .columnFirst{
             display: flex;
@@ -77,6 +78,8 @@
                 margin-bottom: 16px;
                 @media (max-width: 680px) {
                     text-align: center;
+                    margin: 0;
+                    padding: 18px 0 0 0;
                 }
             }
             ul{
