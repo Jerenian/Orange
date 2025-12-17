@@ -95,6 +95,9 @@ const Footer = () => {
       <div className={classes.bottom}>
         <div className={classes.line}></div>
         <p>© 2025 Оранж. Все права защищены.</p>
+        <p>ИП Рыбакова Светлана Сегреевна</p>
+        <p>ИНН 220417259727</p>
+        <p>ОГРНИП 321220200242035</p>
       </div>
     </div>
   )

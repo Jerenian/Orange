@@ -14,6 +14,10 @@
         display: flex;
         justify-content: space-around;
         margin-bottom: 48px;
+        @media (max-width: 680px) {
+            flex-direction: column;
+            align-items: center;
+        }
         .columnFirst{
             display: flex;
             flex-direction: column;
@@ -31,6 +35,9 @@
             .socialMedia{
                 display: flex;
                 gap: 11px;
+                @media (max-width: 680px) {
+                    justify-content: center;
+                }
             }
         }
         .columnSecond{
@@ -69,7 +76,7 @@
                 color: #fff;
                 margin-bottom: 16px;
                 @media (max-width: 680px) {
-                    padding-top: 15px ;
+                    text-align: center;
                 }
             }
             ul{
