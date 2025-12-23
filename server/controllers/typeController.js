@@ -21,8 +21,10 @@ const create = async (req, res) => {
         let fileName = uuid.v4() + ".jpg"
         img.mv(path.resolve(__dirname, '..', 'static', fileName))
         const type = await Type.create({id, name, img: fileName})
+        console.log(type)
         return res.json(type)
     } catch (error) {
+        console.log(error)
     }
 }
 

@@ -49,7 +49,7 @@ const SignUp = () => {
                     onChange={(e) => setUser({...user, checkPassword : e.target.value})} placeholder='Повторите пароль' type="password" className={classes.login} />
                     </div>
                 <div className={classes.buttons}>
-                    <button onClick={() => handleClick()} className={classes.main}>Зарегестрироваться</button>
+                    <button onClick={() => handleClick()} className={classes.main}>Зарегистрироваться</button>
                     <NavLink to='/login'><button className={classes.alter}>Есть аккаунт</button></NavLink>
                 </div>
                 <div className={classes.messages}>

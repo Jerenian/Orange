@@ -23,7 +23,7 @@
             position: absolute;
             background: #fff;
             border-radius: 50px;
-            padding: 7px 7px 5px;
+            padding: 7px 7px 3px;
             box-shadow: 0 0 5px 1px #000;
             right: 0;
             margin: 15px 15px 0 ;
@@ -57,7 +57,6 @@
             }
              @media (max-width: 620px) {
                 font-size: 14px;
-
             }
             }
             .description{
@@ -68,26 +67,29 @@
             }
             .palette{
                 display: flex;
-                gap: 5px;
                 flex-wrap: wrap;
+                padding-top:5px ;
                 height: 30px;
                 overflow: scroll;
                 .paletteContainer{
+                    padding: 3px 5px;
+                    width: 8px;
+                    height: 8px;
                     input{
-                         caret-color: transparent !important;
+                        caret-color: transparent !important;
                     }
                     .paletteItem{
                         cursor: pointer;
-                        width: 10px;
-                        height: 10px;
+                        width: 8px;
+                        height: 8px;
                         color: transparent;
                         border: 0;
                     }
                     .paletteChosen{
                         
                         cursor: pointer;
-                        width: 10px;
-                        height: 10px;
+                        width: 8px;
+                        height: 8px;
                         color: transparent;
                         border: 1px solid #111
                     }

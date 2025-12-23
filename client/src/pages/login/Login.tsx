@@ -15,7 +15,7 @@ const Login = () => {
         if(body?.error){
             setError('Пользователь с таким email не найден')
         }
-        else{
+        else if(body?.data){
         localStorage.clear()
         localStorage.setItem('accessToken', body.data.accessToken)
         navigate('/user') 
@@ -50,7 +50,7 @@ const Login = () => {
                     <button onClick={() => handleClick()} className={classes.main}>Войти</button>
                     <div style={{color: 'red'}}>{errors}</div>
                     <p>Нет аккаунта?</p>
-                    <NavLink to='/signUp'><button className={classes.alter}>Зарегестрироваться</button></NavLink>
+                    <NavLink to='/signUp'><button className={classes.alter}>Зарегистрироваться</button></NavLink>
                 </div>
             </div>
         </div>

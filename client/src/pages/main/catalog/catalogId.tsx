@@ -51,6 +51,7 @@ const CatalogId = () => {
 
     const hendleRemove = async (id: string) => {
         await remove(id)
+        window.location.reload()
     }
     const  hendleEdit = async (data: IProduct) => {
         dispatch(changeEditProduct({...data}))

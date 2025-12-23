@@ -60,7 +60,7 @@ const ProductModal = () => {
             <input
             value={dataProduct.palette}
             onChange={(e) => setDataProduct({...dataProduct, palette: e.target.value})}
-            placeholder='Укажите цвета через пробел, без запятых' 
+            placeholder='Укажите цвета через запятую, без пробелов' 
             type="text" />
             <button onClick={() => uploadClick()} className={classes.upload}> 
                 <input

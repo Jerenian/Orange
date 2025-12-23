@@ -71,6 +71,10 @@
                     flex-grow: 1;
                     gap: 10px;
                     padding-top: 22.5px ;
+                    align-items: center;
+                    input{
+                        margin-right: 3px;
+                    }
                     .typeDropdown{
                         display: flex;
                         flex-direction: column;

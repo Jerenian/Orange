@@ -345,6 +345,15 @@
             background-color: #0000002c;
             .rowContainer{
                 display: flex;
+                .remove{
+                    cursor: pointer;
+                    :hover{
+                        background-color: red;
+                        border-radius: 10px;
+                        padding: 5px;
+                        transition: 0.2s;
+                    }
+                }
                 .row{
                     display: flex;
                     flex-direction: column;

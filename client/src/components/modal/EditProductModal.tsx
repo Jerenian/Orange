@@ -49,7 +49,7 @@ const EditProductModal = () => {
             <input
             value={dataEdit.palette}
             onChange={(e) => setData({...dataEdit, palette: e.target.value})}
-            placeholder='Укажите цвета через пробел, без запятых' 
+            placeholder='Укажите цвета через запятую, без пробелов' 
             type="text" />
             <button onClick={() => uploadClick()} className={classes.upload}> 
                 <input
