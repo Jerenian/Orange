@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 
 const add = async (req, res, next) => {
     try {
+        console.log(req.headers.authorization)
         if(!req.headers.authorization){
             const error = {message: 'jwt'}
             next(error)
@@ -19,17 +20,19 @@ const add = async (req, res, next) => {
         }
         let decoded 
         decoded = jwt.verify(token, process.env.JWT_SECRET_ACCESS_KEY)
-        
+        console.log(decoded)
         const basket = await Basket.findOne({where:{userId: decoded.id}})
 
         const id = uuid.v4()
+        console.log(id)
         if(req.body.palette){
             const palette = req.body.palette
             await BasketProduct.create({id, productId, palette, basketId: basket.id})
         } else {
+            console.log(id)
             await BasketProduct.create({id, productId, basketId: basket.id})
         }
-
+        console.log(basket)
         const dataBasket = await BasketProduct.findAll({where: {basketId: basket.id}})
         res.json(dataBasket)
         

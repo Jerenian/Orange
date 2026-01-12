@@ -5,10 +5,11 @@ import { useRegisterMutation } from '../../services/user'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { getUserInfo } from '../../features/userSlice/userSlice'
+import { Oval } from 'react-loader-spinner'
 const SignUp = () => {
     const [user, setUser] = useState( {name:"", login: "", password: "", checkPassword: ""})
     const [errors, setError] = useState("")
-    const [setLogin] = useRegisterMutation()
+    const [setLogin, {isLoading}] = useRegisterMutation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const handleClick = async () => {
@@ -22,7 +23,9 @@ const SignUp = () => {
             localStorage.clear()
             localStorage.setItem('accessToken', data?.data.accessToken)
             dispatch(getUserInfo(data.data))
-            navigate('/') 
+            console.log(data.data)
+            navigate('/confirm') 
+            window.location.reload()
             }
         } else {
             setError("Пароли не совпадают!")
@@ -49,7 +52,18 @@ const SignUp = () => {
                     onChange={(e) => setUser({...user, checkPassword : e.target.value})} placeholder='Повторите пароль' type="password" className={classes.login} />
                     </div>
                 <div className={classes.buttons}>
-                    <button onClick={() => handleClick()} className={classes.main}>Зарегистрироваться</button>
+                    <button onClick={() => handleClick()} className={classes.main}>
+                       {!isLoading ? (<span> Зарегистрироваться </span>) : (
+                        <Oval
+                        height="20"
+                        width="20"
+                        secondaryColor= '#1c1b1bff'
+                        color="#E5FA39"
+                        ariaLabel="three-dots-loading"
+                        strokeWidth='3'
+                        />
+                       )}
+                    </button>
                     <NavLink to='/login'><button className={classes.alter}>Есть аккаунт</button></NavLink>
                 </div>
                 <div className={classes.messages}>

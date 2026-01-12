@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router'
 import classes from './style.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logOut } from '../../features/userSlice/userSlice'
 import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
 import { useEffect } from 'react'
@@ -17,7 +17,7 @@ const User = () => {
         navigate('/')
     }
     useEffect(() => {
-      if(user?.data){
+    if(user?.data){
         console.log(user?.data)
 
     } else {

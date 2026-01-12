@@ -24,6 +24,7 @@ export const UserSlice = createSlice({
             state.data.login = action?.payload?.login
             state.data.name = action?.payload?.name
             state.data.role = action?.payload?.role
+            state.data.isActivated = action?.payload.isActivated
             } else {
                 state.data = initialState.data
             }

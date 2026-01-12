@@ -40,6 +40,7 @@ import { useGetAllTypesQuery } from "./services/type"
 import { getTypes } from "./features/TypeSlice/TypeSlice"
 import SuccessBasket from "./components/messages/successBasket"
 import { Oval } from 'react-loader-spinner'
+import Confirm from "./pages/login/Confirm"
 const App = () => {
   const dataFavorite = useGetFavoriteQuery(null)
   const dataOrders = useGetOrdersQuery(null)
@@ -97,6 +98,7 @@ const App = () => {
                 <Route path="delivery" element ={<Delivery/>} />
                 <Route path="favorite" element ={<Favorite/>} />
                 <Route path="login" element={<Login/>}></Route>
+                <Route path="confirm" element={<Confirm/>}></Route>
                 <Route path="signUp" element={<SignUp/>}></Route>
                 <Route path="user" element={<User/>}></Route>
                 {

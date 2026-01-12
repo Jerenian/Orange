@@ -15,12 +15,16 @@ const SearchProduct = ({data}: any) => {
     const [message, setMessage] = useState({chooseColor: '' })
     const [palette, setPalette] = useState('')
     const dataFavorites = useSelector((state:any) => state.favorite.data)
+    const user = useSelector((state: any) => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const dataTypes = useSelector((state:any) => state.type.types)
     const like = dataFavorites?.find((item:any) => item.productId == data.id)
     const typeName = dataTypes?.find((item:any) => item.id === data.typeId)?.name
     const addFavorite = async (id: string, e:any) => {
+        if(user?.data.isActivated == false) {
+            return navigate('/confirm')
+        }
         e.stopPropagation()
         const favorite = await setFavorite(id)
         const data = favorite
@@ -32,6 +36,9 @@ const SearchProduct = ({data}: any) => {
         }
     }
     const addBasket = async (item:any, e:any) => {
+            if(user?.data.isActivated == false) {
+                return navigate('/confirm')
+            }
             e.stopPropagation()
             if(item.palette.length) {
                 if(palette === '') {

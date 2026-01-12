@@ -11,6 +11,7 @@ const ColumnProduct = ({data, allProduct} : IProductProps) => {
     const dataFavorites = useSelector((state: any) => state.favorite.data)
     const dataBasket = useSelector((state: any) => state.basket.quantity)
     const dispatch = useDispatch()
+    const user = useSelector((state: any) => state.user)
     const navigate = useNavigate()
     dataBasket.map((item: any) => {
         const id = item.productId
@@ -37,6 +38,9 @@ const ColumnProduct = ({data, allProduct} : IProductProps) => {
     const like = dataFavorites?.find((item: IFavorite) => item.productId == data.id)
     const addFavorite = async (id: string, e: any) => {
         e.stopPropagation()
+            if(user?.data.isActivated == false) {
+                return navigate('/confirm')
+            }
         const favorite = await setFavorite(id)
         const data = favorite
         if(data?.error){

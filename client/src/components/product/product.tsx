@@ -13,6 +13,7 @@ const Product = ({data, column}: any) => {
     const [setBasket] = useAddBasketMutation()
     const dataFavorites = useSelector((state:any) => state.favorite.data)
     //const dataBaskets = useSelector((state:any) => state.basket.data)
+    const user = useSelector((state: any) => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const dataTypes = useSelector((state:any) => state.type.types)
@@ -23,6 +24,9 @@ const Product = ({data, column}: any) => {
     // const basketItem = dataBaskets?.find(item => item.productId == data.id)
     const addFavorite = async (id: string, e:any) => {
         e.stopPropagation()
+            if(user?.data.isActivated == false) {
+                return navigate('/confirm')
+            }
             const favorite = await setFavorite(id)
             const data = favorite
             if(data?.error){
@@ -35,6 +39,7 @@ const Product = ({data, column}: any) => {
     
     const addBasket = async (item:any, e:any) => {      
             e.stopPropagation()
+            console.log(user.data)
             if(item.palette.length) {
                 if(palette === '') {
                     setMessage({...message, chooseColor: 'Выберите цвет'})
@@ -45,10 +50,15 @@ const Product = ({data, column}: any) => {
                         id: item.id,
                         palette: palette
                     }
+                    console.log(user.data)
+                    if(user?.data.isActivated == false) {
+                        
+                        return navigate('/confirm')
+                    }
                     const basket = await setBasket(data)
                     const res:any = basket
                     if(res?.error?.status === 403 || res?.error?.status === 401) {
-                        navigate('/login') 
+                         navigate('/login') 
                     }
                     if(res?.data) {
                         dispatch(changeMessage(null))
@@ -60,7 +70,9 @@ const Product = ({data, column}: any) => {
                     }
                 }
             } else {
-            
+                if(user?.data.isActivated == false) {
+                    return navigate('/confirm')
+                }
             const basket = await setBasket({id: item.id})
             const data:any = basket
             if(data?.error?.status === 403 || data?.error?.status === 401) {

@@ -9,6 +9,7 @@ import { getBasket } from '../../features/basketSlice/basketSlice'
 const MainPopular = ({data}: any) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const user = useSelector((state: any) => state.user)
     const [palette, setPalette] = useState('')
     const [message, setMessage] = useState({chooseColor: '' })
     const [setBasket] = useAddBasketMutation()
@@ -17,6 +18,9 @@ const MainPopular = ({data}: any) => {
         const addBasket = async (item:any, e: any) => {      
                 e.stopPropagation()
                 if(item.palette.length) {
+                        if(user?.data.isActivated == false) {
+                            return navigate('/confirm')
+                        }
                     if(palette === '') {
                         setMessage({...message, chooseColor: 'Выберите цвет'})
                         throw new Error()
@@ -41,7 +45,9 @@ const MainPopular = ({data}: any) => {
                         }
                     }
                 } else {
-                
+                if(user?.data.isActivated == false) {
+                    return navigate('/confirm')
+                }
                 const basket = await setBasket({id: item.id})
                 const data:any = basket
                 if(data?.error?.status === 403 || data?.error?.status === 401) {

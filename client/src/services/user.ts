@@ -40,7 +40,13 @@ export const UserApi = createApi({
         refresh: builder.query<IUserResponse, null>({
             query: () => '/refresh'
         }),
+        checkByClick: builder.mutation<any, any>({
+            query:(arg)  => ( console.log('a'), {
+                url: '/check',
+                method: 'GET'
+            })
+        })
  
     })
 })
-export const { useRegisterMutation, useLoginMutation, useRefreshQuery, useCheckQuery } = UserApi
+export const { useRegisterMutation, useLoginMutation, useRefreshQuery, useCheckQuery, useCheckByClickMutation } = UserApi
