@@ -5,21 +5,21 @@ const transporter = nodemailer.createTransport({
         port: '465',
         secure: true,
         auth: {
-            user: 'aleksandorkaz@gmail.com',
-            pass: 'lvldormsyjnurbqn'
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASSWORD
         },
 })
 
 const sendActivationMail = async (to, link) => {
         await transporter.sendMail({
-            from: 'aleksandorkaz@gmail.com',
+            from: process.env.SMTP_USER,
             to,
             subject: 'Активация аккаунта на ' + 'http://localhost:5001',
             text: '',
             html:
                 `
                     <div>
-                        <h1>Для активации перейдите по ссылке</h1>
+                        <h1>Для активации аккаунта на orange-flowers.ru перейдите по ссылке</h1>
                         <a href="${link}">${link}</a>
                     </div>
                 `

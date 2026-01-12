@@ -8,12 +8,11 @@ const jwt = require('jsonwebtoken')
 
 const add = async (req, res, next) => {
     try {
-        console.log(req.headers.authorization)
         if(!req.headers.authorization){
             const error = {message: 'jwt'}
             next(error)
         }
-        const token = req.headers.authorization.split(' ')[1]
+       const token = req.headers.authorization.split(' ')[1]
         const productId = req.body.id
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
@@ -43,6 +42,10 @@ const add = async (req, res, next) => {
 
 const get = async (req, res, next) => {
     try {
+        if(!req.headers.authorization){
+            const error = {message: 'jwt'}
+            next(error)
+        }
         if(!req.headers.authorization){
             res.status(401)
         }
