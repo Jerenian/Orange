@@ -41,7 +41,7 @@ export const UserApi = createApi({
             query: () => '/refresh'
         }),
         checkByClick: builder.mutation<any, any>({
-            query:(arg)  => ( console.log('a'), {
+            query:()  => ( console.log('a'), {
                 url: '/check',
                 method: 'GET'
             })
