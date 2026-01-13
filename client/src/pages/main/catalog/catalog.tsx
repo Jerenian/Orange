@@ -5,7 +5,7 @@ import Product from '../../../components/product/product'
 import type { IProduct } from '../../../types'
 import cover from '../../../assets/images/mainCover.png'
 import { useDispatch, useSelector } from 'react-redux'
-import { changePaymentModal } from '../../../features/modalSlice/modalSlice'
+import { changePaymentModal } from '../../../features/ModalSlice/ModalSlice'
 import { useFilterMutation, useSortMutation } from '../../../services/filterSort'
 import { Oval } from 'react-loader-spinner'
 const Catalog = () => {

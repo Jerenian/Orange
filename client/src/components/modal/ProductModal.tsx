@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeProductModal } from '../../features/modalSlice/modalSlice'
+import { changeProductModal } from '../../features/ModalSlice/ModalSlice'
 import { useRef, useState } from 'react'
 import { useCreateProductMutation } from '../../services/create'
 import type { IProduct } from '../../types'

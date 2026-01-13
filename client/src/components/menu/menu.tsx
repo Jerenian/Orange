@@ -1,7 +1,7 @@
 
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeMenu } from '../../features/modalSlice/modalSlice'
+import { changeMenu } from '../../features/ModalSlice/ModalSlice'
 import { NavLink } from 'react-router'
 import { searchItems } from '../../features/productSlice/ProductSlice'
 const Menu = () => {

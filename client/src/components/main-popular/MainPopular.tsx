@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import classes from './style.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeProductInfo } from '../../features/modalSlice/modalSlice'
+import { changeProductInfo } from '../../features/ModalSlice/ModalSlice'
 import { useNavigate } from 'react-router'
 import { useAddBasketMutation } from '../../services/basket'
 import { changeMessage } from '../../features/messageSlice/messageSlice'

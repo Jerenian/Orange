@@ -13,7 +13,7 @@ import { ChangeItemsApi } from "../services/change";
 import { FilterSortApi } from "../services/filterSort";
 import { BasketApi } from "../services/basket";
 import  ProductReducer from "../features/productSlice/ProductSlice";
-import ModalReducer  from "../features/modalSlice/modalSlice";
+import ModalReducer  from "../features/ModalSlice/ModalSlice";
 import BasketReducer from "../features/basketSlice/basketSlice"
 import OrderReducer  from "../features/orderSlice/orderSlice";
 import { OrderApi } from "../services/order";

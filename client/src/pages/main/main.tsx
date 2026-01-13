@@ -5,7 +5,7 @@ import cover from '../../assets/images/mainCover.png'
 import MainCatalog from '../../components/main-catalog/MainCatalog'
 import MainPopular from '../../components/main-popular/MainPopular'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeDeleteType, changeEditType, changePaymentModal, changeTypeModal } from '../../features/modalSlice/modalSlice'
+import { changeDeleteType, changeEditType, changePaymentModal, changeTypeModal } from '../../features/ModalSlice/ModalSlice'
 import { useChangePopularMutation } from '../../services/change'
 import type { IProduct } from '../../types'
 const Main = () => {

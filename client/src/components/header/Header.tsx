@@ -2,7 +2,7 @@ import classes from './Header.module.scss'
 import { NavLink } from "react-router";
 import logo from "../../assets/logo.png"
 import { useDispatch, useSelector } from 'react-redux';
-import { changeMenu } from '../../features/modalSlice/modalSlice';
+import { changeMenu } from '../../features/ModalSlice/ModalSlice';
 import Field from '../search/field';
 import SearchBlock from '../search/searchBlock';
 import { searchItems } from '../../features/productSlice/ProductSlice';

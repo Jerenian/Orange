@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeEditProduct} from '../../features/modalSlice/modalSlice'
+import { changeEditProduct} from '../../features/ModalSlice/ModalSlice'
 import { useRef } from 'react'
 import { useChangeProductMutation } from '../../services/change'
 import type { IProduct } from '../../types'
