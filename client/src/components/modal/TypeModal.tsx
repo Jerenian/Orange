@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeTypeModal } from '../../features/modalSlice/modalSlice'
+import { changeTypeModal } from '../../features/modalSlice/ModalSlice'
 import { useRef } from 'react'
 import { useCreateTypeMutation } from '../../services/create'
 const TypeModal = () => {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import classes from './style.module.scss'
 import { addHandedState, removeOrder } from '../../features/orderSlice/orderSlice'
 import { useRemoveOrderMutation,  useChangeOrderMutation } from '../../services/order'
-import { changeProductInfo } from '../../features/modalSlice/modalSlice'
+import { changeProductInfo } from '../../features/modalSlice/ModalSlice'
 import type { IProduct } from '../../types'
 const Orders = () => {
     const dispatch = useDispatch()

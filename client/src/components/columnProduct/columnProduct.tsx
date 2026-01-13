@@ -4,7 +4,7 @@ import type { IProductProps } from '../../types'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAddFavoriteMutation } from '../../services/favorite'
 import { useNavigate } from 'react-router'
-import { changeProductInfo } from '../../features/modalSlice/modalSlice'
+import { changeProductInfo } from '../../features/modalSlice/ModalSlice'
 import type { IFavorite } from '../../types'
 const ColumnProduct = ({data, allProduct} : IProductProps) => {
     const [setFavorite] = useAddFavoriteMutation()

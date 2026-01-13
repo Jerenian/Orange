@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeNumber } from '../../features/modalSlice/modalSlice'
+import { changeNumber } from '../../features/modalSlice/ModalSlice'
 const NumberModal = () => {
     const modal = useSelector((state:any) => state.modal.number)
     const dispatch = useDispatch()

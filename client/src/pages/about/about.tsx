@@ -2,7 +2,7 @@
 import classes from "./style.module.scss"
 import aboutCover from '../../assets/images/aboutCover.png'
 import { useDispatch } from 'react-redux'
-import { changeNumber, changePaymentModal } from '../../features/modalSlice/modalSlice'
+import { changeNumber, changePaymentModal } from '../../features/modalSlice/ModalSlice'
 const About = () => {
     const dispatch = useDispatch()
 

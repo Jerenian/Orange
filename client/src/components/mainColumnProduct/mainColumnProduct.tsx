@@ -5,7 +5,7 @@ import { useAddFavoriteMutation } from '../../services/favorite'
 import { useNavigate } from 'react-router'
 import { getFavorite } from '../../features/favoriteSlice/favoriteSlice'
 import { getBasket } from '../../features/basketSlice/basketSlice'
-import { changeProductInfo } from '../../features/modalSlice/modalSlice'
+import { changeProductInfo } from '../../features/modalSlice/ModalSlice'
 import { useAddBasketMutation, useRemoveMutation } from '../../services/basket'
 const MainColumnProduct = ({data}: any) => {
     const [setFavorite] = useAddFavoriteMutation()
