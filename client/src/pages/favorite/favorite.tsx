@@ -5,7 +5,7 @@ import Product from '../../components/product/product'
 import { useGetProductsMutation } from '../../services/favorite'
 import { Oval } from 'react-loader-spinner'
 import { NavLink } from 'react-router'
-import { changePaymentModal } from '../../features/ModalSlice/ModalSlice'
+import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 const Favorite = () => {
     const favorite = useSelector((state:any) => state.favorite)
     const [product, {data, isLoading}] = useGetProductsMutation()

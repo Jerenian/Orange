@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './style.module.scss'
 import { useSelector,useDispatch } from 'react-redux'
-import {changeProductInfo } from '../../features/ModalSlice/ModalSlice'
+import {changeProductInfo } from '../../features/modalSlice/modalSlice'
 const ProductInfoModal = () => {
     const modal = useSelector((state:any) => state.modal.productInfo.visible)
     const data = useSelector((state:any) => state.modal.productInfo.product)

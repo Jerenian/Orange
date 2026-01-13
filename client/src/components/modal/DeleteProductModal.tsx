@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {changeDeleteProduct } from '../../features/ModalSlice/ModalSlice'
+import {changeDeleteProduct } from '../../features/modalSlice/modalSlice'
 import classes from './style.module.scss'
 import {useRemoveProductMutation } from '../../services/remove'
 const DeleteProductModal = () => {

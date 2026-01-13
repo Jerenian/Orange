@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeDeleteType } from '../../features/ModalSlice/ModalSlice'
+import { changeDeleteType } from '../../features/modalSlice/modalSlice'
 import classes from './style.module.scss'
 import { useRemoveTypeMutation } from '../../services/remove'
 const DeleteTypeModal = () => {

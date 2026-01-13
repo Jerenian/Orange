@@ -1,7 +1,7 @@
 
 import classes from './style.module.scss'
 import { useDispatch } from 'react-redux'
-import { changePaymentModal } from '../../features/ModalSlice/ModalSlice'
+import { changePaymentModal } from '../../features/modalSlice/modalSlice'
 const Delivery = () => {
     const dispatch = useDispatch()
     const hendlePayment = () => {
