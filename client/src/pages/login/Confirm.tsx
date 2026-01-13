@@ -1,5 +1,5 @@
 
-import classes from './style.module.scss'
+import classes from './Style.module.scss'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useCheckByClickMutation } from '../../services/user'

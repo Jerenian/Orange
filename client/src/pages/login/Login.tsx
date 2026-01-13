@@ -1,5 +1,5 @@
 
-import classes from './style.module.scss'
+import classes from './Style.module.scss'
 import { NavLink } from 'react-router'
 import { useState } from 'react'
 import { useLoginMutation } from '../../services/user'
