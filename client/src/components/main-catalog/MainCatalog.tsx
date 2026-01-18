@@ -10,7 +10,7 @@ const MainCatalog = ({data} : ITypesProps) => {
                     <img
                     decoding="async"
                     loading="lazy"
-                    src={`${import.meta.env.VITE_API_URL}/${data.img}`} alt="" />
+                    src={`${import.meta.env.VITE_API_URL}${data.img}`} alt="" />
                 <h4>{data.name}</h4>
                 <p>От {data.price} рублей</p>
             </NavLink>
