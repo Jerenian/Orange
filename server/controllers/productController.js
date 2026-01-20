@@ -109,7 +109,8 @@ const fs = require('fs')
             const uploadDir = path.resolve(__dirname, '..', '..', '..', '..', 'var', 'www', 'static');
 
             const uploadPath = path.resolve(uploadDir, fileName);
-
+                console.log('REAL UPLOAD DIR:', uploadDir);
+console.log('REAL UPLOAD PATH:', uploadPath);
                 await img.mv(uploadPath);
                 const product = await Product.findOne({id})
                 fs.rm(path.resolve(__dirname, '..', '..', '..', '..', 'var', 'www', 'static', product.img), () => {
@@ -148,6 +149,7 @@ const fs = require('fs')
         res.json(item)
         
     } catch (error) {
+        console.log(error.message)
     }
 
     }
