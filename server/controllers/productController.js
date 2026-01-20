@@ -18,7 +18,7 @@ const fs = require('fs')
         }
         const {id} = req.body
         const {img} = await Product.findOne({id})
-        const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', img), () => {
+        fs.rm(path.resolve('/var/www/static', img), () => {
         })
         const type = await Product.destroy({
             where: {
@@ -44,7 +44,9 @@ const fs = require('fs')
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             let id = uuid.v4()
-            img.mv(path.resolve(__dirname, '..', 'static', fileName))
+            //img.mv(path.resolve(__dirname, '..', 'static', fileName))
+            const uploadPath = path.resolve('/var/www/static', fileName);
+            await img.mv(uploadPath);
             const item = await Product.create({id, name, price, typeId, description, isPopular, country, length, img: fileName, palette})
             return res.json(item)
             
@@ -101,9 +103,12 @@ const fs = require('fs')
             const {img} = req.files 
             let fileName = uuid.v4() + ".jpg"
             if(img){
-                img.mv(path.resolve(__dirname, '..', 'static', fileName))
+                //img.mv(path.resolve(__dirname, '..', 'static', fileName))
+                const uploadPath = path.resolve('/var/www/static', fileName);
+
+                await img.mv(uploadPath);
                 const product = await Product.findOne({id})
-                const rmImg = fs.rm(path.resolve(__dirname, '..', 'static', product.img), () => {
+                fs.rm(path.resolve('/var/www/static', product.img), () => {
                 })
             }
             item = await Product.update(
