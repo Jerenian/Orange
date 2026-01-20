@@ -149,7 +149,7 @@ console.log('REAL UPLOAD PATH:', uploadPath);
         res.json(item)
         
     } catch (error) {
-        console.log(error.message)
+        res.json(error.message)
     }
 
     }
