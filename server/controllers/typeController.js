@@ -21,7 +21,9 @@ const create = async (req, res) => {
         let fileName = uuid.v4() + ".jpg"
         //img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-        const uploadPath = path.resolve('../../../../../../var/www/static', fileName);
+            const uploadDir = path.resolve(__dirname, '..', '..', '..', '..', 'var', 'www', 'static');
+
+            const uploadPath = path.resolve(uploadDir, fileName);
 
         await img.mv(uploadPath);
         const type = await Type.create({id, name, img: fileName})
@@ -60,7 +62,7 @@ const remove = async (req, res) => {
             },
         });
         fileList.map(item => {
-            fs.rm(path.resolve('../../../../../../var/www/static', item), () => {
+            fs.rm(path.resolve(__dirname, '..', '..', '..', '..', 'var', 'www', 'static', item), () => {
             })
         })
         res.json(type)
@@ -92,7 +94,9 @@ const update = async (req, res) => {
             let fileName = uuid.v4() + ".jpg"
             //img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-            const uploadPath = path.resolve('../../../../../../var/www/static', fileName);
+            const uploadDir = path.resolve(__dirname, '..', '..', '..', '..', 'var', 'www', 'static');
+
+            const uploadPath = path.resolve(uploadDir, fileName);
 
             await img.mv(uploadPath);
             item = await Type.update(
