@@ -74,7 +74,7 @@ const ColumnProduct = ({data, allProduct} : IProductProps) => {
                 <img
                 decoding="async"
                 loading="lazy"
-                 src={`${import.meta.env.VITE_API_URL}${data.img}`} alt="Картинок пока нет : (" />
+                 src={`${import.meta.env.VITE_API_URL}/static/${data.img}`} alt="Картинок пока нет : (" />
             </div>
             <div className={classes.info}>
                 <div className={classes.title}>

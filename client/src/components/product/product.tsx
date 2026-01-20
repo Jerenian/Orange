@@ -112,7 +112,7 @@ const Product = ({data, column}: any) => {
                 )
 }
             <div className={classes.image}>
-                <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}${data.img}`} alt="Картинок пока нет : (" />
+                <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}/static/${data.img}`} alt="Картинок пока нет : (" />
             </div>
             <div className={classes.info}>
                 <h4 className={classes.title}>{data.name}</h4>

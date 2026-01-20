@@ -66,7 +66,7 @@ const MainPopular = ({data}: any) => {
     <div 
     onClick={() => dispatch(changeProductInfo(data))}
     className={classes.wrapper} >
-        <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}${data.img}`} alt="" />
+        <img decoding="async" loading="lazy" src={`${import.meta.env.VITE_API_URL}/static/${data.img}`} alt="" />
         <div className={classes.text}>
             <h4 className={classes.title}>{data.name}</h4>
                             <div className={classes.palette}>
