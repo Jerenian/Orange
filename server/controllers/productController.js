@@ -18,7 +18,7 @@ const fs = require('fs')
         }
         const {id} = req.body
         const {img} = await Product.findOne({id})
-        fs.rm(path.resolve('var/www/static', img), () => {
+        fs.rm(path.resolve(__dirname, '..', '..', '..', '..', '..', 'var', 'www', 'static', img), () => {
         })
         const type = await Product.destroy({
             where: {
@@ -45,7 +45,9 @@ const fs = require('fs')
             let fileName = uuid.v4() + ".jpg"
             let id = uuid.v4()
             //img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const uploadDir = 'var/www/static';
+            
+
+            const uploadDir = path.resolve(__dirname, '..', '..', '..', '..', '..', 'var', 'www', 'static');
 
             const uploadPath = path.resolve(uploadDir, fileName);
             await img.mv(uploadPath);
@@ -106,14 +108,14 @@ const fs = require('fs')
             let fileName = uuid.v4() + ".jpg"
             if(img){
                 //img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const uploadDir = 'var/www/static';
+            const uploadDir = path.resolve(__dirname, '..', '..', '..', '..', '..', 'var', 'www', 'static');
 
             const uploadPath = path.resolve(uploadDir, fileName);
                 console.log('REAL UPLOAD DIR:', uploadDir);
 console.log('REAL UPLOAD PATH:', uploadPath);
                 await img.mv(uploadPath);
                 const product = await Product.findOne({id})
-                fs.rm(path.resolve('var/www/static', product.img), () => {
+                fs.rm(path.resolve(__dirname, '..', '..', '..', '..', '..', 'var', 'www', 'static', product.img), () => {
                 })
             }
             item = await Product.update(
